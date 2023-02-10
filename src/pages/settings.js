@@ -1,5 +1,6 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
+import Link from "next/link";
 
 export default function Settings() {
   return (
@@ -12,6 +13,9 @@ export default function Settings() {
       </Head>
       <main className={styles.main}>
         <h1>Settings</h1>
+        <button>
+          <Link href="/">Go back</Link>
+        </button>
       </main>
     </>
   );

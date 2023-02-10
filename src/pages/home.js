@@ -1,5 +1,6 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
+import Link from "next/link";
 
 export default function HomeScreen() {
   return (
@@ -12,6 +13,9 @@ export default function HomeScreen() {
       </Head>
       <main className={styles.main}>
         <h1>Home</h1>
+        <button>
+          <Link href="/">Go back</Link>
+        </button>
       </main>
     </>
   );
