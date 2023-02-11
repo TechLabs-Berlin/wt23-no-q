@@ -2,6 +2,10 @@
 
 # dependencies
 /node_modules
+<<<<<<< HEAD
+=======
+DS_Store
+>>>>>>> f2e6154c0727a0754d71e78c4bedbdc65ac6f6d8
 /.pnp
 .pnp.js
 
