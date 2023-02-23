@@ -2,7 +2,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color:white;
 }
 .App {
   height: 100vh;
@@ -10,4 +9,7 @@
   background-color: black;
   position: relative;
   margin-bottom: 50px;
+}
+h1{
+  color:mediumvioletred;
 }
