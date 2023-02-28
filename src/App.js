@@ -6,7 +6,7 @@ import Profile from "./pages/profile/profile";
 import Home from "./pages/home/home";
 import Drinks from "./pages/drinks/drinks";
 import Bars from "./pages/bars/bars";
-import Payment from "./pages/Payment/payment";
+import PaymentForm from "./components/paymentform/paymentform.js";
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
             <Route path="drinks" element={<Drinks />} />
             <Route path="Bars" element={<Bars />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/payment" element={<Payment />} />
+            <Route path="/paymentform" element={<PaymentForm />} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>
