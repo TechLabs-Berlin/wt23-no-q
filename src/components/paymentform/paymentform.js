@@ -53,8 +53,6 @@ function PaymentForm() {
         setPaymentStatus("error");
       });
   }
-  h;
-
   return (
     <form onSubmit={handleSubmit}>
       <label>

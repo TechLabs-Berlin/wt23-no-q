@@ -8,7 +8,7 @@ import Drinks from "./pages/drinks/drinks";
 import Bars from "./pages/bars/bars";
 import Payment from "./pages/Payment/payment";
 import PaymentForm from "./components/paymentform/paymentform.js";
-
+import React from "react";
 
 function App() {
   return (
