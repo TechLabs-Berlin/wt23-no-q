@@ -8,6 +8,7 @@ import Drinks from "./pages/drinks/drinks";
 import Bars from "./pages/bars/bars";
 import Payment from "./pages/Payment/payment";
 
+
 function App() {
   return (
     <div className="App">
