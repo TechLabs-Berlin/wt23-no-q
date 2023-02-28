@@ -1,0 +1,20 @@
+nav{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    width: 100vw;
+    background-color: azure;
+}
+ul{
+    list-style:none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+}
+button{
+    padding:5px;
+    border:none;
+    background-color: transparent;
+}
