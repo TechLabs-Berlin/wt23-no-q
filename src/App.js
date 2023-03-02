@@ -6,7 +6,7 @@ import Profile from "./pages/profile/profile";
 import Home from "./pages/home/home";
 import Drinks from "./pages/drinks/drinks";
 import Bars from "./pages/bars/bars";
-import Payment from "./pages/Payment/payment";
+import Payment from "./pages/payment/payment";
 import React from "react";
 
 function App() {
