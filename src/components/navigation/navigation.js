@@ -42,7 +42,7 @@ function Navigation() {
           </li>
           <li>
             <button>
-              <Link to="/paymentform">
+              <Link to="/payment">
                 <PaymentIcon />
               </Link>
             </button>
