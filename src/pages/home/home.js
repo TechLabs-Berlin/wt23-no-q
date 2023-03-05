@@ -1,7 +1,8 @@
-
+import React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Link } from 'react-router-dom';
+import './home.css';
 
 
 
@@ -19,7 +20,7 @@ export default function Home() {
         style={{ minHeight: '100vh' }}
       >
         <h1>Home</h1>
-        <Link to='./userform.js'>
+        <Link to='/userform'>
           <Box
             component="img"
             sx={{
