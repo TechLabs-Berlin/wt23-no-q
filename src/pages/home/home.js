@@ -19,7 +19,7 @@ export default function Home() {
         style={{ minHeight: '100vh' }}
       >
         <h1>Home</h1>
-        <Link to='../profile/profile.js'>
+        <Link to='./userform.js'>
           <Box
             component="img"
             sx={{
