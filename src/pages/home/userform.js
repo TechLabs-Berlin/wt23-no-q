@@ -5,11 +5,24 @@ const UserForm = () => {
     const [name, setName] = useState('');
     const [number, setNumbers] = useState('');
     const [drink, setDrink] = useState('');
+    // is false because we need it to happen after user submits the form, not when page is loaded
+    const [isPending, setIsPending] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const user = { name, number, drink };
-        console.log(user);
+
+        setIsPending(true);
+        // have to check again why fetch not working
+        fetch('http://localhost:3000/userform?', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(user)
+        }).then(() => {
+            console.log('new user added');
+            setIsPending(false);
+        })
+
     }
 
     return (
@@ -34,7 +47,8 @@ const UserForm = () => {
                     <option value="water">Water</option>
 
                 </select>
-                <button>Get in Q!</button>
+                {!isPending && <button>Get in Q!</button>}
+                {isPending && <button disabled>You are in Q!</button>}
                 <p>{name}</p>
                 <p>{number}</p>
                 <p>{drink}</p>
