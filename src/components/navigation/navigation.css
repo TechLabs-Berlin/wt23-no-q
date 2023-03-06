@@ -1,5 +1,6 @@
 nav {
-    position: absolute;
+    position: fixed;
+    top: 0px;
     bottom: 0;
     left: 0;
     height: 50px;
