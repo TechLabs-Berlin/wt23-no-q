@@ -1,7 +1,5 @@
-export default function Bars(){
+import React from "react";
 
-
-    return (
-        <h1>Bars working</h1>
-    )
+export default function Bars() {
+  return <h1>Bars working</h1>;
 }

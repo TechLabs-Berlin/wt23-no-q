@@ -1,0 +1,63 @@
+.payment-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+
+.payment-form h1 {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+  color: black;
+}
+
+.payment-form label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.payment-form input[type="text"] {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.payment-form input[type="text"]:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.payment-form button[type="submit"] {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 200px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.payment-form button[type="submit"]:hover {
+  background-color: #0069d9;
+}
+
+.payment-form .error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
