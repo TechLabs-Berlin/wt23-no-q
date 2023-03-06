@@ -1,6 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
 
-h1 {
+.app-name {
+    font-size: 10rem;
+    direction: column-reverse;
+    position: relative;
     font-family: 'Raleway', sans-serif;
+    color: #ff006e;
+    text-shadow: 0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #ff006e,
+        0 0 82px #ff006e,
+        0 0 92px #ff006e,
+        0 0 102px #ff006e,
+        0 0 151px #ff006e;
+}
+
+.app-name {
     color: #ff006e;
 }

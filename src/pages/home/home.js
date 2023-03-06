@@ -19,24 +19,26 @@ export default function Home() {
         justify="center"
         style={{ minHeight: '100vh' }}
       >
-        <h1>Home</h1>
+
         <Link to='/userform'>
           <Box
             component="img"
             sx={{
-              height: 500,
-              width: 500,
-              maxHeight: { xs: 350, md: 500 },
-              maxWidth: { xs: 350, md: 500 },
+              height: 600,
+              width: 400,
+              maxHeight: { xs: 350, md: 600 },
+              maxWidth: { xs: 350, md: 400 },
               '&:hover': {
-                backgroundColor: 'black',
+                backgroundColor: 'bleck',
                 opacity: [0.9, 0.8, 0.7],
               },
             }}
             alt="logo"
-            src="./images/logo.png"
+            src="./images/newlogo_bigger.png"
           />
+
         </Link>
+        <h1 className='app-name'>NO-Q</h1>
       </Grid>
 
     </div>)
