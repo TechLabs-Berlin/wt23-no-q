@@ -27,7 +27,7 @@ const UserForm = () => {
 
     return (
         <div className="create">
-            <h1>User Form</h1>
+            <h1 className='form-input'>User Form</h1>
             <form onSubmit={handleSubmit}>
                 <label>Name:</label>
                 <input type="text" placeholder="What's your name?" value={name}
