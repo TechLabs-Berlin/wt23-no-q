@@ -1,5 +1,7 @@
 import './userform.css';
 import { useState } from 'react';
+import {userData} from "../../mock/mock-data"
+
 
 const UserForm = () => {
     const [name, setName] = useState('');
@@ -7,6 +9,7 @@ const UserForm = () => {
     const [drink, setDrink] = useState('');
     // is false because we need it to happen after user submits the form, not when page is loaded
     const [isPending, setIsPending] = useState(false);
+    const [waitingUsers, setWaitingUsers] = useState(userData)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -24,7 +27,6 @@ const UserForm = () => {
         })
 
     }
-
     return (
         <div className="create">
             <h1 className='form-input'>User Form</h1>
