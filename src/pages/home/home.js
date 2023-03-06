@@ -1,4 +1,5 @@
 import React from 'react';
+// import { flexbox } from '@mui/system';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Link } from 'react-router-dom';
@@ -16,29 +17,19 @@ export default function Home() {
         spacing={0}
         direction="column"
         alignItems="center"
-        justify="center"
+        justify="flex-start"
         style={{ minHeight: '100vh' }}
       >
+        <Grid>
+          <Link to='/userform'>
+            <img className="logo" src="./images/newlogo_bigger.png" alt="logo" />
 
-        <Link to='/userform'>
-          <Box
-            component="img"
-            sx={{
-              height: 600,
-              width: 400,
-              maxHeight: { xs: 350, md: 600 },
-              maxWidth: { xs: 350, md: 400 },
-              '&:hover': {
-                backgroundColor: 'bleck',
-                opacity: [0.9, 0.8, 0.7],
-              },
-            }}
-            alt="logo"
-            src="./images/newlogo_bigger.png"
-          />
+          </Link>
+        </Grid>
+        <Grid>
 
-        </Link>
-        <h1 className='app-name'>NO-Q</h1>
+          <h1 className='app-name'>NO-Q</h1>
+        </Grid>
       </Grid>
 
     </div>)

@@ -1,4 +1,4 @@
-nav{
+nav {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -6,15 +6,17 @@ nav{
     width: 100vw;
     background-color: azure;
 }
-ul{
-    list-style:none;
+
+ul {
+    list-style: none;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     height: 100%;
 }
-button{
-    padding:5px;
-    border:none;
+
+button {
+    padding: 5px;
+    border: none;
     background-color: transparent;
 }
