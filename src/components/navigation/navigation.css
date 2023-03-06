@@ -5,7 +5,8 @@ nav {
     left: 0;
     height: 50px;
     width: 100vw;
-    background-color: #41DBDF;
+    background-color: #ffbe0b;
+    opacity: 50%;
 }
 
 ul {

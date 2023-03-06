@@ -1,17 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
 
-
-
-.logo {
-
-    filter: drop-shadow(0 0 0 0.75rem rgb(255, 217, 0));
+.container {
+    border: red solid 2px;
+    direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    max-height: auto;
+    background-color: black;
 }
 
-.app-name {
+.logo-img {
+    max-width: 50%;
+    height: auto;
+    margin-bottom: 0;
+    filter: drop-shadow(0 0 0 0.75rem rgb(255, 217, 0));
+    border: red solid 2px;
+}
+
+.name-app {
+    border: red solid 2px;
+    display: inline;
     animation: pulsate 1s infinite alternate;
-    font-size: 10vw;
-    direction: column-reverse;
-    position: relative;
+    font-size: 13vw;
     font-family: 'Raleway', sans-serif;
     color: #ff006e;
     text-shadow: 0 0 7px #fff,
@@ -23,6 +34,8 @@
         0 0 102px #ff006e,
         0 0 151px #ff006e;
 }
+
+
 
 @keyframes pulsate {
     100% {
