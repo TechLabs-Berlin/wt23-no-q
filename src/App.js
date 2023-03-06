@@ -8,10 +8,12 @@ import Drinks from "./pages/drinks/drinks";
 import Bars from "./pages/bars/bars";
 import Payment from "./pages/payment/payment";
 import React from "react";
+import LoadingScreen from "./components/LoadingScreen";
 
 function App() {
   return (
     <div className="App">
+      <LoadingScreen delay={1000}/>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigation />}>
