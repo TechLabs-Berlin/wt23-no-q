@@ -10,6 +10,7 @@ DS_Store
 # testing
 /coverage
 package-lock.json
+/.idea
 
 # production
 /build
