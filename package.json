@@ -19,7 +19,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "deploy": "surge --project ./build --domain no-q.surge.sh",
+    "deploy": "rm -r build && npm run build && surge --project ./build --domain no-q.surge.sh",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -44,13 +44,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^5.0.0",
-    "git-scripts": "^0.6.4",
     "surge": "^0.23.1"
-  },
-  "git": {
-    "scripts": {
-      "pre-push": "react-scripts build && surge --project ./build --domain no-q.surge.sh"
-    }
   }
 }
