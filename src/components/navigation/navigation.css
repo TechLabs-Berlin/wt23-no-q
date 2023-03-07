@@ -1,12 +1,12 @@
-nav {
+.navBar {
     position: fixed;
-    top: 0px;
     bottom: 0;
     left: 0;
     height: 50px;
     width: 100vw;
-    background-color: #ffbe0b;
-    opacity: 50%;
+    background-color: black;
+    opacity: 100%;
+    box-shadow: 3px 0 15px #e5e5e5;
 }
 
 ul {
@@ -17,8 +17,20 @@ ul {
     height: 100%;
 }
 
-button {
+.nav-buttons {
     padding: 5px;
     border: none;
     background-color: transparent;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.nav-buttons:hover {
+    background-color: #000000a4;
+    transform: scale(1.4);
+}
+
+.nav-buttons:active {
+    background-color: #161a1d;
+    transform: scale(0.7);
 }

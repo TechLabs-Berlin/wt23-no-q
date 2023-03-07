@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
 
 .container {
-    border: red solid 2px;
-    direction: column;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    align-content: space-around;
     justify-content: flex-start;
     min-height: 100vh;
     max-height: auto;
@@ -11,18 +12,22 @@
 }
 
 .logo-img {
-    max-width: 50%;
-    height: auto;
-    margin-bottom: 0;
+    flex-grow: 4;
+    align-self: auto;
+    max-width: auto;
+    height: 60%;
+    margin-top: 50%;
+    margin-bottom: 20%;
     filter: drop-shadow(0 0 0 0.75rem rgb(255, 217, 0));
-    border: red solid 2px;
+
 }
 
 .name-app {
-    border: red solid 2px;
+    align-self: flex;
     display: inline;
+    vertical-align: middle;
     animation: pulsate 1s infinite alternate;
-    font-size: 13vw;
+    font-size: 10vw;
     font-family: 'Raleway', sans-serif;
     color: #ff006e;
     text-shadow: 0 0 7px #fff,

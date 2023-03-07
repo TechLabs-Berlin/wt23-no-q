@@ -10,38 +10,38 @@ import React from "react";
 function Navigation() {
   return (
     <>
-      <nav>
+      <nav className="navBar">
         <ul>
           <li>
-            <button>
+            <button className="nav-buttons">
               <Link to="/">
                 <HomeIcon />
               </Link>
             </button>
           </li>
           <li>
-            <button>
+            <button className="nav-buttons">
               <Link to="/drinks">
                 <LocalDrinkIcon />
               </Link>
             </button>
           </li>
           <li>
-            <button>
+            <button className="nav-buttons">
               <Link to="/bars">
                 <LocalBarIcon />
               </Link>
             </button>
           </li>
           <li>
-            <button>
+            <button className="nav-buttons">
               <Link to="/profile">
                 <AccountCircleIcon />
               </Link>
             </button>
           </li>
           <li>
-            <button>
+            <button className="nav-buttons">
               <Link to="/payment">
                 <PaymentIcon />
               </Link>

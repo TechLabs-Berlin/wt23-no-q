@@ -12,7 +12,7 @@ export default function Home() {
       <div className='container'>
 
         <Link to='/userform'>
-          <img className='logo-img' src='./images/newlogo_bigger.png' alt='logo' />
+          <img className='logo-img' src='./images/newer_logo.png' alt='logo' />
         </Link>
 
         <h1 className='name-app'>NO-Q</h1>
