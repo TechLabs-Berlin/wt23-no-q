@@ -50,7 +50,7 @@
   },
   "git": {
     "scripts": {
-      "pre-push": "npm run build && surge --project ./build --domain no-q.surge.sh"
+      "pre-push": "react-scripts build && surge --project ./build --domain no-q.surge.sh"
     }
   }
 }
