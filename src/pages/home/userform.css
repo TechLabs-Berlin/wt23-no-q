@@ -1,28 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
-/* base styles */
-* {
+/* base styles I can't change it for now because I cannot find the way to change the icon's color*/
+/* * {
     margin: 0;
     font-family: "Quicksand";
     color: #ff006e;
-}
+} */
 
+.form-input {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    color: #f1356d;
+}
 
 .content {
     max-width: 600px;
     margin: 40px auto;
     padding: 20px;
-}
-
-/* blog previews / list */
-.blog-preview {
-    padding: 10px 16px;
-    margin: 20px 0;
-    border-bottom: 1px solid #fafafa;
-}
-
-.blog-preview:hover {
-    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
 }
 
 .blog-preview h2 {
@@ -35,16 +29,6 @@
     text-decoration: none;
 }
 
-/* blog details page */
-.blog-details h2 {
-    font-size: 20px;
-    color: #f1356d;
-    margin-bottom: 10px;
-}
-
-.blog-details div {
-    margin: 20px 0;
-}
 
 .blog-details button {
     background: #f1356d;
@@ -60,6 +44,7 @@
     max-width: 400px;
     margin: 0 auto;
     text-align: center;
+    background-color: black;
 }
 
 .create label {

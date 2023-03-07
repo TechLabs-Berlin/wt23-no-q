@@ -3,12 +3,10 @@
   width: 100vw;
   background-color: #000000;
   position: relative;
-  margin-bottom: 0px;
+  /* margin-bottom: 0px; */
+  margin: 0;
 }
 
-h1 {
-  color: #eeedf0;
-}
 
 .loadingScreen {
   position: absolute;

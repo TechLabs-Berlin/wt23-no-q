@@ -16,7 +16,7 @@ function PaymentForm() {
 
   return (
     <div className="payment-form">
-      <h1>Payment Form</h1>
+      <h1 className="pay-title">Payment Form</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-row">
           <label htmlFor="name">Name:</label>

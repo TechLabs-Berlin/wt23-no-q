@@ -6,7 +6,7 @@
     width: 100vw;
     background-color: black;
     opacity: 100%;
-    box-shadow: 3px 0 15px #e5e5e5;
+    box-shadow: 3px 0 15px #575757;
 }
 
 ul {
@@ -17,20 +17,21 @@ ul {
     height: 100%;
 }
 
-.nav-buttons {
+.navButtons {
     padding: 5px;
     border: none;
     background-color: transparent;
+    fill: #ff006e;
     border-radius: 50%;
     transition: all 0.3s ease;
 }
 
-.nav-buttons:hover {
+.navButtons:hover {
     background-color: #000000a4;
     transform: scale(1.4);
 }
 
-.nav-buttons:active {
+.navButtons:active {
     background-color: #161a1d;
     transform: scale(0.7);
 }

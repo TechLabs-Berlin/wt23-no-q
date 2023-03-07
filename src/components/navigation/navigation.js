@@ -6,6 +6,16 @@ import LocalBarIcon from "@mui/icons-material/LocalBar";
 import { Outlet, Link } from "react-router-dom";
 import PaymentIcon from "@mui/icons-material/Payment";
 import React from "react";
+import { styled } from "@mui/system";
+
+const StyledHomeIcon = styled(HomeIcon, {
+  name: "StyledHomeIcon",
+  slot: "Wrapper"
+})({
+  color: "pink[500]",
+});
+
+
 
 function Navigation() {
   return (
@@ -13,35 +23,35 @@ function Navigation() {
       <nav className="navBar">
         <ul>
           <li>
-            <button className="nav-buttons">
+            <button className="navButtons">
               <Link to="/">
-                <HomeIcon />
+                <StyledHomeIcon />
               </Link>
             </button>
           </li>
           <li>
-            <button className="nav-buttons">
+            <button className="navButtons">
               <Link to="/drinks">
                 <LocalDrinkIcon />
               </Link>
             </button>
           </li>
           <li>
-            <button className="nav-buttons">
+            <button className="navButtons">
               <Link to="/bars">
                 <LocalBarIcon />
               </Link>
             </button>
           </li>
           <li>
-            <button className="nav-buttons">
+            <button className="navButtons">
               <Link to="/profile">
                 <AccountCircleIcon />
               </Link>
             </button>
           </li>
           <li>
-            <button className="nav-buttons">
+            <button className="navButtons">
               <Link to="/payment">
                 <PaymentIcon />
               </Link>
