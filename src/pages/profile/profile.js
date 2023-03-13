@@ -8,7 +8,8 @@ export default function Profile() {
       <h1>Profile Working</h1>
       <ul>
         <li>
-          <Link to="/payment">Pay Now</Link>
+          <h2>Hey, you are in the Queue ! You are the number</h2>
+          {/* <Link to="/payment">Pay Now</Link> */}
         </li>
       </ul>
     </>

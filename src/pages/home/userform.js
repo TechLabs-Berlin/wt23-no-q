@@ -1,6 +1,7 @@
 import './userform.css';
 import { useState } from 'react';
-import {userData} from "../../mock/mock-data"
+import { userData } from "../../mock/mock-data";
+import { Link } from 'react-router-dom';
 
 
 const UserForm = () => {
@@ -9,21 +10,26 @@ const UserForm = () => {
     const [drink, setDrink] = useState('');
     // is false because we need it to happen after user submits the form, not when page is loaded
     const [isPending, setIsPending] = useState(false);
-    const [waitingUsers, setWaitingUsers] = useState(userData)
+    // After we see the data fetched we need to update the waiting users
+    const [waitingUsers, setWaitingUsers] = useState(userData);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const user = { name, number, drink };
+        // because it is not completed we set it to true
 
         setIsPending(true);
-        // have to check again why fetch not working
+        // have to check again why fetch not working and cannot add users
         fetch('http://localhost:3000/userform?', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user)
         }).then(() => {
             console.log('new user added');
+            // console.log(user);
+            // then is set to false when it is completed
             setIsPending(false);
+
         })
 
     }
@@ -49,8 +55,12 @@ const UserForm = () => {
                     <option value="water">Water</option>
 
                 </select>
-                {!isPending && <button>Get in Q!</button>}
-                {isPending && <button disabled>You are in Q!</button>}
+                {/* to redirect to the new page of the user */}
+                <Link to='../profile'>
+                    {!isPending && <button>Get in Q!</button>}
+
+                    {isPending && <button disabled>You are in Q!</button>}
+                </Link>
                 <p>{name}</p>
                 <p>{number}</p>
                 <p>{drink}</p>
