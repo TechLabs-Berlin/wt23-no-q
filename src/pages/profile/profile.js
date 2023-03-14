@@ -9,7 +9,7 @@ export default function Profile() {
       <ul>
         <li>
           <h2>Hey, you are in the Queue ! You are the number</h2>
-          {/* <Link to="/payment">Pay Now</Link> */}
+          <Link to="/payment">Pay Now</Link>
         </li>
       </ul>
     </>

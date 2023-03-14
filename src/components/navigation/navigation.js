@@ -2,7 +2,8 @@ import "./navigation.css";
 import HomeIcon from "@mui/icons-material/Home";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LocalDrinkIcon from "@mui/icons-material/LocalDrink";
-import LocalBarIcon from "@mui/icons-material/LocalBar";
+// import LocalBarIcon from "@mui/icons-material/LocalBar";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Outlet, Link } from "react-router-dom";
 import PaymentIcon from "@mui/icons-material/Payment";
 import React from "react";
@@ -38,8 +39,8 @@ function Navigation() {
           </li>
           <li>
             <button className="navButtons">
-              <Link to="/bars">
-                <LocalBarIcon />
+              <Link to="/shop">
+                <ShoppingCartIcon />
               </Link>
             </button>
           </li>
