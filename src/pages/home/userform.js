@@ -5,12 +5,13 @@ import { Link } from 'react-router-dom';
 
 
 const UserForm = () => {
+    // States to update the content whenever a user is adding info
     const [name, setName] = useState('');
     const [number, setNumbers] = useState('');
     const [drink, setDrink] = useState('');
     // is false because we need it to happen after user submits the form, not when page is loaded
     const [isPending, setIsPending] = useState(false);
-    // After we see the data fetched we need to update the waiting users
+    // After we see the data fetched we need to update the waiting users, or else we use the empty array that Petros suggested
     const [waitingUsers, setWaitingUsers] = useState(userData);
 
     const handleSubmit = (e) => {
@@ -19,14 +20,13 @@ const UserForm = () => {
         // because it is not completed we set it to true
 
         setIsPending(true);
-        // have to check again why fetch not working and cannot add users
+        // have to check again why fetch not working and cannot add users, we want to redirect it in the mock data we did
         fetch('http://localhost:3000/userform?', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user)
         }).then(() => {
             console.log('new user added');
-            // console.log(user);
             // then is set to false when it is completed
             setIsPending(false);
 

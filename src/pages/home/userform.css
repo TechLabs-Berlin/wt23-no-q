@@ -1,12 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-
-/* base styles I can't change it for now because I cannot find the way to change the icon's color*/
-/* * {
-    margin: 0;
-    font-family: "Quicksand";
-    color: #ff006e;
-} */
-
 .form-input {
     margin: 0;
     font-family: 'Quicksand', sans-serif;
@@ -67,7 +58,6 @@
     margin: 10px 0;
     border: 1px solid #ddd;
     box-sizing: border-box;
-    display: block;
 }
 
 .create button {
