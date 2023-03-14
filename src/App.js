@@ -11,9 +11,13 @@ import Payment from "./pages/payment/payment";
 import React from "react";
 import LoadingScreen from "./components/LoadingScreen";
 import ShoppingCart from "./pages/shop/shop";
+import data from "./data";
+import Product from "./pages/drinks/product";
 
 
 function App() {
+  // in order to import the data of drinks
+  const { products } = data;
   return (
     <div className="App">
       <LoadingScreen delay={1000} />
@@ -22,11 +26,14 @@ function App() {
           <Route path="/" element={<Navigation />}>
             <Route index element={<Home />} />
             <Route path="userform" element={<Userform />} />
-            <Route path="drinks" element={<Drinks />} />
+            {/* here in the drink page it's inserted the data we imported */}
+            <Route path="drinks" element={<Drinks products={products} />} />
             {/* <Route path="Bars" element={<Bars />} /> */}
             <Route path="shop" element={<ShoppingCart />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/payment" element={<Payment />} />
+            {/* I'm not sure how to implement the product that needs to be used by the drink.js */}
+            <Route path="/Product" element={<Product />} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>
