@@ -13,7 +13,6 @@ export default function Drinks(props) {
         {products.map((product) => (
           // to pass the products to the Product component we have to call product={product} so in order to pass the product from the products(with the map) and pass it on
           <Product key={product.id} product={product}>
-            {product.name}
           </Product>
         ))}
       </div>

@@ -1,0 +1,11 @@
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+img.small {
+    max-height: 30rem;
+    width: 30%;
+
+}
