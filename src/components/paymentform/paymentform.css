@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: space-around;
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #ff006e;
+  background-color: #000000;
+  box-shadow: 0 0 50px 5px #a0a0a0;
+  font-family: 'Quicksand', sans-serif;
+  border-radius: 10px;
+}
+
+.payPal {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 28px;
+}
+
+.payPal:link {
+  text-decoration: none;
+}
+
+.payPal:visited {
+  text-decoration: underline;
+}
+
+.payPal:hover {
+  transform: scale(1.2);
+}
+
+.payment-form h1 {
+  align-self: flex-start;
+  display: inline;
+  vertical-align: middle;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10%;
+  color: #ff006e;
+}
+
+.payment-form label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.payment-form input[type="text"] {
+  width: 95%;
+  height: 40px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.payment-form input[type="text"]:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.payment-form button[type="submit"] {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 200px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #ff006e;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.payment-form button[type="submit"]:hover {
+  background-color: #fc4594;
+}
+
+.payment-form .error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}

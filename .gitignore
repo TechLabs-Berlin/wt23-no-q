@@ -6,9 +6,10 @@
 .pnp.js
 DS_Store
 /.vscode
-
+.idea
 # testing
 /coverage
+package-lock.json
 
 # production
 /build
