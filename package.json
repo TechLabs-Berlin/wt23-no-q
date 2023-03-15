@@ -21,6 +21,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "deploy": "rm -r build && npm run build && surge --project ./build --domain no-q.surge.sh",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -43,5 +44,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "surge": "^0.23.1"
   }
 }
