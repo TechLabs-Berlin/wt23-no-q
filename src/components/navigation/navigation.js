@@ -19,45 +19,6 @@ const StyledHomeIcon = styled(HomeIcon, {
 
 
 function Navigation() {
-<<<<<<< HEAD
-    return (
-        <>
-        <nav>
-            <ul>
-                <li>
-                    <button>
-                        <Link to="/">
-                            <HomeIcon/>
-                        </Link>
-                    </button>
-                </li>
-                <li>
-                    <button>
-                        <Link to="/drinks">
-                            <LocalDrinkIcon/>
-                        </Link>
-                    </button>
-                </li>
-                <li>
-                    <button>
-                        <Link to="/bars">
-                            <LocalBarIcon/>
-                        </Link>
-                    </button>
-                </li>
-                <li>
-                    <button>
-                        <Link to="/profile">
-                            <AccountCircleIcon/>
-                        </Link>
-                    </button>
-                </li>
-            </ul>
-        </nav>
-    <Outlet />
-</>
-);
-=======
   return (
     <>
       <nav className="navBar">
@@ -102,7 +63,6 @@ function Navigation() {
       <Outlet />
     </>
   );
->>>>>>> 7beb60500b81c43047acdaf866d1abed9c475067
 }
 
 export default Navigation;
