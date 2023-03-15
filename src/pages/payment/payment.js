@@ -1,12 +1,13 @@
 import React from "react";
 import PaymentForm from "../../components/paymentform/paymentform";
+import "../../components/paymentform/paymentform.css";
 
 function Payment() {
   const link = "https://www.paypal.com/de/signin";
   return (
     <>
-      <h1>Payment Page</h1>
-      <a href={link}>Pay with Paypal</a>
+
+      <a href={link} className="payPal">Pay with Paypal</a>
       <PaymentForm />
     </>
   );

@@ -1,20 +1,37 @@
-nav {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 50px;
-  width: 100vw;
-  background-color: #41dbdf;
+.navBar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    width: 100vw;
+    background-color: black;
+    opacity: 100%;
+    box-shadow: 3px 0 15px #575757;
 }
+
 ul {
-  list-style: none;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
 }
-button {
-  padding: 5px;
-  border: none;
-  background-color: transparent;
+
+.navButtons {
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    fill: #ff006e;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.navButtons:hover {
+    background-color: #000000a4;
+    transform: scale(1.4);
+}
+
+.navButtons:active {
+    background-color: #161a1d;
+    transform: scale(0.7);
 }
