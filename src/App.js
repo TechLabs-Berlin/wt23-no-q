@@ -58,7 +58,7 @@ function App() {
             {/* here in the drink page it's inserted the data we imported */}
             <Route path="drinks" element={<Drinks products={products} onAdd={onAdd} />} />
             {/* <Route path="Bars" element={<Bars />} /> */}
-            <Route path="shop" element={<ShoppingCart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />
+            <Route path="shop" element={<ShoppingCart countCartItems={cartItems.length} cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/payment" element={<Payment />} />
             {/* I'm not sure how to implement the product that needs to be used by the drink.js */}

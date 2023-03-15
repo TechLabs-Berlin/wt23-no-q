@@ -1,3 +1,4 @@
+import { Badge } from "@mui/material";
 import React from "react";
 
 
@@ -5,6 +6,11 @@ import React from "react";
 export default function ShoppingCart(props) {
     // fetching data from App.js
     const { cartItems, onAdd, onRemove } = props;
+
+    // with reduce it gives back a value the value of all the elements, of list
+    const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
+    const totalPrice = itemsPrice;
+
     return (
         <div className="block-col-1">
             <h2>Cart Items</h2>
@@ -21,11 +27,21 @@ export default function ShoppingCart(props) {
                         <button onClick={() => onRemove(item)} className="remove">-</button>
                     </div>
                     <div>
-                        {/* the display of items and  to fixed id 2dcmal*/}
+                        {/* the display of items and  to fixed id 2 digits*/}
                         {item.qty} x ${item.price.toFixed(2)}
                     </div>
                 </div>
             ))}
+            {/* in order to check that this is not empty so it will be rendered */}
+            {cartItems !== 0 && (
+                <>
+                    <hr></hr>
+                    <div className="row">
+                        <div className="col-2">Items price</div>
+                        <div className="col-1">${totalPrice.toFixed(2)}</div>
+                    </div>
+                </>
+            )}
         </div>
     );
 }
