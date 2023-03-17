@@ -16,12 +16,13 @@ import data from "./data";
 import Product from "./pages/drinks/product";
 
 
+
 function App() {
   // in order to import the data of drinks
   const { products } = data;
   // in order to change items in cart we need the useState to update
   const [cartItems, setCartItems] = useState([]);
-  // adding a function to add items in the basket
+  // use history to redirect in home page
   const onAdd = (product) => {
     // exist is a variable that check cart items and try to find an item that its id is equal to product id. 
     const exist = cartItems.find((x) => x.id === product.id);
@@ -47,6 +48,7 @@ function App() {
       setCartItems(cartItems.map((x) => x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x));
     }
   };
+
   return (
     <div className="App">
       <LoadingScreen delay={1000} />
