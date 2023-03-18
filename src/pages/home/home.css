@@ -14,21 +14,18 @@
 
 .logo-img {
     margin-top: 20%;
-    flex-grow: 4;
+    position: inherit;
     align-self: auto;
     display: inline;
     max-width: auto;
     border-radius: 10%;
     border-image-outset: 3;
     filter: drop-shadow(0 0 10px #ffffff);
-    transition: transform 0.5s ease-in;
-    /* backdrop-filter: blur(15px) saturate(3); */
-    transition: transform 0.5s ease-in;
+    transition: transform 0.3s ease-in;
 }
 
 .logo-img:hover {
     opacity: 0.5;
-    content: "Welcome to No-Q!";
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
     -ms-transform: scale(1);
@@ -36,9 +33,7 @@
     transform: scale(1.1);
 }
 
-.logo-container {
-    transition: transform 0.2s ease-in;
-}
+
 
 
 

@@ -1,30 +1,54 @@
 import './userform.css';
-import { useState } from 'react';
-// import { users } from "../../mock/mock-data";
-import { Link } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react';
+import axios from 'axios';
+// import useLocalStorage from './useLocalStorage';
+
 
 
 const UserForm = () => {
+    const userRef = useRef();
+    // to catch Errors
+    const errRef = useRef();
+    const [success, setSuccess] = useState(false);
     // States to update the content whenever a user is adding info
     const [name, setName] = useState('');
     const [number, setNumbers] = useState('');
     const [gender, setGender] = useState('');
     const [drink, setDrink] = useState('');
-    const [user, setUser] = useState([]);
+    // to add error message
+    const [errMsg, setErrMsg] = useState('');
+    const [users, setUsers] = useState([]);
 
     // is false because we need it to happen after user submits the form, not when page is loaded
     const [isPending, setIsPending] = useState(false);
     // After we see the data fetched we need to update the waiting users, or else we use the empty array
-    const [waitingUsers, setWaitingUsers] = useState('');
+    const [waitingUsers, setWaitingUsers] = useState('3');
 
-    const handleSubmit = (e) => {
+    useEffect(() => {
+        // this will only happen when the component loads, and we're focusing on the user's input
+        userRef.current.focus();
+    }, [])
+
+    useEffect(() => {
+        setErrMsg('');
+    }, [name, number, gender, drink])
+    // form Submit Event
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // const users = { name, number, gender, drink };
         // because it is not completed we set it to true
 
+        // creating the object (user)
+        const user = {
+            name,
+            number,
+            gender,
+            drink
+        }
+        console.log(user);
         setIsPending(true);
+        setSuccess(true);
 
-    }
+    };
 
 
     function handleChange(e) {
@@ -33,48 +57,65 @@ const UserForm = () => {
 
 
     return (
-        <div className="create">
-            <h1 className='form-input'>User Form</h1>
-            <form onSubmit={handleSubmit}>
-                <label>Name:</label>
-                <input type="text" placeholder="What's your name?" value={name}
-                    onChange={(e) => setName(e.target.value)} required />
-                <label>What is your gender?</label>
-                <select value={gender} onChange={(e) => setGender(e.target.value)}>
-                    <option value="">--Please select an option</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                </select>
-                <label>Number of people:</label>
-                <input type="number" min="1" max="30" placeholder="How many are you?"
-                    value={number}
-                    onChange={(e) => setNumbers(e.target.value)} />
+        <>
+            {success ? (
+                <section>
+                    <h1>You are logged in Q!</h1>
+                    <br />
+                    <p>
+                        <a href="#">Go to Home</a>
+                    </p>
+                </section>
+            ) : (
 
-                <label>Favorite drink</label>
-                <select value={drink} onChange={(e) => setDrink(e.target.value)}>
-                    <option value="">--Please select an option</option>
-                    <option value="whiskey">Whiskey</option>
-                    <option value="gin">Gin</option>
-                    <option value="vodka">Vodka</option>
-                    <option value="rum">Rum</option>
-                    <option value="beer">Beer</option>
-                    <option value="water">Water</option>
+                <div className="create">
+                    {/* this p displays the error message */}
+                    <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                    <h1 className='form-input'>User Form</h1>
+                    <form onSubmit={handleSubmit}>
+                        <label htmlFor="name">Name:</label>
+                        <input type="text" placeholder="What's your name?" value={name} ref={userRef} id="name"
+                            onChange={(e) => setName(e.target.value)} required />
+                        <label htmlFor="gender">What is your gender?</label>
+                        <select className="gender" value={gender} ref={userRef} onChange={(e) => setGender(e.target.value)} required>
+                            <option value="">--Please select an option</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <label htmlFor="party">Number of people:</label>
+                        <input type="number" min="1" max="30" id="party" placeholder="How many are you?"
+                            value={number} ref={userRef}
+                            onChange={(e) => setNumbers(e.target.value)} required />
 
-                </select>
-                {/* to redirect to the new page of the user */}
-                <Link to='../profile'>
-                    {!isPending && <button>Get in Q!</button>}
+                        <label>Favorite drink</label>
+                        <select value={drink} onChange={(e) => setDrink(e.target.value)} required>
+                            <option value="">--Please select an option</option>
+                            <option value="whiskey">Whiskey</option>
+                            <option value="gin">Gin</option>
+                            <option value="vodka">Vodka</option>
+                            <option value="rum">Rum</option>
+                            <option value="beer">Beer</option>
+                            <option value="water">Water</option>
 
-                    {isPending && <button disabled>You are in Q!</button>}
-                </Link>
-                <p>{name}</p>
-                <p>{gender}</p>
-                <p>{number}</p>
-                <p>{drink}</p>
+                        </select>
+                        {/* to redirect to the new page of the user */}
 
-            </form>
-        </div>
+                        {!isPending && <button onClick={handleChange}>Get in Q!</button>}
+                        {/* we have to put in the button to call the function Queue.js */}
+                        {isPending && <button disabled>You are in Q!</button>}
+
+
+
+                        <p>{name}</p>
+                        <p>{gender}</p>
+                        <p>{number}</p>
+                        <p>{drink}</p>
+
+                    </form>
+                </div>
+            )}
+        </>
     )
 }
 

@@ -14,7 +14,7 @@ export default function Home() {
         <Link to='/userform'>
 
           <img className='logo-img' src='./images/newer_logo.png' alt='logo' />
-          {/* <button>Welcome!</button> */}
+          {/* <button className='btn-welcome'>Welcome!</button> */}
         </Link>
         <h1 className='name-app'>NO-Q</h1>
 
