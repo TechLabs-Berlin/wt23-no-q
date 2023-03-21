@@ -1,74 +1,141 @@
 .form-input {
-    margin: 0;
-    font-family: 'Quicksand', sans-serif;
-    color: #f1356d;
+  margin: 0;
+  font-family: "Quicksand", sans-serif;
+  color: #f1356d;
 }
 
 .content {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
 }
 
 .blog-preview h2 {
-    font-family: 'Quicksand', sans-serif;
-    font-size: 20px;
-    color: #f1356d;
-    margin-bottom: 8px;
+  font-family: "Quicksand", sans-serif;
+  font-size: 20px;
+  color: #f1356d;
+  margin-bottom: 8px;
 }
 
 .blog-preview a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-
 .blog-details button {
-    background: #f1356d;
-    color: #fff;
-    border: 0;
-    padding: 8px;
-    border-radius: 8px;
-    cursor: pointer;
+  background: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 /* create new blog form */
 .create {
-    max-width: 400px;
-    margin: 0 auto;
-    text-align: center;
-    background-color: black;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: black;
 }
 
 .create label {
-    text-align: left;
-    display: block;
+  text-align: left;
+  display: block;
 }
 
 .create h2 {
-    font-size: 20px;
-    color: #f1356d;
-    margin-bottom: 30px;
+  font-size: 20px;
+  color: #f1356d;
+  margin-bottom: 30px;
 }
 
 .create input,
 .create textarea,
 .create select {
-    width: 100%;
-    padding: 6px 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
 }
 
-.create button {
+/* .create button {
     background: #f1356d;
     color: #fff;
     border: 0;
     padding: 8px;
     border-radius: 8px;
     cursor: pointer;
+} */
+
+.button-85 {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-85:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #edc65d,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #472363,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.button-85:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
 }
 
 .form-input {
-    color: #f1356d;
+  color: #f1356d;
 }
