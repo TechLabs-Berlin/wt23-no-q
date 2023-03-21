@@ -46,7 +46,7 @@ const UserForm = () => {
             favoriteDrink: "Vodka"
         }
     ];
-    let queueNumber;
+    let [queueNumber, setQueueuNumber] = useState('3');
 
     useEffect(() => {
         // this will only happen when the component loads, and we're focusing on the user's input
@@ -79,6 +79,7 @@ const UserForm = () => {
         for (let i = 0; i < queue.length; i++) {
             if (findQuery === queue[i].name) {
                 setIndex(i + 1)
+                setQueueuNumber(queueNumber.length + 1)
                 console.log(index)
 
             }
@@ -104,6 +105,7 @@ const UserForm = () => {
                 <section>
                     <h1>Hello {name} You are logged in Q!</h1>
                     <br />
+                    <h1>Your number is {queueNumber}</h1>
                     <p>
                         <a href="#">Go to Home</a>
                     </p>
