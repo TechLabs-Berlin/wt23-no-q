@@ -9,14 +9,33 @@ const UserForm = () => {
     const [name, setName] = useState('');
     const [number, setNumbers] = useState('');
     const [drink, setDrink] = useState('');
+    const [index, setIndex] = useState(null)
     // is false because we need it to happen after user submits the form, not when page is loaded
     const [isPending, setIsPending] = useState(false);
     // After we see the data fetched we need to update the waiting users, or else we use the empty array that Petros suggested
     const [waitingUsers, setWaitingUsers] = useState(userData);
+    let queue = [
+        {name:"Petros"},
+        {name:"Seanna"},
+        {name:"Phaedra"}
+    ]
+    let queueNumber;
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const user = { name, number, drink };
+        queue.push(user)
+        let findQuery = user.name;
+        for(let i = 0; i < queue.length; i++){
+           if(findQuery === queue[i].name){
+               setIndex(i+1)
+               console.log(index)
+           }
+        }
+
+
+
+
         // because it is not completed we set it to true
 
         setIsPending(true);
@@ -56,16 +75,18 @@ const UserForm = () => {
 
                 </select>
                 {/* to redirect to the new page of the user */}
-                <Link to='../profile'>
+              {/*  <Link to='../profile'>
                     {!isPending && <button>Get in Q!</button>}
 
                     {isPending && <button disabled>You are in Q!</button>}
-                </Link>
-                <p>{name}</p>
-                <p>{number}</p>
-                <p>{drink}</p>
+                </Link>*/}
 
+                <button></button>
             </form>
+            <p>{name}</p>
+            <p>{number}</p>
+            <p>{drink}</p>
+            <strong>Queue : {index}</strong>
         </div>
     )
 }
