@@ -1,8 +1,8 @@
 import './userform.css';
-import { useState, useRef, useEffect, useContext } from 'react';
-import AuthContext from "./context/AuthProvider";
+import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
-// import useLocalStorage from './useLocalStorage';
+
+
 
 
 
@@ -19,11 +19,34 @@ const UserForm = () => {
     // to add error message
     const [errMsg, setErrMsg] = useState('');
     const [users, setUsers] = useState([]);
+    const [index, setIndex] = useState(null);
 
     // is false because we need it to happen after user submits the form, not when page is loaded
     const [isPending, setIsPending] = useState(false);
     // After we see the data fetched we need to update the waiting users, or else we use the empty array
     const [waitingUsers, setWaitingUsers] = useState('3');
+    // adding the fake data 
+    let queue = [
+        {
+            name: "Petros",
+            gender: "male",
+            number: 2,
+            favoriteDrink: "Whiskey"
+        },
+        {
+            name: "Seanna",
+            gender: "female",
+            number: 8,
+            favoriteDrink: "Rum"
+        },
+        {
+            name: "Phaedra",
+            gender: "other",
+            number: 15,
+            favoriteDrink: "Vodka"
+        }
+    ];
+    let queueNumber;
 
     useEffect(() => {
         // this will only happen when the component loads, and we're focusing on the user's input
@@ -33,6 +56,7 @@ const UserForm = () => {
     useEffect(() => {
         setErrMsg('');
     }, [name, number, gender, drink])
+
     // form Submit Event
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -41,13 +65,30 @@ const UserForm = () => {
         // creating the object (user)
         const user = {
             name,
-            number,
             gender,
+            number,
             drink
         }
-        console.log(user);
+        queue.push(user)
+
+
+
+
+        let findQuery = user.name;
+
+        for (let i = 0; i < queue.length; i++) {
+            if (findQuery === queue[i].name) {
+                setIndex(i + 1)
+                console.log(index)
+
+            }
+        };
+        setUsers({ ...users, user })
+        console.log(queue);
+        // console.log(user);
         setIsPending(true);
         setSuccess(true);
+
 
     };
 
@@ -61,7 +102,7 @@ const UserForm = () => {
         <>
             {success ? (
                 <section>
-                    <h1>You are logged in Q!</h1>
+                    <h1>Hello {name} You are logged in Q!</h1>
                     <br />
                     <p>
                         <a href="#">Go to Home</a>
