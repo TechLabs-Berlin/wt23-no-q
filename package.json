@@ -22,7 +22,8 @@
     "webpack": "^5.76.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "deploy": "rm -r build && npm run build && surge --project ./build --domain no-q.surge.sh",
+    "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -46,6 +47,7 @@
     ]
   },
   "devDependencies": {
-    "file-loader": "^6.2.0"
+    "file-loader": "^6.2.0",
+    "surge": "^0.23.1"
   }
 }
