@@ -1,13 +1,15 @@
 import './userform.css';
 import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
+// import { useHistory } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+
 
 
 
 
 
 const UserForm = () => {
-    const userRef = useRef();
     // to catch Errors
     const errRef = useRef();
     const [success, setSuccess] = useState(false);
@@ -20,6 +22,7 @@ const UserForm = () => {
     const [errMsg, setErrMsg] = useState('');
     const [users, setUsers] = useState([]);
     const [index, setIndex] = useState(null);
+
 
     // is false because we need it to happen after user submits the form, not when page is loaded
     const [isPending, setIsPending] = useState(false);
@@ -46,12 +49,8 @@ const UserForm = () => {
             favoriteDrink: "Vodka"
         }
     ];
-    let [queueNumber, setQueueuNumber] = useState('3');
 
-    useEffect(() => {
-        // this will only happen when the component loads, and we're focusing on the user's input
-        userRef.current.focus();
-    }, [])
+
 
     useEffect(() => {
         setErrMsg('');
@@ -79,14 +78,13 @@ const UserForm = () => {
         for (let i = 0; i < queue.length; i++) {
             if (findQuery === queue[i].name) {
                 setIndex(i + 1)
-                setQueueuNumber(queueNumber.length + 1)
                 console.log(index)
 
             }
         };
         setUsers({ ...users, user })
         console.log(queue);
-        // console.log(user);
+        // console.log(setUsers);
         setIsPending(true);
         setSuccess(true);
 
@@ -95,7 +93,9 @@ const UserForm = () => {
 
 
     function handleChange(e) {
-        setWaitingUsers({ ...waitingUsers, [e.target.value]: e.target.value })
+        setWaitingUsers({ ...waitingUsers, [e.target.value]: e.target.value });
+        // setQueueuNumber(queueNumber.length + 1);
+
     }
 
 
@@ -103,9 +103,14 @@ const UserForm = () => {
         <>
             {success ? (
                 <section>
+                    {/* <Routes>
+                        <Route path="/inQueue" element={<inQueue />} />
+                    </Routes> */}
                     <h1>Hello {name} You are logged in Q!</h1>
                     <br />
-                    <h1>Your number is {queueNumber}</h1>
+
+                    <h1>Your number is {(queue.length + 1)}</h1>
+                    <h1>Your ID is </h1>
                     <p>
                         <a href="#">Go to Home</a>
                     </p>
@@ -118,10 +123,10 @@ const UserForm = () => {
                     <h1 className='form-input'>User Form</h1>
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="name">Name:</label>
-                        <input type="text" placeholder="What's your name?" value={name} ref={userRef} id="name"
+                        <input type="text" placeholder="What's your name?" value={name} id="name"
                             onChange={(e) => setName(e.target.value)} required />
                         <label htmlFor="gender">What is your gender?</label>
-                        <select className="gender" value={gender} ref={userRef} onChange={(e) => setGender(e.target.value)} required>
+                        <select className="gender" value={gender} onChange={(e) => setGender(e.target.value)} required>
                             <option value="">--Please select an option</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -129,7 +134,7 @@ const UserForm = () => {
                         </select>
                         <label htmlFor="party">Number of people:</label>
                         <input type="number" min="1" max="30" id="party" placeholder="How many are you?"
-                            value={number} ref={userRef}
+                            value={number}
                             onChange={(e) => setNumbers(e.target.value)} required />
 
                         <label>Favorite drink</label>

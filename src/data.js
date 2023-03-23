@@ -47,9 +47,9 @@ const data = {
             {
                 id: 8,
                 name: "Margarita",
-                author: "by Wonder House Books  | 6 December 2020",
                 price: 8.5,
                 image: "./images_drinks/margarita.png",
+                amount: 1,
             },
             {
                 id: 9,

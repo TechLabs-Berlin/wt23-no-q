@@ -14,8 +14,7 @@ import LoadingScreen from "./components/LoadingScreen";
 import ShoppingCart from "./pages/shop/shop";
 import data from "./data";
 import Product from "./pages/drinks/product";
-import inQueue from "./pages/home/inQueue";
-import { ReactDOM } from "react";
+
 
 
 
@@ -61,9 +60,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigation />}>
             <Route index element={<Home />} />
-            {/* if this form is still in login display userForm page, if it's not go in Queue */}
-            {/* <Route path="userform" element={currentForm === "login" ? <Userform /> : <inQueue />} /> */}
-            <Route path="userform" element={<Userform />} />
+            <Route path="userform/*" element={<Userform />} />
             {/* here in the drink page it's inserted the data we imported */}
             <Route path="drinks" element={<Drinks products={products} onAdd={onAdd} />} />
             {/* <Route path="Bars" element={<Bars />} /> */}
