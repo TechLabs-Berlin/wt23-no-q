@@ -58,9 +58,11 @@ function App() {
       <LoadingScreen delay={1000} />
       <BrowserRouter>
         <Routes>
+          <Route index element={<Home />} />
+
+
+          <Route path="userform/*" element={<Userform />} />
           <Route path="/" element={<Navigation />}>
-            <Route index element={<Home />} />
-            <Route path="userform/*" element={<Userform />} />
             {/* here in the drink page it's inserted the data we imported */}
             <Route path="drinks" element={<Drinks products={products} onAdd={onAdd} />} />
             {/* <Route path="Bars" element={<Bars />} /> */}
