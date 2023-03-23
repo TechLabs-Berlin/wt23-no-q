@@ -2,10 +2,9 @@ import './userform.css';
 import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 // import { useHistory } from 'react-router-dom';
-import { Route, Routes } from 'react-router-dom';
-
-
-
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Drinks from "../drinks/drinks";
 
 
 
@@ -22,6 +21,8 @@ const UserForm = () => {
     const [errMsg, setErrMsg] = useState('');
     const [users, setUsers] = useState([]);
     const [index, setIndex] = useState(null);
+    const navigate = useNavigate();
+
 
 
     // is false because we need it to happen after user submits the form, not when page is loaded
@@ -59,7 +60,6 @@ const UserForm = () => {
     // form Submit Event
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // because it is not completed we set it to true
 
         // creating the object (user)
         const user = {
@@ -91,6 +91,9 @@ const UserForm = () => {
 
     };
 
+    const navigateToOrder = () => {
+        navigate({ Drinks });
+    };
 
     function handleChange(e) {
         setWaitingUsers({ ...waitingUsers, [e.target.value]: e.target.value });
@@ -103,16 +106,16 @@ const UserForm = () => {
         <>
             {success ? (
                 <section>
-                    {/* <Routes>
-                        <Route path="/inQueue" element={<inQueue />} />
-                    </Routes> */}
+
                     <h1>Hello {name} You are logged in Q!</h1>
                     <br />
 
                     <h1>Your number is {(queue.length + 1)}</h1>
                     <h1>Your ID is </h1>
                     <p>
-                        <a href="#">Go to Home</a>
+                        <button onClick={navigateToOrder}>
+                            if you want to order press here
+                        </button>
                     </p>
                 </section>
             ) : (

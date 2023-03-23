@@ -21,7 +21,7 @@ import Product from "./pages/drinks/product";
 
 function App() {
   // when user get's in the queue and log in
-
+  const logged = null;
   // in order to import the data of drinks
   const { products } = data;
   // in order to change items in cart we need the useState to update
@@ -57,23 +57,31 @@ function App() {
     <div className="App">
       <LoadingScreen delay={1000} />
       <BrowserRouter>
-        <Routes>
-          <Route index element={<Home />} />
+        {logged ? (
+          <>
+            <Routes>
+              <Route path="nav" element={<Navigation />}>
+                <Route index element={<Home />} />
+                {/* here in the drink page it's inserted the data we imported */}
+                <Route path="drinks" element={<Drinks products={products} onAdd={onAdd} />} />
+                {/* <Route path="Bars" element={<Bars />} /> */}
+                <Route path="shop" element={<ShoppingCart countCartItems={cartItems.length} cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/payment" element={<Payment />} />
+                {/* I'm not sure how to implement the product that needs to be used by the drink.js */}
+                <Route path="/Product" element={<Product cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />
+                <Route path="*" element={<NoPage />} />
+              </Route>
+            </Routes>
+          </>
+        ) : (
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="userform/" element={<Userform />} />
 
-
-          <Route path="userform/*" element={<Userform />} />
-          <Route path="/" element={<Navigation />}>
-            {/* here in the drink page it's inserted the data we imported */}
-            <Route path="drinks" element={<Drinks products={products} onAdd={onAdd} />} />
-            {/* <Route path="Bars" element={<Bars />} /> */}
-            <Route path="shop" element={<ShoppingCart countCartItems={cartItems.length} cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/payment" element={<Payment />} />
-            {/* I'm not sure how to implement the product that needs to be used by the drink.js */}
-            <Route path="/Product" element={<Product cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />
-            <Route path="*" element={<NoPage />} />
-          </Route>
-        </Routes>
+          </Routes>
+        )
+        }
       </BrowserRouter>
     </div>
   );

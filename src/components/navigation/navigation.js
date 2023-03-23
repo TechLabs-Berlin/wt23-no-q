@@ -1,5 +1,5 @@
 import "./navigation.css";
-import HomeIcon from "@mui/icons-material/Home";
+// import HomeIcon from "@mui/icons-material/Home";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LocalDrinkIcon from "@mui/icons-material/LocalDrink";
 // import LocalBarIcon from "@mui/icons-material/LocalBar";
@@ -9,12 +9,12 @@ import PaymentIcon from "@mui/icons-material/Payment";
 import React from "react";
 import { styled } from "@mui/system";
 
-const StyledHomeIcon = styled(HomeIcon, {
-  name: "StyledHomeIcon",
-  slot: "Wrapper"
-})({
-  color: "pink[500]",
-});
+// const StyledHomeIcon = styled(HomeIcon, {
+//   name: "StyledHomeIcon",
+//   slot: "Wrapper"
+// })({
+//   color: "pink[500]",
+// });
 
 
 
@@ -24,11 +24,11 @@ function Navigation() {
       <nav className="navBar">
         <ul>
           <li>
-            <button className="navButtons">
+            {/* <button className="navButtons">
               <Link to="/">
                 <StyledHomeIcon />
               </Link>
-            </button>
+            </button> */}
           </li>
           <li>
             <button className="navButtons">
