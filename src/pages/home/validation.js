@@ -8,10 +8,10 @@ const validation = (queue) => {
         errors.gender = "gender is required"
     }
     if (!queue.number) {
-        errors.message = "number of people is required and the maximum input is 30"
+        errors.number = "number of people is required and the maximum input is 30"
     }
-    if (queue.drink = "") {
-        errors.message = "You have to choose your favorite drink"
+    if (!queue.gender) {
+        errors.drink = "You have to choose your favorite drink"
     }
     return errors;
 
