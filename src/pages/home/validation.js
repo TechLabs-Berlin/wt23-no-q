@@ -1,16 +1,16 @@
-const validation = (queue) => {
+const validation = (values) => {
     let errors = {};
 
-    if (!queue.name) {
+    if (!values.name) {
         errors.name = "name is required"
     }
-    if (!queue.gender) {
+    if (!values.gender) {
         errors.gender = "gender is required"
     }
-    if (!queue.number) {
+    if (!values.number) {
         errors.number = "number of people is required and the maximum input is 30"
     }
-    if (!queue.gender) {
+    if (!values.gender) {
         errors.drink = "You have to choose your favorite drink"
     }
     return errors;
