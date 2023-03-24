@@ -11,7 +11,7 @@ export default function Home() {
 
       <div className='container'>
 
-        <Link to='/userform'>
+        <Link to='/Form'>
 
           <img className='logo-img' src='./images/newer_logo.png' alt='logo' />
           {/* <button className='btn-welcome'>Welcome!</button> */}

@@ -1,6 +1,6 @@
 const validation = (values) => {
     let errors = {};
-
+    // meaning if input of name is empty
     if (!values.name) {
         errors.name = "name is required"
     }

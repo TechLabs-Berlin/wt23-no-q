@@ -1,9 +1,11 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-const UserData = ({ name, gender, number, drink }) => {
+const UserData = ({ values }) => {
 
     const [index, setIndex] = useState(null);
+    const [waitingUsers, setWaitingUsers] = useState('');
+
     let queue = [
         {
             name: "Petros",
@@ -25,12 +27,7 @@ const UserData = ({ name, gender, number, drink }) => {
         }
     ];
 
-    const user = {
-        name,
-        gender,
-        number,
-        drink
-    }
+    let user = { values };
 
     queue.push(user)
 
@@ -45,6 +42,8 @@ const UserData = ({ name, gender, number, drink }) => {
 
         }
     };
+
+    setWaitingUsers(queue.length + 1)
     return (
         queue, index
     )

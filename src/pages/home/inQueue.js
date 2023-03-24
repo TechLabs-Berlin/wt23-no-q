@@ -2,11 +2,12 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 
-const InQueue = () => {
+const InQueue = (values) => {
 
     return (
-        <h1>You'are in Queue!!!</h1>
-
+        <div className="container">
+            <h1 className="form-success">{values.name}You'are in Queue!!!</h1>
+        </div>
 
     )
 }
