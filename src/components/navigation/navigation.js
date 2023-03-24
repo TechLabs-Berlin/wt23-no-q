@@ -3,7 +3,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LocalDrinkIcon from "@mui/icons-material/LocalDrink";
 // import LocalBarIcon from "@mui/icons-material/LocalBar";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+/* import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"; */
 import CustomizedBadges from "../cartbadge/badge";
 import { Outlet, Link } from "react-router-dom";
 import PaymentIcon from "@mui/icons-material/Payment";
