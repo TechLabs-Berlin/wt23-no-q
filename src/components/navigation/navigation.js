@@ -4,6 +4,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LocalDrinkIcon from "@mui/icons-material/LocalDrink";
 // import LocalBarIcon from "@mui/icons-material/LocalBar";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import CustomizedBadges from "../cartbadge/badge";
 import { Outlet, Link } from "react-router-dom";
 import PaymentIcon from "@mui/icons-material/Payment";
 import React from "react";
@@ -38,7 +39,7 @@ function Navigation() {
           <li>
             <button className="navButtons">
               <Link to="/shop">
-                <ShoppingCartIcon />
+                <CustomizedBadges />
               </Link>
             </button>
           </li>
