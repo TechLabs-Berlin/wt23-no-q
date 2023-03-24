@@ -102,7 +102,7 @@ const UserForm = ({ onQuery }) => {
         // meaning name:name, gender:gender, drink:drink etc
         setValues({ ...values, [e.target.name]: e.target.value })
         // setWaitingUsers({ ...waitingUsers, [e.target.value]: e.target.value });
-        console.log(setValues);
+        // console.log(setValues);
         // passing the data
         onQuery(e.target.value);
 

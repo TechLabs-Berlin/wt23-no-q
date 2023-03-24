@@ -10,7 +10,7 @@ const validation = (values) => {
     if (!values.number) {
         errors.number = "number of people is required and the maximum input is 30"
     }
-    if (!values.gender) {
+    if (!values.drink) {
         errors.drink = "You have to choose your favorite drink"
     }
     return errors;
