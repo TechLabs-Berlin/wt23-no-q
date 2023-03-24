@@ -1,10 +1,24 @@
 import React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
-export const inQueue = () => {
+const InQueue = () => {
+    const [authenticated, setAuthenticated] = useState(null);
+    useEffect(() => {
+        const loggedInUser = localStorage.getItem("authenticated");
+        if (loggedInUser) {
+            setAuthenticated(loggedInUser);
+        }
+    }, []);
+    if (!authenticated) {
 
-    return (
-        <h1>You'are in Queue</h1>
-    )
+    } else {
+        return (
+            <h1>You'are in Queue!!!</h1>
+
+
+        )
+    }
 }
+
+export default InQueue;
