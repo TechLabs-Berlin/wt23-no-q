@@ -62,9 +62,6 @@ function App() {
           <Route path="/" element={<Navigation />}>
             <Route index element={<Home />} />
             <Route path="Form" element={<Form />} />
-            {/* <Route path="userform/*" element={<Userform onQuery={setQuery} />} />
-              <Route path="inQueue" element={<InQueue />} /> */}
-            {/* here in the drink page it's inserted the data we imported */}
             <Route path="drinks" element={<Drinks products={products} onAdd={onAdd} />} />
             {/* <Route path="Bars" element={<Bars />} /> */}
             <Route path="shop" element={<ShoppingCart countCartItems={cartItems.length} cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />

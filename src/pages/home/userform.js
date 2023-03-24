@@ -1,9 +1,5 @@
 import './userform.css';
 import { useState, useEffect } from 'react';
-// import axios from 'axios';
-// import { useHistory } from 'react-router-dom';
-// import { Route, Routes } from 'react-router-dom';
-// import { Link } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import validation from './validation';
 import InQueue from './inQueue';
@@ -15,62 +11,26 @@ const UserForm = ({ submitForm }) => {
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
-    //#region 
-    // const [success, setSuccess] = useState(false);
-    // States to update the content whenever a user is adding info
-    // const [name, setName] = useState('');
-    // const [number, setNumbers] = useState('');
-    // const [gender, setGender] = useState('');
-    // const [drink, setDrink] = useState('');
-    //#endregion
+
     const [values, setValues] = useState({
         name: "",
         number: "",
         gender: "",
         drink: "",
     });
-    // const [index, setIndex] = useState(null);
+
 
     // is false because we need it to happen after user submits the form, not when page is loaded
     const [isPending, setIsPending] = useState(false);
     // // After we see the data fetched we need to update the waiting users, or else we use the empty array
     const [waitingUsers, setWaitingUsers] = useState('');
-    //#region
-    // adding the fake data 
-    // let queue = [
-    //     {
-    //         name: "Petros",
-    //         gender: "male",
-    //         number: '2',
-    //         drink: "Whiskey"
-    //     },
-    //     {
-    //         name: "Seanna",
-    //         gender: "female",
-    //         number: '8',
-    //         drink: "Rum"
-    //     },
-    //     {
-    //         name: "Phaedra",
-    //         gender: "other",
-    //         number: '15',
-    //         drink: "Vodka"
-    //     }
-    // ];
-    //#endregion
+
     const [dataIsCorrect, setDataIsCorrect] = useState(false);
 
     function handleChange(e) {
 
-        // setQueueuNumber(queueNumber.length + 1);
-
-
-        // whatever is assigned to an input it will pass the values on the appropritate input
-        // meaning name:name, gender:gender, drink:drink etc
         setValues({ ...values, [e.target.name]: e.target.value });
-        // console.log(setValues);
-        // passing the data
-        // onQuery(e.target.value);
+
 
     }
 
@@ -78,33 +38,7 @@ const UserForm = ({ submitForm }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors(validation(values));
-        //#region 
 
-        // creating the object (user)
-        // const user = {
-        //     name,
-        //     gender,
-        //     number,
-        //     drink
-        // }
-        // queue.push(user)
-
-        // let findQuery = user.name;
-
-        // for (let i = 0; i < queue.length; i++) {
-        //     if (findQuery === queue[i].name) {
-        //         setIndex(i + 1)
-        //         console.log(index)
-
-        //     }
-        // };
-
-
-        // setUsers({ ...users, user })
-
-        // setIsPending(true);
-        // setSuccess(true);
-        //#endregion
         setDataIsCorrect(true);
 
     };
