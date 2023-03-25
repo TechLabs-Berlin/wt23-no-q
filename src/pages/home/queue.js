@@ -4,9 +4,7 @@ import { useEffect, useState } from "react";
 const InQueue = ({ values }) => {
 
     const [index, setIndex] = useState(null);
-    const [waitingUsers, setWaitingUsers] = useState('');
-
-    let queue = [
+    const [waitingUsers, setWaitingUsers] = useState([
         {
             name: "Petros",
             gender: "male",
@@ -25,25 +23,23 @@ const InQueue = ({ values }) => {
             number: '15',
             drink: "Vodka"
         }
-    ];
+    ]
+    );
 
-    let user = { values };
-
-    queue.push(user)
-
-
+    let user = [{ values }];
+    setWaitingUsers(...waitingUsers, setWaitingUsers.push(user));
     let findQuery = user.name;
 
-    for (let i = 0; i < queue.length; i++) {
-        if (findQuery === queue[i].name) {
+    for (let i = 0; i < setWaitingUsers.length; i++) {
+        if (findQuery === setWaitingUsers[i].name) {
             setIndex(i + 1);
             console.log(index);
-            console.log(queue);
+            console.log(setWaitingUsers);
 
         }
     };
 
-    setWaitingUsers(queue.length + 1)
+
     return (
         setWaitingUsers
     )
