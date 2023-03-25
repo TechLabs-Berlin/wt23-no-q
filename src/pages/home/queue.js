@@ -45,7 +45,7 @@ const InQueue = ({ values }) => {
 
     setWaitingUsers(queue.length + 1)
     return (
-        queue, index
+        setWaitingUsers
     )
 }
 

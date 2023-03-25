@@ -2,7 +2,7 @@ import './userform.css';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import validation from './validation';
-import InQueue from './userlogin';
+import InQueue from './queue';
 
 
 
