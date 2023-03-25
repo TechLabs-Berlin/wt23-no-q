@@ -14,7 +14,7 @@ import LoadingScreen from "./components/LoadingScreen";
 import ShoppingCart from "./pages/shop/shop";
 import data from "./data";
 import Product from "./pages/drinks/product";
-import InQueue from "./pages/home/inQueue";
+import InQueue from "./pages/home/userlogin";
 import Form from "./pages/home/Form";
 
 

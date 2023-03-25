@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import UserForm from "./userform";
-import InQueue from "./inQueue";
+import UserLoggedIn from "./userlogin";
 
 const Form = () => {
     const [formIsSubmitted, setFormIsSubmitted] = useState(false);
@@ -14,7 +14,7 @@ const Form = () => {
             {!formIsSubmitted ? (
                 <UserForm submitForm={submitForm} />
             ) : (
-                <InQueue />)}
+                <UserLoggedIn />)}
         </div>
     );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-const UserData = ({ values }) => {
+const InQueue = ({ values }) => {
 
     const [index, setIndex] = useState(null);
     const [waitingUsers, setWaitingUsers] = useState('');
@@ -49,4 +49,4 @@ const UserData = ({ values }) => {
     )
 }
 
-export default UserData;
+export default InQueue;

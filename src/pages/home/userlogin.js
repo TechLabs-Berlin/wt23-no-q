@@ -2,14 +2,14 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 
-const InQueue = (values) => {
+const UserLoggedIn = (values) => {
 
     return (
         <div className="container">
-            <h1 className="form-success">{values.name}You'are in Queue!!!</h1>
+            <h1 className="form-success">You'are in Queue!!!</h1>
         </div>
 
     )
 }
 
-export default InQueue;
+export default UserLoggedIn;
