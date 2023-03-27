@@ -21,6 +21,7 @@ import Form from "./pages/home/Form";
 
 
 function App() {
+  const [users, setUsers] = useState('');
   // when user get's in the queue and log in
   const [query, setQuery] = useState("");
   // in order to import the data of drinks
@@ -61,7 +62,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigation />}>
             <Route index element={<Home />} />
-            <Route path="Form" element={<Form />} />
+            <Route path="Form" element={<Form state={users} parentCallBack={setUsers} />} />
             <Route path="drinks" element={<Drinks products={products} onAdd={onAdd} />} />
             {/* <Route path="Bars" element={<Bars />} /> */}
             <Route path="shop" element={<ShoppingCart countCartItems={cartItems.length} cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />

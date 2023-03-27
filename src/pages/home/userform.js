@@ -6,7 +6,7 @@ import InQueue from './queue';
 
 
 
-const UserForm = ({ submitForm }) => {
+const UserForm = ({ submitForm, parentCallBack }) => {
 
     // to catch Errors
     const [errors, setErrors] = useState({});
@@ -41,11 +41,13 @@ const UserForm = ({ submitForm }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors(validation(values));
-
+        // console.log(values)
         localStorage.setItem("name", values.name)
         localStorage.setItem("gender", values.gender)
         localStorage.setItem("number", values.number)
         localStorage.setItem("drink", values.drink)
+        InQueue(values);
+        parentCallBack(values);
         setDataIsCorrect(true);
     };
 
@@ -57,7 +59,10 @@ const UserForm = ({ submitForm }) => {
 
     }, [errors])
 
+    //other ways of adding data in localStorage
+    //#region 
     // working in Local Storage
+
     // users = JSON.parse(localStorage.getItem("users") || "[]");
     // addData() {
     //     this.userData = JSON.parse(localStorage.getItem('user'));
@@ -82,6 +87,7 @@ const UserForm = ({ submitForm }) => {
     // useEffect(() => {
     //     localStorage.setItem(values, JSON.stringify(data));
     // }, [data]);
+    //#endregion
 
     return (
 

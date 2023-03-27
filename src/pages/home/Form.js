@@ -1,21 +1,24 @@
 import React from "react";
 import { useState } from "react";
+import InQueue from "./queue";
 import UserForm from "./userform";
 import UserLoggedIn from "./userlogin";
-import InQueue from "./queue";
+// import InQueue from "./queue";
 
-const Form = () => {
+const Form = ({ parentCallBack }) => {
     const [formIsSubmitted, setFormIsSubmitted] = useState(false);
     const submitForm = () => {
         setFormIsSubmitted(true);
+
     }
 
     return (
+
         <div>
             {!formIsSubmitted ? (
-                <UserForm submitForm={submitForm} />
+                <UserForm submitForm={submitForm} parentCallBack={parentCallBack} />
             ) : (
-                <UserLoggedIn inqueue={submitForm} />)}
+                <UserLoggedIn parentCallBack={parentCallBack} />)}
         </div>
     );
 };
