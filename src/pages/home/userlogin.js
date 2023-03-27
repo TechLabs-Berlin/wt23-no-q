@@ -1,18 +1,15 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import InQueue from "./queue";
+import { useUserStore } from "../../useData";
 
 
-const UserLoggedIn = ({ parentCallBack }) => {
-
-    console.log(parentCallBack.users)
-
+const UserLoggedIn = (user) => {
+    const usersInQueue = useUserStore(state => state.usersArray);
+    console.log(usersInQueue)
     return (
         <div className="container">
-            <h1 className="form-success">Hey You'are in Queue!!!
-                Your number is </h1>
+            <h1 className="form-success">Hey {user.name} You'are in Queue!!!
+                Your number is {usersInQueue.length}</h1>
         </div>
-
     )
 }
 

@@ -1,35 +1,23 @@
 import './userform.css';
-import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import validation from './validation';
-import InQueue from './queue';
+import { nanoid } from "nanoid";
+import { useUserStore } from "../../useData";
 
 
 
-const UserForm = ({ submitForm, parentCallBack }) => {
-
-    // to catch Errors
+const UserForm = ({ submitForm }) => {
+    const addUser = useUserStore(state => state.addUser);
     const [errors, setErrors] = useState({});
-    const [data, setData] = useState([]);
-
-
     const [values, setValues] = useState({
         name: "",
         number: "",
         gender: "",
         drink: "",
     });
-
-    // sending the data in local storage
-
-
-    // is false because we need it to happen after user submits the form, not when page is loaded
-    const [isPending, setIsPending] = useState(false);
-    // // After we see the data fetched we need to update the waiting users, or else we use the empty array
-    // const [waitingUsers, setWaitingUsers] = useState('');
-
+    const isPending = false;
     const [dataIsCorrect, setDataIsCorrect] = useState(false);
-    // every change will be stored in the name appropriate change in name stored in name etc
+
     function handleChange(e) {
 
         setValues({ ...values, [e.target.name]: e.target.value });
@@ -41,13 +29,14 @@ const UserForm = ({ submitForm, parentCallBack }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors(validation(values));
-        // console.log(values)
-        localStorage.setItem("name", values.name)
-        localStorage.setItem("gender", values.gender)
-        localStorage.setItem("number", values.number)
-        localStorage.setItem("drink", values.drink)
-        InQueue(values);
-        parentCallBack(values);
+        let user = {
+            id: nanoid(),
+            name: values.name,
+            gender: values.gender,
+            number: values.number,
+            drink: values.drink
+        }
+        addUser(user);
         setDataIsCorrect(true);
     };
 
@@ -58,36 +47,6 @@ const UserForm = ({ submitForm, parentCallBack }) => {
         }
 
     }, [errors])
-
-    //other ways of adding data in localStorage
-    //#region 
-    // working in Local Storage
-
-    // users = JSON.parse(localStorage.getItem("users") || "[]");
-    // addData() {
-    //     this.userData = JSON.parse(localStorage.getItem('user'));
-    //     if (localStorage.getItem('user')) {
-    //         this.setState({
-    //             name: this.userData.name,
-    //             gender: this.userData.gender,
-    //             number: this.userData.number,
-    //             drink: this.userData.drink
-    //         })
-    //     } else {
-    //         this.setState({
-    //             name: '',
-    //             gender: '',
-    //             number: '',
-    //             drink: ''
-    //         })
-    //     }
-    // };
-
-
-    // useEffect(() => {
-    //     localStorage.setItem(values, JSON.stringify(data));
-    // }, [data]);
-    //#endregion
 
     return (
 
@@ -132,13 +91,7 @@ const UserForm = ({ submitForm, parentCallBack }) => {
                     </select>
                     {errors.drink && <p className="error">{errors.drink}</p>}
                 </div>
-                {/* to redirect to the new page of the user */}
-
-                {!isPending && <button onSubmit={handleChange}>Get in Q!</button>}
-                {/* we have to put in the button to call the function Queue.js */}
-                {isPending && <button disabled>You are in Q!</button>}
-
-
+                <button onSubmit={handleChange}>Get in Q!</button>
             </form>
         </div>
     );
