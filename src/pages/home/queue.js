@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-const InQueue = ({ values }) => {
+const InQueue = (values) => {
 
     const [index, setIndex] = useState(null);
     const [waitingUsers, setWaitingUsers] = useState([
@@ -26,7 +26,7 @@ const InQueue = ({ values }) => {
     ]
     );
 
-    let user = [{ values }];
+    let user = [values];
     setWaitingUsers(...waitingUsers, setWaitingUsers.push(user));
     let findQuery = user.name;
 
@@ -41,7 +41,7 @@ const InQueue = ({ values }) => {
 
 
     return (
-        setWaitingUsers
+        { index }, { setWaitingUsers }
     )
 }
 

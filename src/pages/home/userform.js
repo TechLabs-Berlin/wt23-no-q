@@ -1,5 +1,5 @@
 import './userform.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import validation from './validation';
 import InQueue from './queue';
@@ -7,9 +7,10 @@ import InQueue from './queue';
 
 
 const UserForm = ({ submitForm }) => {
+
     // to catch Errors
     const [errors, setErrors] = useState({});
-    const navigate = useNavigate();
+    const [data, setData] = useState([]);
 
 
     const [values, setValues] = useState({
@@ -19,14 +20,16 @@ const UserForm = ({ submitForm }) => {
         drink: "",
     });
 
+    // sending the data in local storage
+
 
     // is false because we need it to happen after user submits the form, not when page is loaded
     const [isPending, setIsPending] = useState(false);
     // // After we see the data fetched we need to update the waiting users, or else we use the empty array
-    const [waitingUsers, setWaitingUsers] = useState('');
+    // const [waitingUsers, setWaitingUsers] = useState('');
 
     const [dataIsCorrect, setDataIsCorrect] = useState(false);
-
+    // every change will be stored in the name appropriate change in name stored in name etc
     function handleChange(e) {
 
         setValues({ ...values, [e.target.name]: e.target.value });
@@ -39,8 +42,11 @@ const UserForm = ({ submitForm }) => {
         e.preventDefault();
         setErrors(validation(values));
 
+        localStorage.setItem("name", values.name)
+        localStorage.setItem("gender", values.gender)
+        localStorage.setItem("number", values.number)
+        localStorage.setItem("drink", values.drink)
         setDataIsCorrect(true);
-
     };
 
     useEffect(() => {
@@ -50,6 +56,32 @@ const UserForm = ({ submitForm }) => {
         }
 
     }, [errors])
+
+    // working in Local Storage
+    // users = JSON.parse(localStorage.getItem("users") || "[]");
+    // addData() {
+    //     this.userData = JSON.parse(localStorage.getItem('user'));
+    //     if (localStorage.getItem('user')) {
+    //         this.setState({
+    //             name: this.userData.name,
+    //             gender: this.userData.gender,
+    //             number: this.userData.number,
+    //             drink: this.userData.drink
+    //         })
+    //     } else {
+    //         this.setState({
+    //             name: '',
+    //             gender: '',
+    //             number: '',
+    //             drink: ''
+    //         })
+    //     }
+    // };
+
+
+    // useEffect(() => {
+    //     localStorage.setItem(values, JSON.stringify(data));
+    // }, [data]);
 
     return (
 
