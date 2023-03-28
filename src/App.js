@@ -65,7 +65,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigation />}>
             <Route index element={<Home />} />
-            <Route path="Form" element={<Form />} />
+            {/* <Route path="Form" element={<Form />} /> */}
             <Route path="/userform" element={<UserForm GetDataValue={GetData} />} />
             <Route path="drinks" element={<Drinks products={products} onAdd={onAdd} />} />
             {/* <Route path="Bars" element={<Bars />} /> */}

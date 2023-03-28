@@ -1,17 +1,20 @@
 import './userform.css';
 import { useState, useEffect, useRef } from 'react';
-import validation from './validation';
+// import validation from './validation';
 import { nanoid } from "nanoid";
 import { useUserStore } from "../../useData";
+import validation from './validation';
 
 
 
-const UserForm = ({ submitForm }) => {
+const UserForm = () => {
     const addUser = useUserStore(state => state.addUser);
     // to catch Errors
     const [errors, setErrors] = useState({});
-
+    // const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false);
+
+
 
 
     const [values, setValues] = useState({
@@ -42,7 +45,6 @@ const UserForm = ({ submitForm }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors(validation(values));
-
         let user = {
             id: nanoid(),
             name: values.name,
@@ -55,13 +57,19 @@ const UserForm = ({ submitForm }) => {
         setDataIsCorrect(true);
     };
 
-    useEffect(() => {
-        // here we check if there are no errors and the data is correct to redirect the user
-        if (Object.keys(errors).length === 0 && dataIsCorrect) {
-            submitForm(true);
-        }
+    // useEffect(() => {
+    //     if (Object.keys(errors).length === 0) {
+    //         setSuccess(true);
+    //     }
+    // },[errors])
 
-    }, [errors])
+    // useEffect(() => {
+    //     // here we check if there are no errors and the data is correct to redirect the user
+    //     if (Object.keys(errors).length === 0 && dataIsCorrect) {
+    //         submitForm(true);
+    //     }
+
+    // }, [errors])
 
 
 
@@ -77,6 +85,7 @@ const UserForm = ({ submitForm }) => {
                     <input type="text" placeholder="What's your name?" value={values.name} id="name"
                         onChange={handleChange} name="name" />
                     {errors.name && <p className="error">{errors.name}</p>}
+
                 </div>
                 <div className="drink">
                     <label htmlFor="gender">What is your gender?</label>
@@ -87,6 +96,7 @@ const UserForm = ({ submitForm }) => {
                         <option value="other">Other</option>
                     </select>
                     {errors.gender && <p className="error">{errors.gender}</p>}
+
                 </div>
                 <div className="number">
                     <label htmlFor="party">Number of people:</label>
@@ -94,6 +104,7 @@ const UserForm = ({ submitForm }) => {
                         value={values.number}
                         onChange={handleChange} name="number" />
                     {errors.number && <p className="error">{errors.number}</p>}
+
                 </div>
                 <div className="drink">
                     <label htmlFor="drink">Favorite drink</label>
@@ -107,6 +118,7 @@ const UserForm = ({ submitForm }) => {
                         <option value="water">Water</option>
                     </select>
                     {errors.drink && <p className="error">{errors.drink}</p>}
+
                 </div>
                 {/* to redirect to the new page of the user */}
 
