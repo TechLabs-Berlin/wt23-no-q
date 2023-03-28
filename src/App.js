@@ -7,21 +7,21 @@ import Profile from "./pages/profile/profile";
 import Home from "./pages/home/home";
 import Drinks from "./pages/drinks/drinks";
 // import Bars from "./pages/bars/bars";
-import Userform from "./pages/home/userform";
+
 import Payment from "./pages/payment/payment";
 import React from "react";
 import LoadingScreen from "./components/LoadingScreen";
 import ShoppingCart from "./pages/shop/shop";
 import data from "./data";
 import Product from "./pages/drinks/product";
-import InQueue from "./pages/home/userlogin";
+import UserForm from "./pages/home/userform";
 import Form from "./pages/home/Form";
 
 
 
 
 function App() {
-  const [users, setUsers] = useState('');
+  const [users, setUsers] = useState([]);
   // when user get's in the queue and log in
   const [query, setQuery] = useState("");
   // in order to import the data of drinks
@@ -62,7 +62,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigation />}>
             <Route index element={<Home />} />
-            <Route path="Form" element={<Form state={users} parentCallBack={setUsers} />} />
+            <Route path="Form" element={<Form />} />
+            <Route path="/userform" element={<UserForm setUsers={setUsers} />} />
             <Route path="drinks" element={<Drinks products={products} onAdd={onAdd} />} />
             {/* <Route path="Bars" element={<Bars />} /> */}
             <Route path="shop" element={<ShoppingCart countCartItems={cartItems.length} cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />

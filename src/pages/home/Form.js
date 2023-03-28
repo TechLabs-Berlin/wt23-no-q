@@ -1,21 +1,24 @@
 import React from "react";
 import { useState } from "react";
-import InQueue from "./queue";
 import UserForm from "./userform";
 import UserLoggedIn from "./userlogin";
+import { Navigate } from "react-router-dom";
 
-const Form = ({ parentCallBack }) => {
+
+const Form = () => {
     const [formIsSubmitted, setFormIsSubmitted] = useState(false);
     const submitForm = () => {
         setFormIsSubmitted(true);
-
+    }
+    const getData = (data) => {
+        console.log("Coming from the form", data)
     }
 
-    return (
 
+    return (
         <div>
             {!formIsSubmitted ? (
-                <UserForm submitForm={submitForm} parentCallBack={parentCallBack} />
+                <UserForm submitForm={submitForm} onSubmit={getData} />
             ) : (
                 <UserLoggedIn />)}
         </div>

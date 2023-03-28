@@ -23,13 +23,13 @@ function Navigation() {
     <>
       <nav className="navBar">
         <ul>
-          <li>
+          {/* <li>
             <button className="navButtons">
               <Link to="/">
                 <StyledHomeIcon />
               </Link>
             </button>
-          </li>
+          </li> */}
           <li>
             <button className="navButtons">
               <Link to="/drinks">
@@ -45,11 +45,11 @@ function Navigation() {
             </button>
           </li>
           <li>
-            <button className="navButtons">
+            {/* <button className="navButtons">
               <Link to="/profile">
                 <AccountCircleIcon />
               </Link>
-            </button>
+            </button> */}
           </li>
           <li>
             <button className="navButtons">

@@ -1,23 +1,34 @@
 import './userform.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import validation from './validation';
 import { nanoid } from "nanoid";
 import { useUserStore } from "../../useData";
 
 
 
-const UserForm = ({ submitForm }) => {
+const UserForm = ({ submitForm, setUsers }) => {
     const addUser = useUserStore(state => state.addUser);
+    // to catch Errors
     const [errors, setErrors] = useState({});
+
+
     const [values, setValues] = useState({
         name: "",
         number: "",
         gender: "",
         drink: "",
     });
-    const isPending = false;
-    const [dataIsCorrect, setDataIsCorrect] = useState(false);
 
+    // sending the data in local storage
+
+
+    // is false because we need it to happen after user submits the form, not when page is loaded
+    const [isPending, setIsPending] = useState(false);
+    // // After we see the data fetched we need to update the waiting users, or else we use the empty array
+    // const [waitingUsers, setWaitingUsers] = useState('');
+
+    const [dataIsCorrect, setDataIsCorrect] = useState(false);
+    // every change will be stored in the name appropriate change in name stored in name etc
     function handleChange(e) {
 
         setValues({ ...values, [e.target.name]: e.target.value });
@@ -29,6 +40,7 @@ const UserForm = ({ submitForm }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors(validation(values));
+
         let user = {
             id: nanoid(),
             name: values.name,
@@ -37,6 +49,7 @@ const UserForm = ({ submitForm }) => {
             drink: values.drink
         }
         addUser(user);
+        setUsers(values);
         setDataIsCorrect(true);
     };
 
@@ -47,6 +60,7 @@ const UserForm = ({ submitForm }) => {
         }
 
     }, [errors])
+
 
     return (
 
@@ -91,7 +105,13 @@ const UserForm = ({ submitForm }) => {
                     </select>
                     {errors.drink && <p className="error">{errors.drink}</p>}
                 </div>
-                <button onSubmit={handleChange}>Get in Q!</button>
+                {/* to redirect to the new page of the user */}
+
+                {!isPending && <button onSubmit={handleChange}>Get in Q!</button>}
+                {/* we have to put in the button to call the function Queue.js */}
+                {isPending && <button disabled>You are in Q!</button>}
+
+
             </form>
         </div>
     );

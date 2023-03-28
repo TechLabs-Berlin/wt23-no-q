@@ -1,15 +1,16 @@
 import React from "react";
-import { useUserStore } from "../../useData";
 
 
-const UserLoggedIn = (user) => {
-    const usersInQueue = useUserStore(state => state.usersArray);
-    console.log(usersInQueue)
+const UserLoggedIn = (inqueue) => {
+
+    console.log(inqueue)
+
     return (
         <div className="container">
-            <h1 className="form-success">Hey {user.name} You'are in Queue!!!
-                Your number is {usersInQueue.length}</h1>
+            <h1 className="form-success">Hey {inqueue.name} You'are in Queue!!!
+                Your number is {inqueue.length + 1}</h1>
         </div>
+
     )
 }
 
