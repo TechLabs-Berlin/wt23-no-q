@@ -58,14 +58,20 @@ const UserForm = () => {
         addUser(user);
 
         setDataIsCorrect(true);
+        // if
+        //     (setDataIsCorrect && setShouldRedirect) {
+        //     let path = `/drinks`;
+        //     navigate(path);
+        // }
 
     };
 
     useEffect(() => {
-        if (Object.keys(errors).length === 0) {
+        if (Object.keys(errors).length === 0 && dataIsCorrect) {
             setShouldRedirect(true)
         }
     }, [errors])
+
 
 
 
