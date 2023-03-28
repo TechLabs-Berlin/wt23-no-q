@@ -73,13 +73,15 @@
     color: #f1356d;
 }
 
-section {
+/* section {
+    margin-top: 20em;
     width: 100%;
     max-width: 420px;
     min-height: 400px;
     display: flex;
-    flex-direction: column;
+    flex-direction: block;
+    position: fixed;
     justify-content: flex-start;
     padding: 1rem;
     background-color: rgba(0, 0, 0, 0.4);
-}
+} */

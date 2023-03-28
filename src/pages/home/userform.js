@@ -5,7 +5,6 @@ import { nanoid } from "nanoid";
 import { useUser } from "../../useData";
 import validation from './validation';
 import { Navigate, redirect, useNavigate } from 'react-router-dom';
-import Modal from '../components/Modal';
 
 
 
@@ -16,6 +15,7 @@ const UserForm = () => {
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
     // const [shouldDirect, setShouldRedirect] = useState(false);
+
 
 
 
@@ -35,7 +35,7 @@ const UserForm = () => {
     const [isPending, setIsPending] = useState(false);
     // // After we see the data fetched we need to update the waiting users, or else we use the empty array
     // const [waitingUsers, setWaitingUsers] = useState('');
-
+    const [openModal, setOpenModal] = useState(false);
     const [dataIsCorrect, setDataIsCorrect] = useState(false);
     // every change will be stored in the name appropriate change in name stored in name etc
     function handleChange(e) {
@@ -48,6 +48,7 @@ const UserForm = () => {
     // form Submit Event
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         setErrors(validation(values));
         let user = {
             id: nanoid(),
@@ -58,11 +59,12 @@ const UserForm = () => {
         }
         addUser(user);
         if (Object.keys(errors).length === 0 && dataIsCorrect) {
-            // <Modal />
+
             let path = `/drinks`;
             navigate(path);
         } else setDataIsCorrect(false);
         setDataIsCorrect(true);
+
 
 
     };

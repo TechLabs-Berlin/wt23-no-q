@@ -7,7 +7,6 @@ import Profile from "./pages/profile/profile";
 import Home from "./pages/home/home";
 import Drinks from "./pages/drinks/drinks";
 // import Bars from "./pages/bars/bars";
-import Modal from "./pages/components/Modal";
 import Payment from "./pages/payment/payment";
 import React from "react";
 import LoadingScreen from "./components/LoadingScreen";
@@ -15,6 +14,7 @@ import ShoppingCart from "./pages/shop/shop";
 import data from "./data";
 import Product from "./pages/drinks/product";
 import UserForm from "./pages/home/userform";
+import Header from "./components/header";
 
 
 
@@ -65,7 +65,8 @@ function App() {
 
           <Route index element={<Home />} />
           <Route path="/userform" element={<UserForm GetDataValue={GetData} />} />
-          <Route path="/" element={<Navigation />}>
+          <Route path="/" element={<><Navigation /><Header /></>}>
+            <Route path="header" element={<Header />} />
             <Route path="drinks" element={<Drinks products={products} onAdd={onAdd} />} />
             {/* <Route path="Bars" element={<Bars />} /> */}
             <Route path="shop" element={<ShoppingCart countCartItems={cartItems.length} cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />

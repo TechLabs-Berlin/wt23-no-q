@@ -7,7 +7,7 @@ export default function Drinks(props) {
 
   return (
     <div className="block">
-      <h1>Drinks Working</h1>
+      <h1 className="menu">Menu</h1>
       <div className="row">
         {/* to find each element in the products and collect the data */}
         {products.map((product) => (

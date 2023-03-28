@@ -35,3 +35,12 @@ ul {
     background-color: #161a1d;
     transform: scale(0.7);
 }
+
+
+@media only screen and (max-device-width: 480px) {
+
+    .navBar {
+        float: none;
+        width: auto;
+    }
+}
