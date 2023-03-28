@@ -10,15 +10,12 @@ const Form = () => {
     const submitForm = () => {
         setFormIsSubmitted(true);
     }
-    const getData = (data) => {
-        console.log("Coming from the form", data)
-    }
 
 
     return (
         <div>
             {!formIsSubmitted ? (
-                <UserForm submitForm={submitForm} onSubmit={getData} />
+                <UserForm submitForm={submitForm} />
             ) : (
                 <UserLoggedIn />)}
         </div>

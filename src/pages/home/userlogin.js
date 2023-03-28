@@ -1,14 +1,13 @@
 import React from "react";
 
 
-const UserLoggedIn = (inqueue) => {
+const UserLoggedIn = ({ user }) => {
 
-    console.log(inqueue)
 
     return (
         <div className="container">
-            <h1 className="form-success">Hey {inqueue.name} You'are in Queue!!!
-                Your number is {inqueue.length + 1}</h1>
+            <h1 className="form-success">Hey {user.name}  You'are in Queue!!!
+                Your number is </h1>
         </div>
 
     )

@@ -16,12 +16,15 @@ import data from "./data";
 import Product from "./pages/drinks/product";
 import UserForm from "./pages/home/userform";
 import Form from "./pages/home/Form";
+import UserLoggedIn from "./pages/home/userlogin";
 
 
 
 
 function App() {
-  const [users, setUsers] = useState([]);
+  const GetData = (param) => {
+    console.log(param, "receiving data");
+  }
   // when user get's in the queue and log in
   const [query, setQuery] = useState("");
   // in order to import the data of drinks
@@ -63,7 +66,7 @@ function App() {
           <Route path="/" element={<Navigation />}>
             <Route index element={<Home />} />
             <Route path="Form" element={<Form />} />
-            <Route path="/userform" element={<UserForm setUsers={setUsers} />} />
+            <Route path="/userform" element={<UserForm GetDataValue={GetData} />} />
             <Route path="drinks" element={<Drinks products={products} onAdd={onAdd} />} />
             {/* <Route path="Bars" element={<Bars />} /> */}
             <Route path="shop" element={<ShoppingCart countCartItems={cartItems.length} cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />

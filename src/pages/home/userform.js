@@ -6,10 +6,12 @@ import { useUserStore } from "../../useData";
 
 
 
-const UserForm = ({ submitForm, setUsers }) => {
+const UserForm = ({ submitForm }) => {
     const addUser = useUserStore(state => state.addUser);
     // to catch Errors
     const [errors, setErrors] = useState({});
+
+    const [success, setSuccess] = useState(false);
 
 
     const [values, setValues] = useState({
@@ -49,7 +51,7 @@ const UserForm = ({ submitForm, setUsers }) => {
             drink: values.drink
         }
         addUser(user);
-        setUsers(values);
+
         setDataIsCorrect(true);
     };
 
@@ -60,6 +62,7 @@ const UserForm = ({ submitForm, setUsers }) => {
         }
 
     }, [errors])
+
 
 
     return (
