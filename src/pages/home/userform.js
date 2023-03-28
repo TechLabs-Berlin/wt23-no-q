@@ -5,7 +5,8 @@ import { nanoid } from "nanoid";
 import { useUser } from "../../useData";
 import validation from './validation';
 import { Navigate, redirect, useNavigate } from 'react-router-dom';
-import Profile from '../profile/profile';
+import Modal from '../components/Modal';
+
 
 
 
@@ -14,7 +15,7 @@ const UserForm = () => {
     // to catch Errors
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
-    const [shouldDirect, setShouldRedirect] = useState(false);
+    // const [shouldDirect, setShouldRedirect] = useState(false);
 
 
 
@@ -57,6 +58,7 @@ const UserForm = () => {
         }
         addUser(user);
         if (Object.keys(errors).length === 0 && dataIsCorrect) {
+            // <Modal />
             let path = `/drinks`;
             navigate(path);
         } else setDataIsCorrect(false);
