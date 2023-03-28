@@ -2,17 +2,20 @@ import './userform.css';
 import { useState, useEffect, useRef } from 'react';
 // import validation from './validation';
 import { nanoid } from "nanoid";
-import { useUserStore } from "../../useData";
+import { useUser } from "../../useData";
 import validation from './validation';
+import { Navigate, redirect, useNavigate } from 'react-router-dom';
+import Profile from '../profile/profile';
 
 
 
 const UserForm = () => {
-    const addUser = useUserStore(state => state.addUser);
+    const addUser = useUser(state => state.addUser);
     // to catch Errors
     const [errors, setErrors] = useState({});
-    // const [error, setError] = useState(false);
-    const [success, setSuccess] = useState(false);
+    const navigate = useNavigate();
+    const [shouldDirect, setShouldRedirect] = useState(false);
+
 
 
 
@@ -55,21 +58,17 @@ const UserForm = () => {
         addUser(user);
 
         setDataIsCorrect(true);
+
     };
 
-    // useEffect(() => {
-    //     if (Object.keys(errors).length === 0) {
-    //         setSuccess(true);
-    //     }
-    // },[errors])
+    useEffect(() => {
+        if (Object.keys(errors).length === 0) {
+            setShouldRedirect(true)
+        }
+    }, [errors])
 
-    // useEffect(() => {
-    //     // here we check if there are no errors and the data is correct to redirect the user
-    //     if (Object.keys(errors).length === 0 && dataIsCorrect) {
-    //         submitForm(true);
-    //     }
 
-    // }, [errors])
+
 
 
 
@@ -122,9 +121,9 @@ const UserForm = () => {
                 </div>
                 {/* to redirect to the new page of the user */}
 
-                {!isPending && <button onSubmit={handleChange}>Get in Q!</button>}
+                <button onSubmit={handleChange} onClick={handleSubmit}>Get in Q!</button>
                 {/* we have to put in the button to call the function Queue.js */}
-                {isPending && <button disabled>You are in Q!</button>}
+
 
 
             </form>
