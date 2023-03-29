@@ -46,7 +46,6 @@ button {
 .header {
     /* /* margin-top: 20px;
     padding: 20px 10px; */
-    background-color: #333;
     position: absolute;
     top: 0;
     width: 100%;
@@ -55,11 +54,12 @@ button {
     display: flex;
     flex-direction: column;
 
-    background-color: #14213d;
+    color: #0d1b2a;
     display: flex;
     justify-content: flex-start;
     align-content: center;
     flex-wrap: wrap;
+    box-shadow: 3px 0 15px #575757;
 
 }
 
@@ -107,8 +107,25 @@ button {
 }
 
 
+
 @media only screen and (max-device-width: 480px) {
     .block {
-        width: 50%;
+        width: 100%;
+        flex-wrap: wrap;
+        display: grid;
+        background-color: black;
+
+
+    }
+
+    .menu {
+        margin-top: 30%;
+
+    }
+
+    .row {
+        margin-top: 0%;
+        flex-direction: column;
+        background-color: black;
     }
 }

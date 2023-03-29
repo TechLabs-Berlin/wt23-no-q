@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import logo from '../logo/4logo.png';
 import '../pages/drinks/drinks.css';
+import { Outlet, Link } from 'react-router-dom';
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
 
 function Header() {
     return (
@@ -11,10 +14,16 @@ function Header() {
                     <img className='header-logo' src={logo} alt='logo' />
                 </section>
                 <section className="order">
-                    <button className='order-btn'>Order!</button>
+                    <button className="navButtons">
+                        Get in Q!
+                        <Link to="/profile">
+                            <AccountCircleIcon />
+                        </Link>
+                    </button>
                 </section>
+
             </section>
-        </section>
+        </section >
     )
 }
 

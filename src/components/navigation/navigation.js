@@ -8,6 +8,7 @@ import { Outlet, Link } from "react-router-dom";
 import PaymentIcon from "@mui/icons-material/Payment";
 import React from "react";
 import { styled } from "@mui/system";
+import Badge from '@mui/material/Badge';
 
 const StyledHomeIcon = styled(HomeIcon, {
   name: "StyledHomeIcon",
@@ -18,7 +19,10 @@ const StyledHomeIcon = styled(HomeIcon, {
 
 
 
-function Navigation() {
+function Navigation(props) {
+  const { cartItems } = props;
+
+
   return (
     <>
       <nav className="navBar">
@@ -39,18 +43,21 @@ function Navigation() {
           </li>
           <li>
             <button className="navButtons">
-              <Link to="/shop">
-                <ShoppingCartIcon />
-              </Link>
+              {/* have to connect shop props to navigation */}
+              <Badge badgeContent={4} color="secondary">
+                <Link to="/shop">
+                  <ShoppingCartIcon />
+                </Link>
+              </Badge>
             </button>
           </li>
-          <li>
-            {/* <button className="navButtons">
+          {/* <li> */}
+          {/* <button className="navButtons">
               <Link to="/profile">
                 <AccountCircleIcon />
               </Link>
             </button> */}
-          </li>
+          {/* </li> */}
           <li>
             <button className="navButtons">
               <Link to="/payment">
