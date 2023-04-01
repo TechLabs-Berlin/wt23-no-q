@@ -14,6 +14,8 @@ import data from "./data";
 import Product from "./pages/drinks/product";
 import UserForm from "./pages/home/userform";
 import Header from "./components/header";
+import { useCartItems } from "./useDataStore";
+// import Queue from "./pages/queue/queue";
 
 
 
@@ -23,6 +25,8 @@ function App() {
   const GetData = (param) => {
     console.log(param, "receiving data");
   }
+  // GET from Local storage
+  const newCartItems = useCartItems(state => state.newCartItems);
   // when user get's in the queue and log in
   const [query, setQuery] = useState("");
   // in order to import the data of drinks
@@ -39,11 +43,13 @@ function App() {
       // otherwise we'll keep it as it is (:x)
       setCartItems(cartItems.map((x) => x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x));
       localStorage.setItem('cartItems', JSON.stringify(setCartItems));
+      newCartItems(setCartItems);
     } else {
       // if it does not exist in the cart we have to add it and when it is the first time added it is one
       setCartItems([...cartItems, { ...product, qty: 1 }])
       // add the products to local storage so they are not lost after refresh
       localStorage.setItem('cartItems', JSON.stringify(setCartItems));
+      newCartItems(setCartItems);
     }
   };
   const onRemove = (product) => {
@@ -54,18 +60,25 @@ function App() {
       // otherwise we remove them
       setCartItems(cartItems.filter((x) => x.id !== product.id));
       localStorage.setItem('cartItems', JSON.stringify(setCartItems));
+      newCartItems(setCartItems);
     } else {
       // the same ass the add function but -1
       setCartItems(cartItems.map((x) => x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x));
       localStorage.setItem('cartItems', JSON.stringify(setCartItems));
+      newCartItems(setCartItems);
     }
   };
   // getting the products from localStorage and make them a string and load them on page
+
+
+  //   const newCartItems = useCartItems(state => state.newCartItems);
+  //   newCartItems(cartItems);
+
+
   // useEffect(() => {
   //   setCartItems(
   //     localStorage.getItem('cartItems')
-  //       ? JSON.parse(localStorage.getItem('cartItems'))
-  //       : []
+  //       ? JSON.parse(localStorage.getItem('cartItems')) : []
   //   );
   // }, []);
 
@@ -91,6 +104,7 @@ function App() {
             <Route path="*" element={<NoPage />} />
           </Route>
           <Route path="/profile" element={<Profile query={query} />} />
+          {/* <Route path="queue" element={<Queue />} /> */}
         </Routes>
       </BrowserRouter>
     </div>

@@ -14,12 +14,14 @@ function Header() {
                     <img className='header-logo' src={logo} alt='logo' />
                 </section>
                 <section className="order">
-                    <button className="navButtons">
-                        Get in Q!
-                        <Link to="/profile">
+                    <Link to="/profile">
+                        <button className="navButtons">
+                            Get in Q!
+
                             <AccountCircleIcon />
-                        </Link>
-                    </button>
+
+                        </button>
+                    </Link>
                 </section>
 
             </section>
