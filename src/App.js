@@ -17,6 +17,9 @@ import Header from "./components/header";
 import { useCartItems } from "./useDataStore";
 import Thankyou from "./pages/profile/thankyou";
 // import Queue from "./pages/queue/queue";
+import { useCart } from "./store";
+// import { useCart } from "./useCart";
+
 
 
 
@@ -38,6 +41,27 @@ function App() {
 
 
 
+  // setting store.js
+  const addTocart = useCart((state) => state.addTocart);
+  const updatecart = useCart((state) => state.updatecart);
+  const mycart = useCart((state) => state.cartContent);
+  const total = useCart((state) => state.total);
+  const cart = useCart((state) => state.cartContent);
+  const removeFromCart = useCart((state) => state.removeFromCart);
+
+  // settinh useCart.js
+  // const addTocart = useCart((state) => state.addToCart);
+  // const updatedCart = useCart((state) => state.updateCart);
+  // const removeFromCart = useCart((state) => state.removeFromcart);
+  // const mycart = useCart((state) => state.cart);
+
+
+
+
+
+
+
+
   const onAdd = (product) => {
     // exist is a variable that check cart items and try to find an item that its id is equal to product id. 
     const exist = cartItems.find((x) => x.id === product.id);
@@ -50,6 +74,13 @@ function App() {
       // newCartItems(setCartItems);
       newCartItems(product);
 
+      // store.js
+      // mycart[product], qty++;
+      // updatecart({ product, mycart });
+      addTocart(product);
+
+
+
     } else {
       // if it does not exist in the cart we have to add it and when it is the first time added it is one
       setCartItems([...cartItems, { ...product, qty: 1 }])
@@ -57,6 +88,11 @@ function App() {
       localStorage.setItem('cartItems', JSON.stringify(setCartItems));
       // newCartItems(setCartItems);
       newCartItems(product);
+
+      // store.js
+      addTocart(product);
+
+
 
     }
   };
@@ -69,7 +105,10 @@ function App() {
       setCartItems(cartItems.filter((x) => x.id !== product.id));
       localStorage.setItem('cartItems', JSON.stringify(setCartItems));
       // newCartItems(setCartItems);
-      newCartItems(product);
+      // newCartItems(product);
+
+      // store.js
+      removeFromCart(product);
 
 
     } else {
@@ -78,17 +117,33 @@ function App() {
       localStorage.setItem('cartItems', JSON.stringify(setCartItems));
       // newCartItems(setCartItems);
       newCartItems(product);
+
+      // store.js
+      removeFromCart(product);
+
+
     }
   };
 
 
 
-  //   const newCartItems = useCartItems(state => state.newCartItems);
-  //   newCartItems(cartItems);
+  // const newCartItems = useCartItems(state => state.newCartItems);
+  // newCartItems(cartItems);
   // sent items to localStorage
+  useEffect(() => {
+    newCartItems(cartItems)
+  });
+
+
+
   // useEffect(() => {
-  //   newCartItems(cartItems)
-  // })
+  //   setCart(cart);
+  //   setTotal(total);
+  // }, [cart]);
+
+
+
+
 
 
 

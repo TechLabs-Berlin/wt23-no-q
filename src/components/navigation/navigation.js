@@ -9,6 +9,9 @@ import PaymentIcon from "@mui/icons-material/Payment";
 import React from "react";
 import { styled } from "@mui/system";
 import Badge from '@mui/material/Badge';
+import { useCart } from "../../store";
+import { useEffect, useState } from "react";
+
 
 const StyledHomeIcon = styled(HomeIcon, {
   name: "StyledHomeIcon",
@@ -21,6 +24,22 @@ const StyledHomeIcon = styled(HomeIcon, {
 
 function Navigation(props) {
   const { qty } = props;
+
+
+
+  const total = useCart((state) => state.total);
+  const totalqty = useCart((state) => state.totalqty);
+
+  const clearCart = useCart((state) => state.clearCart);
+  const [mytotal, setTotal] = useState();
+  const [mytotalqty, setTotalqty] = useState();
+
+  useEffect(() => {
+    setTotal(total);
+    setTotalqty(totalqty);
+  }, [total]);
+
+
 
 
   return (
@@ -44,7 +63,7 @@ function Navigation(props) {
           <li>
             <button className="navButtons">
               {/* have to connect shop props to navigation */}
-              <Badge badgeContent={3} color="secondary">
+              <Badge badgeContent={totalqty} color="secondary">
                 <Link to="/shop">
                   <ShoppingCartIcon />
                 </Link>

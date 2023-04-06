@@ -2,6 +2,10 @@
 import React from "react";
 import './shop.css';
 import { Link } from 'react-router-dom';
+import { useCart } from "../../store";
+import { useEffect, useState } from "react";
+
+
 
 
 
@@ -12,6 +16,21 @@ export default function ShoppingCart(props) {
     // with reduce it gives back a value the value of all the elements, of list
     const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
     const totalPrice = itemsPrice;
+
+    //#region 
+    // const total = useCart((state) => state.total);
+    // const cart = useCart((state) => state.cartContent);
+    // const removeFromCart = useCart((state) => state.removeFromCart);
+    // const addTocart = useCart((state) => state.addTocart);
+    // const [mycart, setCart] = useState([]);
+    // const [mytotal, setTotal] = useState();
+    // useEffect(() => {
+    //     setCart(cart);
+    //     setTotal(total);
+    // }, [cart]);
+    //#endregion
+
+
 
     return (
         <div className="block-col-1">
