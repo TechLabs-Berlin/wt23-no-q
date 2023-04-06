@@ -20,7 +20,7 @@ const StyledHomeIcon = styled(HomeIcon, {
 
 
 function Navigation(props) {
-  const { cartItems } = props;
+  const { qty } = props;
 
 
   return (
@@ -44,7 +44,7 @@ function Navigation(props) {
           <li>
             <button className="navButtons">
               {/* have to connect shop props to navigation */}
-              <Badge badgeContent={4} color="secondary">
+              <Badge badgeContent={3} color="secondary">
                 <Link to="/shop">
                   <ShoppingCartIcon />
                 </Link>
@@ -58,13 +58,13 @@ function Navigation(props) {
               </Link>
             </button> */}
           {/* </li> */}
-          <li>
+          {/* <li>
             <button className="navButtons">
               <Link to="/payment">
                 <PaymentIcon />
               </Link>
             </button>
-          </li>
+          </li> */}
         </ul>
       </nav>
       <Outlet />

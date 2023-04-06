@@ -15,6 +15,7 @@ import Product from "./pages/drinks/product";
 import UserForm from "./pages/home/userform";
 import Header from "./components/header";
 import { useCartItems } from "./useDataStore";
+import Thankyou from "./pages/profile/thankyou";
 // import Queue from "./pages/queue/queue";
 
 
@@ -25,6 +26,7 @@ function App() {
   const GetData = (param) => {
     console.log(param, "receiving data");
   }
+
   // GET from Local storage
   const newCartItems = useCartItems(state => state.newCartItems);
   // when user get's in the queue and log in
@@ -33,7 +35,9 @@ function App() {
   const { products } = data;
   // in order to change items in cart we need the useState to update
   const [cartItems, setCartItems] = useState([]);
-  // use history to redirect in home page
+
+
+
   const onAdd = (product) => {
     // exist is a variable that check cart items and try to find an item that its id is equal to product id. 
     const exist = cartItems.find((x) => x.id === product.id);
@@ -43,13 +47,17 @@ function App() {
       // otherwise we'll keep it as it is (:x)
       setCartItems(cartItems.map((x) => x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x));
       localStorage.setItem('cartItems', JSON.stringify(setCartItems));
-      newCartItems(setCartItems);
+      // newCartItems(setCartItems);
+      newCartItems(product);
+
     } else {
       // if it does not exist in the cart we have to add it and when it is the first time added it is one
       setCartItems([...cartItems, { ...product, qty: 1 }])
       // add the products to local storage so they are not lost after refresh
       localStorage.setItem('cartItems', JSON.stringify(setCartItems));
-      newCartItems(setCartItems);
+      // newCartItems(setCartItems);
+      newCartItems(product);
+
     }
   };
   const onRemove = (product) => {
@@ -60,27 +68,30 @@ function App() {
       // otherwise we remove them
       setCartItems(cartItems.filter((x) => x.id !== product.id));
       localStorage.setItem('cartItems', JSON.stringify(setCartItems));
-      newCartItems(setCartItems);
+      // newCartItems(setCartItems);
+      newCartItems(product);
+
+
     } else {
       // the same ass the add function but -1
       setCartItems(cartItems.map((x) => x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x));
       localStorage.setItem('cartItems', JSON.stringify(setCartItems));
-      newCartItems(setCartItems);
+      // newCartItems(setCartItems);
+      newCartItems(product);
     }
   };
-  // getting the products from localStorage and make them a string and load them on page
+
 
 
   //   const newCartItems = useCartItems(state => state.newCartItems);
   //   newCartItems(cartItems);
-
-
+  // sent items to localStorage
   // useEffect(() => {
-  //   setCartItems(
-  //     localStorage.getItem('cartItems')
-  //       ? JSON.parse(localStorage.getItem('cartItems')) : []
-  //   );
-  // }, []);
+  //   newCartItems(cartItems)
+  // })
+
+
+
 
   return (
     <div className="App">
@@ -98,13 +109,15 @@ function App() {
               <ShoppingCart countCartItems={cartItems.length} cartItems={cartItems}
                 onAdd={onAdd} onRemove={onRemove} />} />
 
-            <Route path="/payment" element={<Payment />} />
+            {/* <Route path="/payment" element={<Payment />} /> */}
             {/* I'm not sure how to implement the product that needs to be used by the drink.js */}
             <Route path="/Product" element={<Product cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />
             <Route path="*" element={<NoPage />} />
           </Route>
           <Route path="/profile" element={<Profile query={query} />} />
           {/* <Route path="queue" element={<Queue />} /> */}
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/thankyou" element={<Thankyou />} />
         </Routes>
       </BrowserRouter>
     </div>

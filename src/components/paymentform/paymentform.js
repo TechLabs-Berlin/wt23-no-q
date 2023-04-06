@@ -1,8 +1,10 @@
 import React from "react";
 import "./paymentform.css";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 function PaymentForm() {
+  // const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -13,6 +15,11 @@ function PaymentForm() {
     // Submit the form data to the server
     console.log("Form submitted:", data);
   }
+
+  // const navigateProfile = () => {
+  //   // 👇️ navigate to /
+  //   navigate('/profile');
+  // };
 
   return (
     <div className="payment-form">

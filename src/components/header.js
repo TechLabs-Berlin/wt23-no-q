@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import logo from '../logo/4logo.png';
 import '../pages/drinks/drinks.css';
 import { Outlet, Link } from 'react-router-dom';
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+// import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 
 function Header() {
+    // const userName = JSON.parse(localStorage.getItem('usersArray'));
+    // console.log(userName);
     return (
         <section className="header">
             <section className="header-top">
@@ -14,6 +16,10 @@ function Header() {
                     <img className='header-logo' src={logo} alt='logo' />
                 </section>
                 <section className="order">
+
+                </section>
+
+                {/* <section className="order">
                     <Link to="/profile">
                         <button className="navButtons">
                             Get in Q!
@@ -22,7 +28,7 @@ function Header() {
 
                         </button>
                     </Link>
-                </section>
+                </section> */}
 
             </section>
         </section >

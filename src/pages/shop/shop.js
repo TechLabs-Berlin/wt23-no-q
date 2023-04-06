@@ -1,6 +1,7 @@
 // import { Badge } from "@mui/material";
 import React from "react";
 import './shop.css';
+import { Link } from 'react-router-dom';
 
 
 
@@ -42,9 +43,19 @@ export default function ShoppingCart(props) {
                             <div className="col-2">Items price</div>
                             <div className="col-1">${totalPrice.toFixed(2)}</div>
                         </div>
-                        <button onClick={() => alert("implement Checkout!")}>
+                        {/* <button onClick={() => alert("implement Checkout!")}>
                             Checkout
-                        </button>
+                        </button> */}
+                        {/* <Link to="/profile">
+                            <button className="navButtons">
+                                Get in Q!
+                            </button>
+                        </Link> */}
+                        <Link to="/payment">
+                            <button className="navButtons">
+                                Get in Q!
+                            </button>
+                        </Link>
                     </>
                 )}
             </div>
