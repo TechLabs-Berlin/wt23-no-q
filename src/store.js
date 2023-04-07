@@ -29,9 +29,7 @@ export const useCart = create(
                 set((state) => ({
                     total: state.total - product.price * product.qty,
                     totalqty: state.totalqty - product.qty,
-                    cartContent: state.cartContent.filter(
-                        (item) => item.id !== product.id
-                    ),
+                    cartContent: state.cartContent.filter((item) => item.id !== product.id),
                 })),
         }),
         {

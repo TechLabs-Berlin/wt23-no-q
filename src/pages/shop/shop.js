@@ -18,16 +18,16 @@ export default function ShoppingCart(props) {
     const totalPrice = itemsPrice;
 
     //#region 
-    // const total = useCart((state) => state.total);
-    // const cart = useCart((state) => state.cartContent);
-    // const removeFromCart = useCart((state) => state.removeFromCart);
-    // const addTocart = useCart((state) => state.addTocart);
-    // const [mycart, setCart] = useState([]);
-    // const [mytotal, setTotal] = useState();
-    // useEffect(() => {
-    //     setCart(cart);
-    //     setTotal(total);
-    // }, [cart]);
+    const total = useCart((state) => state.total);
+    const cart = useCart((state) => state.cartContent);
+    const removeFromCart = useCart((state) => state.removeFromCart);
+    const addTocart = useCart((state) => state.addTocart);
+    const [mycart, setCart] = useState([]);
+    const [mytotal, setTotal] = useState();
+    useEffect(() => {
+        setCart(cart);
+        setTotal(total);
+    }, [cart]);
     //#endregion
 
 

@@ -23,7 +23,7 @@ const StyledHomeIcon = styled(HomeIcon, {
 
 
 function Navigation(props) {
-  const { qty } = props;
+  // const { qty } = props;
 
 
 
@@ -69,6 +69,7 @@ function Navigation(props) {
                 </Link>
               </Badge>
             </button>
+            {/* : ${mytotal} / {mytotalqty} */}
           </li>
           {/* <li> */}
           {/* <button className="navButtons">

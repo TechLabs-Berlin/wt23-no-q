@@ -49,11 +49,7 @@ function App() {
   const cart = useCart((state) => state.cartContent);
   const removeFromCart = useCart((state) => state.removeFromCart);
 
-  // settinh useCart.js
-  // const addTocart = useCart((state) => state.addToCart);
-  // const updatedCart = useCart((state) => state.updateCart);
-  // const removeFromCart = useCart((state) => state.removeFromcart);
-  // const mycart = useCart((state) => state.cart);
+
 
 
 
@@ -76,8 +72,8 @@ function App() {
 
       // store.js
       // mycart[product], qty++;
-      // updatecart({ product, mycart });
-      addTocart(product);
+      updatecart({ product, mycart });
+      // addTocart(product);
 
 
 
