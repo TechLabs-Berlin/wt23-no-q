@@ -1,4 +1,4 @@
-# UX research
+# Blog Post
 See the UX research in our [Wiki](https://github.com/TechLabs-Berlin/wt23-no-q/wiki)!
 
 # Getting Started with Create React App
