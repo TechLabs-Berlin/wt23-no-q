@@ -1,5 +1,6 @@
 # Blog Post
 See our Blog Post in [Wiki](https://github.com/TechLabs-Berlin/wt23-no-q/wiki)!
+Our UX Research&Design post is already [there](https://github.com/TechLabs-Berlin/wt23-no-q/wiki/UX)!
 
 # Getting Started with Create React App
 
