@@ -1,7 +1,7 @@
 # Blog Post
-See our Blog Post in [Wiki](https://github.com/TechLabs-Berlin/wt23-no-q/wiki). Alternatively you can find it on our Notion [page](https://aliceemend.notion.site/Blog-Post-769acd9f6088404db2cca296ddd873bf).
+See our Blog Post on our Notion [page](https://aliceemend.notion.site/Blog-Post-769acd9f6088404db2cca296ddd873bf).
 
-Our UX post is already [there](https://github.com/TechLabs-Berlin/wt23-no-q/wiki/UX).
+Our UX post is also dublicated on [Wiki](https://github.com/TechLabs-Berlin/wt23-no-q/wiki/UX).
 
 # Getting Started with Create React App
 
