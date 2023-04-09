@@ -42,10 +42,10 @@ const DrinkRating = () => {
         </Typography>
         <Box>
           <IconButton onClick={handleThumbsUp} color="primary" size="large">
-            <ThumbUpAltOutlinedIcon /> {/* Use the outlined thumbs up icon */}
+            <ThumbUpAltOutlinedIcon style={{ fontSize: "100px" }} />
           </IconButton>
           <IconButton onClick={handleThumbsDown} color="secondary" size="large">
-            <ThumbDownAltOutlinedIcon /> {/* Use the outlined thumbs down icon */}
+            <ThumbDownAltOutlinedIcon style={{ fontSize: "100px" }} />
           </IconButton>
         </Box>
         {renderMessage()}
