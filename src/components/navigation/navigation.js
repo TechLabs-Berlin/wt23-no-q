@@ -23,21 +23,23 @@ const StyledHomeIcon = styled(HomeIcon, {
 
 
 function Navigation(props) {
-  // const { qty } = props;
+  const { countCartItems } = props;
 
 
 
-  const total = useCart((state) => state.total);
-  const totalqty = useCart((state) => state.totalqty);
+  // const total = useCart((state) => state.total);
+  // const totalqty = useCart((state) => state.totalqty);
 
-  const clearCart = useCart((state) => state.clearCart);
-  const [mytotal, setTotal] = useState();
-  const [mytotalqty, setTotalqty] = useState();
+  // const clearCart = useCart((state) => state.clearCart);
+  // const [mytotal, setTotal] = useState();
+  // const [mytotalqty, setTotalqty] = useState();
 
-  useEffect(() => {
-    setTotal(total);
-    setTotalqty(totalqty);
-  }, [total]);
+  // useEffect(() => {
+  //   setTotal(total);
+  //   setTotalqty(totalqty);
+  // }, [total]);
+
+
 
 
 
@@ -63,7 +65,7 @@ function Navigation(props) {
           <li>
             <button className="navButtons">
               {/* have to connect shop props to navigation */}
-              <Badge badgeContent={totalqty} color="secondary">
+              <Badge badgeContent={countCartItems} color="secondary">
                 <Link to="/shop">
                   <ShoppingCartIcon />
                 </Link>

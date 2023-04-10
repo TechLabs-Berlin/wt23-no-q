@@ -17,8 +17,9 @@ import Header from "./components/header";
 import { useCartItems } from "./useDataStore";
 import Thankyou from "./pages/profile/thankyou";
 // import Queue from "./pages/queue/queue";
-import { useCart } from "./store";
+// import { useCart } from "./store";
 // import { useCart } from "./useCart";
+// import { useCart } from "./storedrinks";
 
 
 
@@ -41,13 +42,16 @@ function App() {
 
 
 
+
+
   // setting store.js
-  const addTocart = useCart((state) => state.addTocart);
-  const updatecart = useCart((state) => state.updatecart);
-  const mycart = useCart((state) => state.cartContent);
-  const total = useCart((state) => state.total);
-  const cart = useCart((state) => state.cartContent);
-  const removeFromCart = useCart((state) => state.removeFromCart);
+  // const addTocart = useCart((state) => state.addTocart);
+  // const updatecart = useCart((state) => state.updatecart);
+  // const mycart = useCart((state) => state.cartContent);
+
+  // const cart = useCart((state) => state.cartContent);
+
+  // const removeFromCart = useCart((state) => state.removeFromCart);
 
 
 
@@ -70,10 +74,18 @@ function App() {
       // newCartItems(setCartItems);
       newCartItems(product);
 
+      //#region 
       // store.js
-      // mycart[product], qty++;
-      updatecart({ product, mycart });
+      // mycart[cartItems].qty++;
+
+
+      // mycart[exist].qty++;
+      // updatecart({ product, mycart });
+
+
+      // updatecart({ product, mycart });
       // addTocart(product);
+      //#endregion
 
 
 
@@ -85,9 +97,16 @@ function App() {
       // newCartItems(setCartItems);
       newCartItems(product);
 
+      //#region 
       // store.js
-      addTocart(product);
 
+      // addTocart({
+      //   id: product.id,
+      //   name: product.name,
+      //   price: product.price,
+      //   quantity: 1,
+      // });
+      //#endregion
 
 
     }
@@ -100,22 +119,34 @@ function App() {
       // otherwise we remove them
       setCartItems(cartItems.filter((x) => x.id !== product.id));
       localStorage.setItem('cartItems', JSON.stringify(setCartItems));
-      // newCartItems(setCartItems);
+
       // newCartItems(product);
 
+      //#region 
       // store.js
-      removeFromCart(product);
+      // removeFromCart({
+      //   id: exist.id,
+      //   price: exist.price,
+      //   quantity: exist.quantity
+      // });
+      //#endregion
 
 
     } else {
       // the same ass the add function but -1
       setCartItems(cartItems.map((x) => x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x));
       localStorage.setItem('cartItems', JSON.stringify(setCartItems));
-      // newCartItems(setCartItems);
+
       newCartItems(product);
 
+      //#region 
       // store.js
-      removeFromCart(product);
+      // removeFromCart({
+      //   id: exist.id,
+      //   price: exist.price,
+      //   quantity: exist.quantity
+      // });
+      //#endregion
 
 
     }
@@ -132,13 +163,6 @@ function App() {
 
 
 
-  // useEffect(() => {
-  //   setCart(cart);
-  //   setTotal(total);
-  // }, [cart]);
-
-
-
 
 
 
@@ -152,9 +176,10 @@ function App() {
 
           <Route index element={<Home />} />
           <Route path="/userform" element={<UserForm GetDataValue={GetData} />} />
-          <Route path="/" element={<><Navigation /><Header /></>}>
+          <Route path="/" element={<><Navigation countCartItems={cartItems.length} /><Header /></>}>
             <Route path="header" element={<Header />} />
-            <Route path="drinks" element={<Drinks products={products} onAdd={onAdd} cartItems={cartItems} onRemove={onRemove} />} />
+            <Route path="drinks" element={<Drinks products={products} onAdd={onAdd} cartItems={cartItems}
+              countCartItems={cartItems.length} onRemove={onRemove} />} />
             {/* <Route path="Bars" element={<Bars />} /> */}
             <Route path="shop" element={
               <ShoppingCart countCartItems={cartItems.length} cartItems={cartItems}
