@@ -112,7 +112,9 @@ function App() {
     newCartItems(cartItems)
   });
 
-
+  useEffect(() => {
+    setCartItems(localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []);
+  }, []);
 
 
 
