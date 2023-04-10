@@ -41,6 +41,7 @@ export default function ShoppingCart(props) {
                         <div>
                             {/* the display of items and  to fixed id 2 digits*/}
                             {item.qty} x ${item.price.toFixed(2)}
+
                         </div>
                     </div>
                 ))}
@@ -51,6 +52,7 @@ export default function ShoppingCart(props) {
                         <div className="row">
                             <div className="col-2">Items price</div>
                             <div className="col-1">${totalPrice.toFixed(2)}</div>
+
                         </div>
                         {/* <button onClick={() => alert("implement Checkout!")}>
                             Checkout

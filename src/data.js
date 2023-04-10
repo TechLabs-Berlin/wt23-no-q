@@ -84,7 +84,35 @@ const data = {
                 price: 10,
                 image: "./images_drinks/zombie.png",
                 qty: 1,
-            }
+            },
+            {
+                id: 13,
+                name: "Krombacher",
+                price: 3.8,
+                image: "./images_drinks/krombacher.png",
+                category: "beers",
+            },
+            {
+                id: 14,
+                name: "Chardonay",
+                price: 7.5,
+                image: "./images_drinks/whitewine.png",
+                category: "wines",
+            },
+            {
+                id: 15,
+                name: "Cabernet",
+                price: 8.5,
+                image: "./images_drinks/redwine.png",
+                category: "wines",
+            },
+            {
+                id: 16,
+                name: "Merlot",
+                price: 8,
+                image: "./images_drinks/redwine.png",
+                category: "wines",
+            },
         ],
 };
 
