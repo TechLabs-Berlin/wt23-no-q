@@ -44,16 +44,6 @@ function App() {
 
 
 
-  // setting store.js
-  // const addTocart = useCart((state) => state.addTocart);
-  // const updatecart = useCart((state) => state.updatecart);
-  // const mycart = useCart((state) => state.cartContent);
-
-  // const cart = useCart((state) => state.cartContent);
-
-  // const removeFromCart = useCart((state) => state.removeFromCart);
-
-
 
 
 
@@ -74,18 +64,6 @@ function App() {
       // newCartItems(setCartItems);
       newCartItems(product);
 
-      //#region 
-      // store.js
-      // mycart[cartItems].qty++;
-
-
-      // mycart[exist].qty++;
-      // updatecart({ product, mycart });
-
-
-      // updatecart({ product, mycart });
-      // addTocart(product);
-      //#endregion
 
 
 
@@ -96,17 +74,6 @@ function App() {
       localStorage.setItem('cartItems', JSON.stringify(setCartItems));
       // newCartItems(setCartItems);
       newCartItems(product);
-
-      //#region 
-      // store.js
-
-      // addTocart({
-      //   id: product.id,
-      //   name: product.name,
-      //   price: product.price,
-      //   quantity: 1,
-      // });
-      //#endregion
 
 
     }
@@ -122,14 +89,6 @@ function App() {
 
       // newCartItems(product);
 
-      //#region 
-      // store.js
-      // removeFromCart({
-      //   id: exist.id,
-      //   price: exist.price,
-      //   quantity: exist.quantity
-      // });
-      //#endregion
 
 
     } else {
@@ -139,24 +98,12 @@ function App() {
 
       newCartItems(product);
 
-      //#region 
-      // store.js
-      // removeFromCart({
-      //   id: exist.id,
-      //   price: exist.price,
-      //   quantity: exist.quantity
-      // });
-      //#endregion
 
 
     }
   };
 
 
-
-  // const newCartItems = useCartItems(state => state.newCartItems);
-  // newCartItems(cartItems);
-  // sent items to localStorage
   useEffect(() => {
     newCartItems(cartItems)
   });

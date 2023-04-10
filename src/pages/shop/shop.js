@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 
 export default function ShoppingCart(props) {
     // fetching data from App.js
-    const { cartItems, onAdd, onRemove } = props;
+    const { cartItems, onAdd, onRemove, countcartItems } = props;
 
     // with reduce it gives back a value the value of all the elements, of list
     const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
