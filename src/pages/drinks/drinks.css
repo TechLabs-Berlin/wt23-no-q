@@ -1,21 +1,13 @@
 .block {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-
 
 }
 
 
 .row {
-    margin-top: 2rem;
     display: flex;
     justify-content: space-between;
-
-}
-
-.menu {
-    padding-top: 10%;
 }
 
 
@@ -30,101 +22,6 @@ img.small {
     padding: 1rem;
     margin: 0.5rem;
 }
-
-/* need to stylize more but I'll do them later */
-button {
-    font-size: 1rem;
-    padding: 0.2rem;
-    margin: 0.1rem;
-    border-radius: 0.5rem;
-    border: 0.1rem #404040 solid;
-    background-color: #3a0ca3;
-    width: 100%;
-    cursor: pointer;
-}
-
-.header {
-    /* /* margin-top: 20px;
-    padding: 20px 10px; */
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 15%;
-    transition: top 0.3s;
-    display: flex;
-    flex-direction: column;
-
-    color: #0d1b2a;
-    display: flex;
-    justify-content: flex-start;
-    align-content: center;
-    flex-wrap: wrap;
-    box-shadow: 3px 0 15px #575757;
-
-}
-
-.header-top {
-    margin: 0;
-    display: block;
-    position: relative;
-    align-self: flex-start;
-    width: 100%;
-    height: 100%;
-
-}
-
-.header-top__logo {
-    display: block;
-    justify-content: center;
-    align-items: center;
-    /* align-items: center; */
-    height: 100%;
-    display: inline;
-
-
-}
-
-.header-logo {
-    position: relative;
-    height: 100%;
-    display: inline;
-    top: 0;
-    left: 0;
-
-}
-
-.order {
-    display: inline;
-    position: absolute;
-    margin-top: 5ch;
-    margin-left: 80%;
-    height: 50%;
-
-}
-
-.order-btn {
-    border-radius: 50%;
-}
-
-section {
-    font-size: 110%;
-}
-
-
-@media only screen and (max-device-width: 480px) {
-    .block {
-        width: 100%;
-        flex-wrap: wrap;
-        display: grid;
-        background-color: black;
-
-
-    }
-
-    .menu {
-        margin-top: 30%;
-
-    }
 
     .row {
         margin-top: 0%;

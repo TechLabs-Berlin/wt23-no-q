@@ -1,6 +1,10 @@
 import React from "react";
 import Product from "./product";
+import Product from "./product";
 
+// to pass the data to components from the source we pass it as props
+export default function Drinks(props) {
+  const { products, onAdd } = props;
 // to pass the data to components from the source we pass it as props
 export default function Drinks(props) {
   const { products, onAdd } = props;

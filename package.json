@@ -26,7 +26,7 @@
   },
   "scripts": {
     "deploy": "rm -r build && npm run build && surge --project ./build --domain no-q.surge.sh",
-    "start": "react-scripts start",
+    "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -50,6 +50,8 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "file-loader": "^6.2.0"
     "@testing-library/jest-dom": "^5.16.5",
     "file-loader": "^6.2.0"
   }
