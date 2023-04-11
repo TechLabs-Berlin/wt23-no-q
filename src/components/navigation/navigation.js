@@ -9,8 +9,7 @@ import PaymentIcon from "@mui/icons-material/Payment";
 import React from "react";
 import { styled } from "@mui/system";
 import Badge from '@mui/material/Badge';
-import { useCart } from "../../store";
-import { useEffect, useState } from "react";
+import logo from '../../logo/4logo.png';
 
 
 const StyledHomeIcon = styled(HomeIcon, {
@@ -38,13 +37,7 @@ function Navigation(props) {
     <>
       <nav className="navBar">
         <ul>
-          {/* <li>
-            <button className="navButtons">
-              <Link to="/">
-                <StyledHomeIcon />
-              </Link>
-            </button>
-          </li> */}
+          <img className='header-logo' src={logo} alt='logo' />
           <li>
             <button className="navButtons">
               <Link to="/drinks">
@@ -63,20 +56,6 @@ function Navigation(props) {
             </button>
             {/* : ${mytotal} / {mytotalqty} */}
           </li>
-          {/* <li> */}
-          {/* <button className="navButtons">
-              <Link to="/profile">
-                <AccountCircleIcon />
-              </Link>
-            </button> */}
-          {/* </li> */}
-          {/* <li>
-            <button className="navButtons">
-              <Link to="/payment">
-                <PaymentIcon />
-              </Link>
-            </button>
-          </li> */}
         </ul>
       </nav>
       <Outlet />

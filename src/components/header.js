@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import logo from '../logo/4logo.png';
 import '../pages/drinks/drinks.css';
-import { Outlet, Link } from 'react-router-dom';
-// import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-
 
 function Header() {
     // const userName = JSON.parse(localStorage.getItem('usersArray'));
@@ -18,17 +15,6 @@ function Header() {
                 <section className="order">
 
                 </section>
-
-                {/* <section className="order">
-                    <Link to="/profile">
-                        <button className="navButtons">
-                            Get in Q!
-
-                            <AccountCircleIcon />
-
-                        </button>
-                    </Link>
-                </section> */}
 
             </section>
         </section >

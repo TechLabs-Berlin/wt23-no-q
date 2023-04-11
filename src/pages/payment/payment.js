@@ -4,6 +4,7 @@ import "../../components/paymentform/paymentform.css";
 
 function Payment() {
   const link = "https://www.paypal.com/de/signin";
+
   return (
     <>
 

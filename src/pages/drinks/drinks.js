@@ -3,7 +3,7 @@ import Product from "./product";
 
 // to pass the data to components from the source we pass it as props
 export default function Drinks(props) {
-  const { products, onAdd } = props;
+  const { cartItems, products, onAdd, onRemove } = props;
 
   return (
     <div className="block">
@@ -12,7 +12,13 @@ export default function Drinks(props) {
         {/* to find each element in the products and collect the data */}
         {products.map((product) => (
           // to pass the products to the Product component we have to call product={product} so in order to pass the product from the products(with the map) and pass it on
-          <Product key={product.id} product={product} onAdd={onAdd}>
+          <Product
+            key={product.id}
+            product={product}
+            // if it does not exist it will return null
+            item={cartItems.find((x) => x.id === product.id)}
+            onAdd={onAdd}
+            onRemove={onRemove}>
           </Product>
         ))}
       </div>

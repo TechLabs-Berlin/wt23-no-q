@@ -43,6 +43,16 @@ button {
     cursor: pointer;
 }
 
+button.add {
+    background-color: yellowgreen;
+}
+
+button.remove {
+    background-color: rgb(216, 65, 31);
+}
+
+
+
 .header {
     /* /* margin-top: 20px;
     padding: 20px 10px; */

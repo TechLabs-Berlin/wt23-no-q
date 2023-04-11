@@ -1,8 +1,8 @@
 .navBar {
     position: fixed;
-    bottom: 0;
+    top: 0;
     left: 0;
-    height: 50px;
+    height: 15%;
     width: 100%;
     background-color: black;
     opacity: 100%;
@@ -12,9 +12,10 @@
 ul {
     list-style: none;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     height: 100%;
+    margin-right: 5%;
 }
 
 .navButtons {
