@@ -12,11 +12,11 @@ export default function Profile() {
     <>
       <div className="orderPage">
         <div className="profile">
-          <h2>{userName}, Your Order Number is:</h2>
+          <h2 className="profile-h2">{userName}, your number is:</h2>
 
           <div className="number-queue">#{queueNumber}</div>
 
-          <h3>You'll be notified when your order is ready!</h3>
+          <h3 className="profile-h3">You'll be notified when your order is ready!</h3>
         </div>
       </div>
     </>
