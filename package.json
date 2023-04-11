@@ -21,7 +21,8 @@
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4",
     "webpack": "^5.76.2",
-    "zustand": "^4.3.6"
+    "zustand": "^4.3.7",
+    "zustand-persist": "^0.4.0"
   },
   "scripts": {
     "deploy": "rm -r build && npm run build && surge --project ./build --domain no-q.surge.sh",

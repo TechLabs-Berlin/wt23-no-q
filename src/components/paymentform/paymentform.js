@@ -1,10 +1,10 @@
 import React from "react";
 import "./paymentform.css";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function PaymentForm() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -14,24 +14,17 @@ function PaymentForm() {
   function onSubmit(data) {
     // Submit the form data to the server
     console.log("Form submitted:", data);
+
+    // Navigate to the profile page after form submission
+    navigate("/profile");
   }
-
-  // const navigateProfile = () => {
-  //   // 👇️ navigate to /
-  //   navigate('/profile');
-  // };
-
   return (
     <div className="payment-form">
       <h1 className="pay-title">Payment Form</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-row">
           <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            {...register("name", { required: true })}
-          />
+          <input type="text" id="name" {...register("name", { required: true })} />
           {errors.name && <div className="error-message">Name is required</div>}
         </div>
         <div className="form-row">
@@ -44,12 +37,8 @@ function PaymentForm() {
               pattern: /^[0-9]{16}$/,
             })}
           />
-          {errors.cardNumber && errors.cardNumber.type === "required" && (
-            <div className="error-message">Card number is required</div>
-          )}
-          {errors.cardNumber && errors.cardNumber.type === "pattern" && (
-            <div className="error-message">Card number must be 16 digits</div>
-          )}
+          {errors.cardNumber && errors.cardNumber.type === "required" && <div className="error-message">Card number is required</div>}
+          {errors.cardNumber && errors.cardNumber.type === "pattern" && <div className="error-message">Card number must be 16 digits</div>}
         </div>
         <div className="form-row">
           <label htmlFor="expirationDate">Expiration Date:</label>
@@ -61,16 +50,8 @@ function PaymentForm() {
               pattern: /^(0[1-9]|1[0-2])\/([0-9]{4})$/,
             })}
           />
-          {errors.expirationDate &&
-            errors.expirationDate.type === "required" && (
-              <div className="error-message">Expiration date is required</div>
-            )}
-          {errors.expirationDate &&
-            errors.expirationDate.type === "pattern" && (
-              <div className="error-message">
-                Expiration date must be in the format MM/YYYY
-              </div>
-            )}
+          {errors.expirationDate && errors.expirationDate.type === "required" && <div className="error-message">Expiration date is required</div>}
+          {errors.expirationDate && errors.expirationDate.type === "pattern" && <div className="error-message">Expiration date must be in the format MM/YYYY</div>}
         </div>
         <div className="form-row">
           <label htmlFor="cvv">CVV:</label>
@@ -82,13 +63,10 @@ function PaymentForm() {
               pattern: /^[0-9]{3}$/,
             })}
           />
-          {errors.cvv && errors.cvv.type === "required" && (
-            <div className="error-message">CVV is required</div>
-          )}
-          {errors.cvv && errors.cvv.type === "pattern" && (
-            <div className="error-message">CVV must be 3 digits</div>
-          )}
+          {errors.cvv && errors.cvv.type === "required" && <div className="error-message">CVV is required</div>}
+          {errors.cvv && errors.cvv.type === "pattern" && <div className="error-message">CVV must be 3 digits</div>}
         </div>
+
         <button type="submit">Submit</button>
       </form>
     </div>

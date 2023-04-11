@@ -1,39 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "@mui/material";
+import React from "react";
 import "./profile.css";
-// import { useNavigate } from "react-router-dom";
+import { useUser } from "../../useData";
 
 export default function Profile() {
-  // let user1 = window.localStorage.getItem('usersArray');
-  // console.log(user1);
-  // let ID = localStorage.getItem
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     navigate('/thankyou')
-  //   }, 5000)
-  // }, [])
-
-
-
+  const { usersArray } = useUser();
+  const currentUser = usersArray[usersArray.length - 1]; // Get the last user in the array
+  const queueNumber = currentUser ? currentUser.number : "N/A";
 
   return (
     <>
       <div className="orderPage">
         <div className="profile">
-          <h2>Hey , Your ID is and you are in the Queue ! You are the number</h2>
+          <h2>Hey, Your ID is and you are in the Queue! You are the number</h2>
 
+          <div className="number-queue">#{queueNumber}</div>
 
-          {/* <Link to="/payment">Pay Now</Link> */}
-          <div className="number-queue">
-            #4
-          </div>
-          <h3>
-            You'll be notified when your order is ready!
-          </h3>
-
-
+          <h3>You'll be notified when your order is ready!</h3>
         </div>
       </div>
     </>
