@@ -80,6 +80,8 @@ function App() {
 
   const [isPending, startTransition] = useTransition();
 
+  // saving items in local storage
+  // useTransition so it does not block while "reading" from localStorage
   useEffect(() => {
     startTransition(() => {
       setCartItems
@@ -89,11 +91,11 @@ function App() {
 
   }, []);
 
-  // // it does not have high prority
-  // const cartItemsCount = useDeferredValue(cartItems.length);
-  // // console.log(cartItemsCount);
+  // // it does not have high prority and it calculates the number of items in localStorage
+  const cartItemsCount = useDeferredValue(cartItems.length);
+  console.log(cartItemsCount);
 
-  const cartItemsCount = cartItems.length;
+  // const cartItemsCount = cartItems.length;
 
 
   const theme = createTheme({
@@ -121,14 +123,15 @@ function App() {
 
             <Route index element={<Home />} />
             <Route path="/userform" element={<UserForm GetDataValue={GetData} />} />
-            <Route path="/" element={<><Navigation countCartItems={cartItems.length} /></>}>
+            <Route path="/" element={<><Navigation countCartItems={cartItemsCount} /></>}>
 
-              <Route path="/drinks" cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} element={<Drinks products={products} onAdd={onAdd} onRemove={onRemove}
-                cartItems={cartItems} countCartItems={cartItems.length} />} />
+              <Route path="/drinks" cartItems={cartItems} onAdd={onAdd} onRemove={onRemove}
+                element={<Drinks products={products} onAdd={onAdd} onRemove={onRemove}
+                  cartItems={cartItems} countCartItems={cartItemsCount} />} />
               {/* <Route path="Bars" element={<Bars />} /> */}
               <Route path="shop" countCartItems={cartItemsCount} onAdd={onAdd} onRemove={onRemove} element={
                 <ShoppingCart cartItems={cartItems}
-                  onAdd={onAdd} onRemove={onRemove} />} />
+                  onAdd={onAdd} onRemove={onRemove} countCartItems={cartItemsCount} />} />
 
             </Route>
             <Route path="/profile" element={<Profile query={query} />} />
