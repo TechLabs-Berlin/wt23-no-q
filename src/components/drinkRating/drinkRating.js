@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Box, Container, Typography, IconButton } from "@mui/material";
-import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined"; // Import the outlined thumbs up icon
-import ThumbDownAltOutlinedIcon from "@mui/icons-material/ThumbDownAltOutlined"; // Import the outlined thumbs down icon
+import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
+import ThumbDownAltOutlinedIcon from "@mui/icons-material/ThumbDownAltOutlined";
 
 const DrinkRating = () => {
   const [choice, setChoice] = useState(null);
+  const [hoverUp, setHoverUp] = useState(false);
+  const [hoverDown, setHoverDown] = useState(false);
 
   const handleThumbsUp = () => {
     setChoice("liked");
@@ -41,11 +43,11 @@ const DrinkRating = () => {
           Did you enjoy your drink?
         </Typography>
         <Box>
-          <IconButton onClick={handleThumbsUp} color="primary" size="large">
-            <ThumbUpAltOutlinedIcon style={{ fontSize: "100px" }} />
+          <IconButton onClick={handleThumbsUp} onMouseEnter={() => setHoverUp(true)} onMouseLeave={() => setHoverUp(false)} color="secondary" size="large">
+            <ThumbUpAltOutlinedIcon style={{ fontSize: "100px", opacity: hoverUp ? 1 : 0.6 }} />
           </IconButton>
-          <IconButton onClick={handleThumbsDown} color="secondary" size="large">
-            <ThumbDownAltOutlinedIcon style={{ fontSize: "100px" }} />
+          <IconButton onClick={handleThumbsDown} onMouseEnter={() => setHoverDown(true)} onMouseLeave={() => setHoverDown(false)} color="secondary" size="large">
+            <ThumbDownAltOutlinedIcon style={{ fontSize: "100px", opacity: hoverDown ? 1 : 0.6 }} />
           </IconButton>
         </Box>
         {renderMessage()}
