@@ -27,17 +27,7 @@ function Navigation(props) {
 
 
 
-  // const total = useCart((state) => state.total);
-  // const totalqty = useCart((state) => state.totalqty);
 
-  // const clearCart = useCart((state) => state.clearCart);
-  // const [mytotal, setTotal] = useState();
-  // const [mytotalqty, setTotalqty] = useState();
-
-  // useEffect(() => {
-  //   setTotal(total);
-  //   setTotalqty(totalqty);
-  // }, [total]);
 
 
 

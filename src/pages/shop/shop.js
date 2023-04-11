@@ -62,7 +62,7 @@ export default function ShoppingCart(props) {
                                 Get in Q!
                             </button>
                         </Link> */}
-                        <Link to="/payment">
+                        <Link to="/payment" >
                             <button className="navButtons">
                                 Get in Q!
                             </button>

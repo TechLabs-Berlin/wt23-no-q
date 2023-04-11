@@ -1,7 +1,7 @@
 import "./App.css";
 import Navigation from "./components/navigation/navigation";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useDeferredValue, useEffect, useState, useTransition } from "react";
 import NoPage from "./pages/404/404";
 import Profile from "./pages/profile/profile";
 import Home from "./pages/home/home";
@@ -112,16 +112,26 @@ function App() {
     newCartItems(cartItems)
   });
 
+  const [isPending, startTransition] = useTransition();
+
   useEffect(() => {
-    setCartItems(localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []);
+    startTransition(() => {
+      setCartItems
+        (localStorage.getItem("cartItems")
+          ? JSON.parse(localStorage.getItem("cartItems")) : []);
+    })
+
   }, []);
 
+  const cartItemsCount = useDeferredValue(cartItems.length);
+  console.log(cartItemsCount);
 
 
 
 
 
-  return (
+  return isPending ? (<div>Loading...</div>
+  ) : (
     <div className="App">
       <LoadingScreen delay={1000} />
       <BrowserRouter>
@@ -134,8 +144,8 @@ function App() {
             <Route path="drinks" element={<Drinks products={products} onAdd={onAdd} cartItems={cartItems}
               countCartItems={cartItems.length} onRemove={onRemove} />} />
             {/* <Route path="Bars" element={<Bars />} /> */}
-            <Route path="shop" countCartItems={cartItems.length} element={
-              <ShoppingCart countCartItems={cartItems.length} cartItems={cartItems}
+            <Route path="shop" countCartItems={cartItemsCount} element={
+              <ShoppingCart cartItems={cartItems}
                 onAdd={onAdd} onRemove={onRemove} />} />
 
             {/* <Route path="/payment" element={<Payment />} /> */}
