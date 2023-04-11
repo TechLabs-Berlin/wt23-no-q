@@ -42,9 +42,9 @@ function App() {
   const onAdd = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist) {
-      const newCartItems = (cartItems.map((x) =>
-        x === product.id ? { ...exist, qty: exist.qty + 1 } : x
-      ));
+      const newCartItems = cartItems.map((x) =>
+        x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
+      );
       setCartItems(newCartItems);
       localStorage.setItem('cartItems', JSON.stringify(newCartItems));
     } else {
@@ -108,7 +108,7 @@ function App() {
           <Route path="/userform" element={<UserForm GetDataValue={GetData} />} />
           <Route path="/" element={<><Navigation countCartItems={cartItems.length} /></>}>
 
-            <Route path="/drinks" cartItems={cartItems} element={<Drinks products={products} onAdd={onAdd} onRemove={onRemove}
+            <Route path="/drinks" cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} element={<Drinks products={products} onAdd={onAdd} onRemove={onRemove}
               cartItems={cartItems} countCartItems={cartItems.length} />} />
             {/* <Route path="Bars" element={<Bars />} /> */}
             <Route path="shop" countCartItems={cartItemsCount} onAdd={onAdd} onRemove={onRemove} element={
