@@ -1,7 +1,7 @@
 // import { Badge } from "@mui/material";
 import React from "react";
 import './shop.css';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useCart } from "../../store";
 import { useEffect, useState } from "react";
 
@@ -18,6 +18,14 @@ export default function ShoppingCart(props) {
     // with reduce it gives back a value the value of all the elements, of list
     const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
     const totalPrice = itemsPrice;
+    const data = totalPrice;
+    const navigate = useNavigate();
+
+    const clearCart = () => {
+        localStorage.removeItem('cartItems');
+        navigate('/');
+
+    }
 
 
 
@@ -55,19 +63,16 @@ export default function ShoppingCart(props) {
                             <div className="col-1">${totalPrice.toFixed(2)}</div>
 
                         </div>
-                        {/* <button onClick={() => alert("implement Checkout!")}>
-                            Checkout
-                        </button> */}
-                        {/* <Link to="/profile">
-                            <button className="navButtons">
-                                Get in Q!
-                            </button>
-                        </Link> */}
-                        <Link to="/payment" >
+                        <div className="row">Wanna add a tip?</div>
+
+                        <Link to={{ pathname: "/payment", state: data }}>
                             <button className="navButtons">
                                 Get in Q!
                             </button>
                         </Link>
+                        <div className="components">
+                            <button onClick={clearCart}>Cancel</button>
+                        </div>
                     </>
                 )}
             </div>
