@@ -14,7 +14,9 @@ import data from "./data";
 import Product from "./pages/drinks/product";
 import UserForm from "./pages/home/userform";
 import { useCartItems } from "./useDataStore";
-import Thankyou from "./pages/profile/thankyou";
+import BreakPoint from "./components/responsive_utilities/breakpoint";
+import { styled } from "@mui/material/styles";
+import { createTheme, ThemeProvider, useMediaQuery, CssBaseline } from "@mui/material";
 // import Queue from "./pages/queue/queue";
 // import { useCart } from "./store";
 // import { useCart } from "./useCart";
@@ -94,34 +96,48 @@ function App() {
   const cartItemsCount = cartItems.length;
 
 
-
+  const theme = createTheme({
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 400,
+        md: 960,
+        lg: 1280,
+        xl: 1920,
+      },
+    },
+  });
 
 
   return isPending ? (<div>Loading...</div>
   ) : (
-    <div className="App">
-      <LoadingScreen delay={1000} />
-      <BrowserRouter>
-        <Routes>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <BreakPoint />
+      <div className="App">
+        <LoadingScreen delay={1000} />
+        <BrowserRouter>
+          <Routes>
 
-          <Route index element={<Home />} />
-          <Route path="/userform" element={<UserForm GetDataValue={GetData} />} />
-          <Route path="/" element={<><Navigation countCartItems={cartItems.length} /></>}>
+            <Route index element={<Home />} />
+            <Route path="/userform" element={<UserForm GetDataValue={GetData} />} />
+            <Route path="/" element={<><Navigation countCartItems={cartItems.length} /></>}>
 
-            <Route path="/drinks" cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} element={<Drinks products={products} onAdd={onAdd} onRemove={onRemove}
-              cartItems={cartItems} countCartItems={cartItems.length} />} />
-            {/* <Route path="Bars" element={<Bars />} /> */}
-            <Route path="shop" countCartItems={cartItemsCount} onAdd={onAdd} onRemove={onRemove} element={
-              <ShoppingCart cartItems={cartItems}
-                onAdd={onAdd} onRemove={onRemove} />} />
+              <Route path="/drinks" cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} element={<Drinks products={products} onAdd={onAdd} onRemove={onRemove}
+                cartItems={cartItems} countCartItems={cartItems.length} />} />
+              {/* <Route path="Bars" element={<Bars />} /> */}
+              <Route path="shop" countCartItems={cartItemsCount} onAdd={onAdd} onRemove={onRemove} element={
+                <ShoppingCart cartItems={cartItems}
+                  onAdd={onAdd} onRemove={onRemove} />} />
 
-          </Route>
-          <Route path="/profile" element={<Profile query={query} />} />
-          <Route path="/payment" element={<Payment />} />
-          <Route path="*" element={<NoPage />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+            </Route>
+            <Route path="/profile" element={<Profile query={query} />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="*" element={<NoPage />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </ThemeProvider>
   );
 }
 
