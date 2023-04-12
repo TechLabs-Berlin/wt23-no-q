@@ -6,15 +6,13 @@ import { useLocation } from 'react-router-dom';
 function Payment() {
   const link = "https://www.paypal.com/de/signin";
 
-  const location = useLocation();
-  const data = location.state;
-  console.log(data);
+
 
   return (
     <>
 
       <a href={link} className="payPal">Pay with Paypal</a>
-      <div>Your total is: <p>{data}</p></div>
+      <div>Your total is: <p></p></div>
       <PaymentForm />
     </>
   );

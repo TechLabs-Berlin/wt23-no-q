@@ -23,11 +23,12 @@ const StyledHomeIcon = styled(HomeIcon, {
 function Navigation(props) {
   const { countCartItems } = props;
 
-
+  const { usersArray } = useUser();
+  const currentUser = usersArray[usersArray.length - 1];
+  const userName = currentUser ? currentUser.name : "N/A";
 
   // console.log(useUser[1].name);
-
-
+  // console.log(getState().useUser.name);
 
 
 
@@ -37,6 +38,8 @@ function Navigation(props) {
       <nav className="navBar">
         <ul>
           <img className='header-logo' src={logo} alt='logo' />
+          Hello {userName}!
+
           <li>
             <button className="navButtons">
               <Link to="/drinks">

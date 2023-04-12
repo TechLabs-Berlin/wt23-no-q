@@ -62,7 +62,8 @@ const UserForm = () => {
 
             let path = `/drinks`;
             navigate(path);
-        } else setDataIsCorrect(false);
+        } else
+            setDataIsCorrect(false);
         setDataIsCorrect(true);
 
 
