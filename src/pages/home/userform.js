@@ -17,9 +17,6 @@ const UserForm = () => {
     drink: "",
   });
 
-  const [isPending, setIsPending] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
-
   function handleChange(e) {
     setValues({ ...values, [e.target.name]: e.target.value });
   }
