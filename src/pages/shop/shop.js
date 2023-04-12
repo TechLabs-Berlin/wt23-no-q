@@ -1,15 +1,7 @@
-
 import React from "react";
-import './shop.css';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-
-
-
-
-
-
-
+import "./shop.css";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function ShoppingCart(props) {
   // fetching data from App.js
@@ -22,13 +14,9 @@ export default function ShoppingCart(props) {
   const navigate = useNavigate();
 
   const handleCancel = () => {
-    localStorage.removeItem('cartItems');
-    navigate('/');
-  }
-
-
-
-
+    localStorage.removeItem("cartItems");
+    navigate("/");
+  };
 
   return (
     <div className="block-col-1">
@@ -43,13 +31,16 @@ export default function ShoppingCart(props) {
             <div className="col-2">{item.name}</div>
             <div className="col-2">
               {/* we pass onAdd the item so it can be added in the basket */}
-              <button onClick={() => onAdd(item)} className="add">+</button>
-              <button onClick={() => onRemove(item)} className="remove">-</button>
+              <button onClick={() => onAdd(item)} className="add">
+                +
+              </button>
+              <button onClick={() => onRemove(item)} className="remove">
+                -
+              </button>
             </div>
             <div>
               {/* the display of items and  to fixed id 2 digits*/}
               {item.qty} x ${item.price.toFixed(2)}
-
             </div>
           </div>
         ))}
@@ -60,17 +51,13 @@ export default function ShoppingCart(props) {
             <div className="row">
               <div className="col-2">Items price</div>
               <div className="col-1">${totalPrice.toFixed(2)}</div>
-
             </div>
             <div className="row">Wanna add a tip?</div>
 
             <Link to={{ pathname: "/payment", state: data }}>
-              <button className="navButtons">
-                Get in Q!
-              </button>
+              <button className="navButtons">Place Order</button>
             </Link>
             <button onClick={handleCancel}>Cancel!</button>
-
           </>
         )}
       </div>
