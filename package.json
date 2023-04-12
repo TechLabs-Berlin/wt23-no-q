@@ -52,7 +52,5 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "file-loader": "^6.2.0"
-    "@testing-library/jest-dom": "^5.16.5",
-    "file-loader": "^6.2.0"
   }
 }

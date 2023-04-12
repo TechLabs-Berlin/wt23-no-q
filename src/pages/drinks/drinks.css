@@ -1,31 +1,26 @@
 .block {
-    display: flex;
-    flex-direction: row;
-
+  display: flex;
+  flex-direction: row;
 }
-
 
 .row {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
-
 img.small {
-    max-height: 30rem;
-    width: 30%;
-
+  max-height: 30rem;
+  width: 30%;
 }
 
 .card {
-    background-color: black;
-    padding: 1rem;
-    margin: 0.5rem;
+  background-color: black;
+  padding: 1rem;
+  margin: 0.5rem;
 }
 
-    .row {
-        margin-top: 0%;
-        flex-direction: column;
-        background-color: black;
-    }
+.row {
+  margin-top: 0%;
+  flex-direction: column;
+  background-color: black;
 }
