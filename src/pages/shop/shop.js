@@ -1,17 +1,34 @@
-// import { Badge } from "@mui/material";
+
 import React from "react";
-import "./shop.css";
-import { Link } from "react-router-dom";
-import { useCart } from "../../store";
-import { useEffect, useState } from "react";
+import './shop.css';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+
+
+
+
+
+
 
 export default function ShoppingCart(props) {
   // fetching data from App.js
-  const { cartItems, onAdd, onRemove, countcartItems } = props;
+  const { cartItems, onAdd, onRemove } = props;
 
   // with reduce it gives back a value the value of all the elements, of list
   const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
   const totalPrice = itemsPrice;
+  const data = totalPrice;
+  const navigate = useNavigate();
+
+  const handleCancel = () => {
+    localStorage.removeItem('cartItems');
+    navigate('/');
+  }
+
+
+
+
 
   return (
     <div className="block-col-1">
@@ -26,16 +43,13 @@ export default function ShoppingCart(props) {
             <div className="col-2">{item.name}</div>
             <div className="col-2">
               {/* we pass onAdd the item so it can be added in the basket */}
-              <button onClick={() => onAdd(item)} className="add">
-                +
-              </button>
-              <button onClick={() => onRemove(item)} className="remove">
-                -
-              </button>
+              <button onClick={() => onAdd(item)} className="add">+</button>
+              <button onClick={() => onRemove(item)} className="remove">-</button>
             </div>
             <div>
               {/* the display of items and  to fixed id 2 digits*/}
               {item.qty} x ${item.price.toFixed(2)}
+
             </div>
           </div>
         ))}
@@ -46,18 +60,17 @@ export default function ShoppingCart(props) {
             <div className="row">
               <div className="col-2">Items price</div>
               <div className="col-1">${totalPrice.toFixed(2)}</div>
+
             </div>
-            {/* <button onClick={() => alert("implement Checkout!")}>
-                            Checkout
-                        </button> */}
-            {/* <Link to="/profile">
-                            <button className="navButtons">
-                                Get in Q!
-                            </button>
-                        </Link> */}
-            <Link to="/payment">
-              <button className="navButtons">Place Order</button>
+            <div className="row">Wanna add a tip?</div>
+
+            <Link to={{ pathname: "/payment", state: data }}>
+              <button className="navButtons">
+                Get in Q!
+              </button>
             </Link>
+            <button onClick={handleCancel}>Cancel!</button>
+
           </>
         )}
       </div>

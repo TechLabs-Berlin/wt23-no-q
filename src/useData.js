@@ -3,22 +3,25 @@ import { persist } from "zustand/middleware";
 
 export const useUser = create(
   persist(
-    (set) => ({
+    (set, get) => ({
       usersArray: [],
-      addUser: (user) => {
-        set((state) => {
+      addUser: user => {
+        set(state => {
           return { usersArray: [...state.usersArray, user] };
         });
       },
-      removeUser: (userId) => {
-        set((state) => {
-          return { usersArray: state.usersArray.filter((user) => user.id !== userId) };
+      removeLastUser: () => {
+        set(state => {
+          const updatedUsersArray = [...state.usersArray];
+          updatedUsersArray.pop(); // Remove the last element
+          return { usersArray: updatedUsersArray };
         });
       },
     }),
     {
-      name: "usersArray", // unique name
+      name: 'usersArray', // unique name
       getStorage: () => localStorage,
     }
   )
 );
+

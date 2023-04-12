@@ -1,16 +1,14 @@
 import "./navigation.css";
 import HomeIcon from "@mui/icons-material/Home";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LocalDrinkIcon from "@mui/icons-material/LocalDrink";
 // import LocalBarIcon from "@mui/icons-material/LocalBar";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Outlet, Link } from "react-router-dom";
-import PaymentIcon from "@mui/icons-material/Payment";
 import React from "react";
 import { styled } from "@mui/system";
 import Badge from '@mui/material/Badge';
-import { useCart } from "../../store";
-import { useEffect, useState } from "react";
+import logo from '../../logo/4logo.png';
+import { useUser } from "../../useData";
 
 
 const StyledHomeIcon = styled(HomeIcon, {
@@ -25,21 +23,12 @@ const StyledHomeIcon = styled(HomeIcon, {
 function Navigation(props) {
   const { countCartItems } = props;
 
+  const { usersArray } = useUser();
+  const currentUser = usersArray[usersArray.length - 1];
+  const userName = currentUser ? currentUser.name : "N/A";
 
-
-  // const total = useCart((state) => state.total);
-  // const totalqty = useCart((state) => state.totalqty);
-
-  // const clearCart = useCart((state) => state.clearCart);
-  // const [mytotal, setTotal] = useState();
-  // const [mytotalqty, setTotalqty] = useState();
-
-  // useEffect(() => {
-  //   setTotal(total);
-  //   setTotalqty(totalqty);
-  // }, [total]);
-
-
+  // console.log(useUser[1].name);
+  // console.log(getState().useUser.name);
 
 
 
@@ -48,13 +37,9 @@ function Navigation(props) {
     <>
       <nav className="navBar">
         <ul>
-          {/* <li>
-            <button className="navButtons">
-              <Link to="/">
-                <StyledHomeIcon />
-              </Link>
-            </button>
-          </li> */}
+          <img className='header-logo' src={logo} alt='logo' />
+          Hello {userName}!
+
           <li>
             <button className="navButtons">
               <Link to="/drinks">
@@ -73,20 +58,6 @@ function Navigation(props) {
             </button>
             {/* : ${mytotal} / {mytotalqty} */}
           </li>
-          {/* <li> */}
-          {/* <button className="navButtons">
-              <Link to="/profile">
-                <AccountCircleIcon />
-              </Link>
-            </button> */}
-          {/* </li> */}
-          {/* <li>
-            <button className="navButtons">
-              <Link to="/payment">
-                <PaymentIcon />
-              </Link>
-            </button>
-          </li> */}
         </ul>
       </nav>
       <Outlet />
