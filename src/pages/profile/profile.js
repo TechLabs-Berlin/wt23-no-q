@@ -1,12 +1,22 @@
 import React from "react";
 import "./profile.css";
 import { useUser } from "../../useData";
+import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
-  const { usersArray } = useUser();
+  const { usersArray, removeUser } = useUser();
   const currentUser = usersArray[usersArray.length - 1]; // Get the last user in the array
   const queueNumber = currentUser ? usersArray.length : "N/A";
   const userName = currentUser ? currentUser.name : "N/A";
+
+  const navigate = useNavigate();
+
+  const handleCancel = () => {
+    if (currentUser) {
+      removeUser(currentUser.id);
+    }
+    navigate("/");
+  };
 
   return (
     <>
@@ -17,6 +27,9 @@ export default function Profile() {
           <div className="number-queue">#{queueNumber}</div>
 
           <h3 className="profile-h3">You'll be notified when your order is ready!</h3>
+          <button className="cancel-button" onClick={handleCancel}>
+            Cancel
+          </button>
         </div>
       </div>
     </>
