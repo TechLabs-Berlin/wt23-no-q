@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 .payment-form {
+
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -13,6 +14,7 @@
   box-shadow: 0 0 50px 5px #a0a0a0;
   font-family: 'Quicksand', sans-serif;
   border-radius: 10px;
+
 }
 
 .payPal {

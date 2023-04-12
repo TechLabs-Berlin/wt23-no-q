@@ -1,0 +1,103 @@
+.orderPage {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    /* border: red solid 2px; */
+
+}
+
+.profile {
+    margin-top: 10%;
+    height: 80%;
+    flex-direction: column;
+
+    /* border: red solid 2px; */
+}
+
+
+
+/* h2 {
+    margin-top: 10%;
+} */
+
+
+
+
+/* button {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    outline: 0;
+    color: black;
+
+} */
+
+.number-queue {
+    border-radius: 50%;
+    width: 68px;
+    height: 68px;
+    padding: 20px;
+    background: greenyellow;
+    border: 3px solid #000;
+    color: #000;
+    text-align: center;
+    font: 64px Arial, sans-serif;
+}
+
+svg:hover {
+    fill: #ff006e;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn:hover {
+    transform: scale(1.5);
+}
+
+/* 
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+} */
+
+.end {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* border: red solid 2px; */
+    flex-direction: row;
+    flex-flow: column;
+    position: fixed;
+    margin-left: 20%;
+
+    height: 50%;
+
+}
+
+
+
+.thank-you {
+    align-items: center;
+    font-size: 200%;
+    vertical-align: middle;
+    margin-top: 20%;
+
+}
+
+.rating {
+    display: inline-block;
+    width: 10%;
+    margin-top: 40px;
+    padding-top: 40px;
+    text-align: center;
+    vertical-align: middle;
+
+    /* border: red solid 1px; */
+}
