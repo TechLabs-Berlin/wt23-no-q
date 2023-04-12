@@ -131,6 +131,8 @@ function App() {
             </Route>
             <Route path="/profile" element={<Profile query={query} />} />
             <Route path="/payment" element={<Payment />} />
+            {/* I'm not sure how to implement the product that needs to be used by the drink.js */}
+            <Route path="/Product" element={<Product cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />
             <Route path="*" element={<NoPage />} />
           </Routes>
         </BrowserRouter>
