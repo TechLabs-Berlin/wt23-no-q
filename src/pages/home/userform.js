@@ -59,11 +59,12 @@ const UserForm = () => {
         }
         addUser(user);
         if (Object.keys(errors).length === 0 && dataIsCorrect) {
-
+            setDataIsCorrect(true);
             let path = `/drinks`;
             navigate(path);
         } else
             setDataIsCorrect(false);
+
         setDataIsCorrect(true);
 
 
@@ -131,7 +132,7 @@ const UserForm = () => {
                 </div>
                 {/* to redirect to the new page of the user */}
 
-                <button onSubmit={handleChange} onClick={handleSubmit}>Get in Q!</button>
+                <button onClick={handleSubmit}>Get in Q!</button>
                 {/* we have to put in the button to call the function Queue.js */}
 
 

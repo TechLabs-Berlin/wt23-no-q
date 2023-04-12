@@ -1,10 +1,9 @@
-// import { Badge } from "@mui/material";
+
 import React from "react";
 import './shop.css';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { useCartStore } from "../../useCartStore";
-import { useEffect, useState } from "react";
-import { useData, useUser } from "../../useData";
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 
 
@@ -20,20 +19,11 @@ export default function ShoppingCart(props) {
     const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
     const totalPrice = itemsPrice;
     const data = totalPrice;
-    const clearShop = useCartStore((state) => state.clearCart());
-
-
-    const removeUser = useUser(state => state.removeLastUser);
-
-
     const navigate = useNavigate();
 
-    const clearCart = () => {
+    const handleCancel = () => {
         localStorage.removeItem('cartItems');
-        removeUser();
-        clearShop();
         navigate('/');
-
     }
 
 
@@ -79,9 +69,8 @@ export default function ShoppingCart(props) {
                                 Get in Q!
                             </button>
                         </Link>
-                        <div className="components">
-                            <button onClick={clearCart}>Cancel</button>
-                        </div>
+                        <button onClick={handleCancel}>Cancel!</button>
+
                     </>
                 )}
             </div>
