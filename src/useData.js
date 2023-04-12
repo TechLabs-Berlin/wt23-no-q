@@ -10,7 +10,13 @@ export const useUser = create(
                     return { usersArray: [...state.usersArray, user] };
                 });
             },
+
         }),
+        //     removeUser: user =>{
+        //     set(state => {
+        //         usersArray: state.usersArray.filter(user => user.id !== id)
+        //     });
+        // }),
         {
             name: 'usersArray', // unique name
             getStorage: () => localStorage,
