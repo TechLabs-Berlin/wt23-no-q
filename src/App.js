@@ -13,14 +13,10 @@ import ShoppingCart from "./pages/shop/shop";
 import data from "./data";
 import Product from "./pages/drinks/product";
 import UserForm from "./pages/home/userform";
-import { useCartItems } from "./useDataStore";
+import { useCartStore } from "./useCartStore";
 import BreakPoint from "./components/responsive_utilities/breakpoint";
 import { styled } from "@mui/material/styles";
 import { createTheme, ThemeProvider, useMediaQuery, CssBaseline } from "@mui/material";
-// import Queue from "./pages/queue/queue";
-// import { useCart } from "./store";
-// import { useCart } from "./useCart";
-// import { useCart } from "./storedrinks";
 
 
 
@@ -41,6 +37,10 @@ function App() {
   // in order to change items in cart we need the useState to update
   const [cartItems, setCartItems] = useState([]);
 
+  const addItem = useCartStore(state => state.addItem);
+  const removeItem = useCartStore(state => state.removeItem);
+  const totalQuantity = useCartStore((state) => state.getTotalQuantity());
+
   const onAdd = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist) {
@@ -49,10 +49,12 @@ function App() {
       );
       setCartItems(newCartItems);
       localStorage.setItem('cartItems', JSON.stringify(newCartItems));
+      addItem(product);
     } else {
       const newCartItems = [...cartItems, { ...product, qty: 1 }];
       setCartItems(newCartItems);
       localStorage.setItem('cartItems', JSON.stringify(newCartItems));
+      addItem(product);
     }
   };
 
@@ -62,12 +64,14 @@ function App() {
       const newCartItems = (cartItems.filter((x) => x.id !== product.id));
       setCartItems(newCartItems);
       localStorage.setItem('cartItems', JSON.stringify(newCartItems));
+      removeItem(product);
     } else {
       const newCartItems = (cartItems.map((x) =>
         x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
       ));
       setCartItems(newCartItems);
       localStorage.setItem('cartItems', JSON.stringify(newCartItems));
+      removeItem(product);
     }
   };
 
@@ -92,8 +96,8 @@ function App() {
   }, []);
 
   // // it does not have high prority and it calculates the number of items in localStorage
-  const cartItemsCount = useDeferredValue(cartItems.length);
-  console.log(cartItemsCount);
+  // const cartItemsCount = useDeferredValue(cartItems.length);
+  // console.log(cartItemsCount);
 
   // const cartItemsCount = cartItems.length;
 
@@ -123,15 +127,15 @@ function App() {
 
             <Route index element={<Home />} />
             <Route path="/userform" element={<UserForm GetDataValue={GetData} />} />
-            <Route path="/" element={<><Navigation countCartItems={cartItemsCount} /></>}>
+            <Route path="/" element={<><Navigation countCartItems={totalQuantity} /></>}>
 
               <Route path="/drinks" cartItems={cartItems} onAdd={onAdd} onRemove={onRemove}
                 element={<Drinks products={products} onAdd={onAdd} onRemove={onRemove}
-                  cartItems={cartItems} countCartItems={cartItemsCount} />} />
+                  cartItems={cartItems} countCartItems={totalQuantity} />} />
               {/* <Route path="Bars" element={<Bars />} /> */}
-              <Route path="shop" countCartItems={cartItemsCount} onAdd={onAdd} onRemove={onRemove} element={
+              <Route path="shop" countCartItems={totalQuantity} onAdd={onAdd} onRemove={onRemove} element={
                 <ShoppingCart cartItems={cartItems}
-                  onAdd={onAdd} onRemove={onRemove} countCartItems={cartItemsCount} />} />
+                  onAdd={onAdd} onRemove={onRemove} countCartItems={totalQuantity} />} />
 
             </Route>
             <Route path="/profile" element={<Profile query={query} />} />

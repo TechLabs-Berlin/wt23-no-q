@@ -30,6 +30,7 @@ export default function ShoppingCart(props) {
     const clearCart = () => {
         localStorage.removeItem('cartItems');
         removeUser();
+        sessionStorage.removeItem('cartItems'); // remove from sessionStorage
         navigate('/');
 
     }
