@@ -39,6 +39,7 @@ function App() {
 
   const addItem = useCartStore(state => state.addItem);
   const removeItem = useCartStore(state => state.removeItem);
+  // calculate total of items in localStorage
   const totalQuantity = useCartStore((state) => state.getTotalQuantity());
 
   const onAdd = (product) => {
@@ -78,10 +79,6 @@ function App() {
 
 
 
-  // // useEffect(() => {
-  // //   newCartItems(cartItems)
-  // // });
-
   const [isPending, startTransition] = useTransition();
 
   // saving items in local storage
@@ -94,12 +91,6 @@ function App() {
     });
 
   }, []);
-
-  // // it does not have high prority and it calculates the number of items in localStorage
-  // const cartItemsCount = useDeferredValue(cartItems.length);
-  // console.log(cartItemsCount);
-
-  // const cartItemsCount = cartItems.length;
 
 
   const theme = createTheme({

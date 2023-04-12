@@ -42,6 +42,14 @@ export const useCartStore = create((set) => ({
     });
     return totalQty;
   },
+  clearCart: () => {
+    set(() => ({
+      cartItems: [],
+      totalQuantity: 0,
+    }));
+    localStorage.removeItem('cartItems'); // Optional: Remove cart items from localStorage
+  },
+
 }));
 
 

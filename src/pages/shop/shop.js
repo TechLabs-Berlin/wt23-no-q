@@ -2,7 +2,7 @@
 import React from "react";
 import './shop.css';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { useCart } from "../../store";
+import { useCartStore } from "../../useCartStore";
 import { useEffect, useState } from "react";
 import { useData, useUser } from "../../useData";
 
@@ -20,6 +20,7 @@ export default function ShoppingCart(props) {
     const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
     const totalPrice = itemsPrice;
     const data = totalPrice;
+    const clearShop = useCartStore((state) => state.clearCart());
 
 
     const removeUser = useUser(state => state.removeLastUser);
@@ -30,7 +31,7 @@ export default function ShoppingCart(props) {
     const clearCart = () => {
         localStorage.removeItem('cartItems');
         removeUser();
-        sessionStorage.removeItem('cartItems'); // remove from sessionStorage
+        clearShop();
         navigate('/');
 
     }
