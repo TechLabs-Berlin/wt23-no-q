@@ -42,6 +42,15 @@ function App() {
   // calculate total of items in localStorage
   const totalQuantity = useCartStore((state) => state.getTotalQuantity());
 
+
+  // passing cancelation
+  const [totalitems, setTotalitems] = useState(0); // State to keep track of total quantity
+  const { clearCart } = useCartStore(); // Get clearCart function from the store
+
+
+
+
+
   const onAdd = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist) {
@@ -75,6 +84,29 @@ function App() {
       removeItem(product);
     }
   };
+
+
+  // ADDING CANCELLATION----------------------------------------
+  // Update total quantity whenever cartItems prop changes
+  useEffect(() => {
+    let quantity = 0;
+    cartItems.forEach((item) => {
+      quantity += item.quantity;
+    });
+    setTotalitems(quantity);
+  }, [cartItems]);
+
+  const handleCancel = () => {
+    //  
+    localStorage.removeItem('cartItems');
+    //   
+    clearCart(); // Call the clearCart function from the store
+    //   
+    setTotalitems(0); // Reset the total quantity state
+    // Clear the cart items displayed on the app
+    setCartItems([]); // Update cartItems state to an empty array
+  }
+  // --------------------------------------------------------------------------
 
 
 
