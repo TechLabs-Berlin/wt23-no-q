@@ -1,6 +1,6 @@
 import "./App.css";
 import Navigation from "./components/navigation/navigation";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import { useDeferredValue, useEffect, useState, useTransition } from "react";
 import NoPage from "./pages/404/404";
 import Profile from "./pages/profile/profile";
@@ -36,6 +36,7 @@ function App() {
   const { products } = data;
   // in order to change items in cart we need the useState to update
   const [cartItems, setCartItems] = useState([]);
+  // const navigate = useNavigate();
 
   const addItem = useCartStore(state => state.addItem);
   const removeItem = useCartStore(state => state.removeItem);
@@ -46,6 +47,7 @@ function App() {
   // passing cancelation
   const [totalitems, setTotalitems] = useState(0); // State to keep track of total quantity
   const { clearCart } = useCartStore(); // Get clearCart function from the store
+  const [cancel, setCancel] = useState(false);
 
 
 
@@ -88,24 +90,25 @@ function App() {
 
   // ADDING CANCELLATION----------------------------------------
   // Update total quantity whenever cartItems prop changes
-  useEffect(() => {
-    let quantity = 0;
-    cartItems.forEach((item) => {
-      quantity += item.quantity;
-    });
-    setTotalitems(quantity);
-  }, [cartItems]);
+  // useEffect(() => {
+  //   let quantity = 0;
+  //   cartItems.forEach((item) => {
+  //     quantity += item.quantity;
+  //   });
+  //   setTotalitems(quantity);
+  // }, [cartItems]);
 
-  const handleCancel = () => {
-    //  
-    localStorage.removeItem('cartItems');
-    //   
-    clearCart(); // Call the clearCart function from the store
-    //   
-    setTotalitems(0); // Reset the total quantity state
-    // Clear the cart items displayed on the app
-    setCartItems([]); // Update cartItems state to an empty array
-  }
+  // const handleCancel = () => {
+  //   //  
+  //   localStorage.removeItem('cartItems');
+  //   //   
+  //   clearCart(); // Call the clearCart function from the store
+  //   //   
+  //   setTotalitems(0); // Reset the total quantity state
+  //   // Clear the cart items displayed on the app
+  //   setCartItems([]); // Update cartItems state to an empty array
+  //   setCancel(true);
+  // }
   // --------------------------------------------------------------------------
 
 
@@ -156,16 +159,16 @@ function App() {
                 element={<Drinks products={products} onAdd={onAdd} onRemove={onRemove}
                   cartItems={cartItems} countCartItems={totalQuantity} />} />
               {/* <Route path="Bars" element={<Bars />} /> */}
-              <Route path="shop" countCartItems={totalQuantity} onAdd={onAdd} onRemove={onRemove} handleCancel={handleCancel} element={
+              <Route path="shop" countCartItems={totalQuantity} onAdd={onAdd} onRemove={onRemove} element={
                 <ShoppingCart cartItems={cartItems}
-                  onAdd={onAdd} onRemove={onRemove} countCartItems={totalQuantity} handleCancel={handleCancel} />} />
+                  onAdd={onAdd} onRemove={onRemove} countCartItems={totalQuantity} />} />
 
             </Route>
             <Route path="/profile" element={<Profile query={query} />} />
             <Route path="/payment" element={<Payment />} />
             {/* I'm not sure how to implement the product that needs to be used by the drink.js */}
             <Route path="/Product" element={<Product cartItems={cartItems} onAdd={onAdd} onRemove={onRemove}
-              handleCancel={handleCancel}
+
             />} />
             <Route path="*" element={<NoPage />} />
           </Routes>
