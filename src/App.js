@@ -156,15 +156,17 @@ function App() {
                 element={<Drinks products={products} onAdd={onAdd} onRemove={onRemove}
                   cartItems={cartItems} countCartItems={totalQuantity} />} />
               {/* <Route path="Bars" element={<Bars />} /> */}
-              <Route path="shop" countCartItems={totalQuantity} onAdd={onAdd} onRemove={onRemove} element={
+              <Route path="shop" countCartItems={totalQuantity} onAdd={onAdd} onRemove={onRemove} handleCancel={handleCancel} element={
                 <ShoppingCart cartItems={cartItems}
-                  onAdd={onAdd} onRemove={onRemove} countCartItems={totalQuantity} />} />
+                  onAdd={onAdd} onRemove={onRemove} countCartItems={totalQuantity} handleCancel={handleCancel} />} />
 
             </Route>
             <Route path="/profile" element={<Profile query={query} />} />
             <Route path="/payment" element={<Payment />} />
             {/* I'm not sure how to implement the product that needs to be used by the drink.js */}
-            <Route path="/Product" element={<Product cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />
+            <Route path="/Product" element={<Product cartItems={cartItems} onAdd={onAdd} onRemove={onRemove}
+              handleCancel={handleCancel}
+            />} />
             <Route path="*" element={<NoPage />} />
           </Routes>
         </BrowserRouter>

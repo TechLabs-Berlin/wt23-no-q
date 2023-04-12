@@ -41,6 +41,7 @@ export default function ShoppingCart(props) {
         localStorage.removeItem('cartItems');
         clearCart(); // Call the clearCart function from the store
         setTotalQuantity(0); // Reset the total quantity state
+
         navigate('/');
     }
 
