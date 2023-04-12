@@ -1,17 +1,14 @@
 import "./userform.css";
 import { useState, useEffect, useRef } from "react";
-// import validation from './validation';
 import { nanoid } from "nanoid";
 import { useUser } from "../../useData";
 import validation from "./validation";
-import { Navigate, redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const UserForm = () => {
   const addUser = useUser((state) => state.addUser);
-  // to catch Errors
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
-  // const [shouldDirect, setShouldRedirect] = useState(false);
 
   const [values, setValues] = useState({
     name: "",
@@ -20,26 +17,20 @@ const UserForm = () => {
     drink: "",
   });
 
-  // sending the data in local storage
-
-  // is false because we need it to happen after user submits the form, not when page is loaded
   const [isPending, setIsPending] = useState(false);
-  // // After we see the data fetched we need to update the waiting users, or else we use the empty array
-  // const [waitingUsers, setWaitingUsers] = useState('');
   const [openModal, setOpenModal] = useState(false);
-  const [dataIsCorrect, setDataIsCorrect] = useState(false);
-  // every change will be stored in the name appropriate change in name stored in name etc
+
   function handleChange(e) {
     setValues({ ...values, [e.target.name]: e.target.value });
   }
 
-  // form Submit Event
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setErrors(validation(values));
+    const validationResult = validation(values);
+    setErrors(validationResult);
 
-    if (Object.keys(errors).length === 0) {
+    if (Object.keys(validationResult).length === 0) {
       let user = {
         id: nanoid(),
         name: values.name,
@@ -53,12 +44,6 @@ const UserForm = () => {
       navigate(path);
     }
   };
-
-  // useEffect(() => {
-  //     if (Object.keys(errors).length === 0 && dataIsCorrect) {
-  //         setShouldRedirect(true)
-  //     }
-  // }, [errors])
 
   return (
     <div className="create">
