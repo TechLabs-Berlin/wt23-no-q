@@ -24,14 +24,8 @@ export default function ShoppingCart(props) {
     const [getPrice, getSetPrice] = useState(0); // State to keep track of total price
 
 
-    // Update total quantity whenever cartItems prop changes
-    // useEffect(() => {
-    //     let quantity = 0;
-    //     cartItems.forEach((item) => {
-    //         quantity += item.quantity;
-    //     });
-    //     setTotalQuantity(quantity);
-    // }, [cartItems]);
+
+
     useEffect(() => {
         let quantity = 0;
         let price = 0;
@@ -47,7 +41,12 @@ export default function ShoppingCart(props) {
     const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
     const totalPrice = itemsPrice;
 
+    useEffect(() => {
+        if (totalQuantity === 0) {
+            getSetPrice(0); // Reset total price
 
+        }
+    }, [totalQuantity]);
 
 
     const navigate = useNavigate();
