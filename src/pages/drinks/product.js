@@ -2,7 +2,10 @@ import "./drinks.css";
 
 export default function Product(props) {
     // the same process as we did to drinks.js in order to pass the data in children from Parents with props
-    const { item, product, onAdd, onRemove, cartItems } = props;
+    const { item, product, onAdd, onRemove } = props;
+    const handleAddToCart = () => {
+        onAdd(product);
+    }
     return (
         <div className="card">
             <img className="small" src={product.image} alt={product.name} />
@@ -19,7 +22,7 @@ export default function Product(props) {
                     </button>
                 </div>
                 ) : (
-                    <button onClick={() => onAdd(product)}>Add to Cart</button>
+                    <button onClick={handleAddToCart}>Add to Cart</button>
                 )}
 
             </div>

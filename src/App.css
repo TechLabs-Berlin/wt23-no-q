@@ -3,12 +3,18 @@
 
 .App {
 
-  width: 100vw;
+  /* width: 100vw; */
   background-color: #000000;
   position: relative;
-  /* margin-bottom: 0px; */
+  margin-bottom: 0;
+  height: 100%;
   margin: 0;
+  padding: 0;
 }
+
+
+
+
 
 
 .loadingScreen {
@@ -22,4 +28,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.body {
+  background-color: black;
 }

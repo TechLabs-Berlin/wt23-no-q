@@ -2,7 +2,7 @@
 import React from "react";
 import './shop.css';
 import { Link } from 'react-router-dom';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useCartStore } from "../../useCartStore";
 import { useState, useEffect } from "react";
 
@@ -16,10 +16,13 @@ import { useState, useEffect } from "react";
 
 export default function ShoppingCart(props) {
     // fetching data from App.js
-    const { cartItems, onAdd, onRemove, handleCancel } = props;
+    const { cartItems, onAdd, onRemove } = props;
 
-    // const [totalQuantity, setTotalQuantity] = useState(0); // State to keep track of total quantity
-    // const { clearCart } = useCartStore(); // Get clearCart function from the store
+
+    const { clearCart } = useCartStore(); // Get clearCart function from the store
+    const [totalQuantity, setTotalQuantity] = useState(0); // State to keep track of total quantity
+    const [getPrice, getSetPrice] = useState(0); // State to keep track of total price
+
 
     // Update total quantity whenever cartItems prop changes
     // useEffect(() => {
@@ -29,21 +32,33 @@ export default function ShoppingCart(props) {
     //     });
     //     setTotalQuantity(quantity);
     // }, [cartItems]);
+    useEffect(() => {
+        let quantity = 0;
+        let price = 0;
+        cartItems.forEach((item) => {
+            quantity += item.qty;
+            price += item.price * item.qty;
+        });
+        setTotalQuantity(quantity);
+        getSetPrice(price);
+    }, [cartItems]);
 
     // with reduce it gives back a value the value of all the elements, of list
     const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
     const totalPrice = itemsPrice;
-    const data = totalPrice;
 
-    // const navigate = useNavigate();
 
-    // const handleCancel = () => {
-    //     localStorage.removeItem('cartItems');
-    //     clearCart(); // Call the clearCart function from the store
-    //     setTotalQuantity(0); // Reset the total quantity state
 
-    //     navigate('/');
-    // }
+
+    const navigate = useNavigate();
+
+    const handleCancel = () => {
+        localStorage.removeItem('cartItems');
+        clearCart(); // Call the clearCart function from the store
+        setTotalQuantity(0); // Reset the total quantity state
+        getSetPrice(0); // Reset the total price state
+        navigate('/');
+    }
 
 
 
@@ -57,7 +72,7 @@ export default function ShoppingCart(props) {
                     {/* display if the basket is empty */}
                     {cartItems.length === 0 && <div>Empty Basket</div>}
                 </div>
-                {!handleCancel && cartItems.map((item) => (
+                {cartItems.map((item) => (
                     <div key={item.id} className="row">
                         <div className="col-2">{item.name}</div>
                         <div className="col-2">
@@ -83,13 +98,12 @@ export default function ShoppingCart(props) {
                         </div>
                         <div className="row">Wanna add a tip?</div>
 
-                        <Link to={{ pathname: "/payment", state: data }}>
+                        <Link to={{ pathname: "/payment" }}>
                             <button className="navButtons">
                                 Get in Q!
                             </button>
                         </Link>
-                        <button onClick={handleCancel}>Cancel!</button>
-
+                        <button onClick={handleCancel}>Cancel</button>
                     </>
                 )}
             </div>

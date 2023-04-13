@@ -1,7 +1,7 @@
 import "./App.css";
 import Navigation from "./components/navigation/navigation";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import { useDeferredValue, useEffect, useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import NoPage from "./pages/404/404";
 import Profile from "./pages/profile/profile";
 import Home from "./pages/home/home";
@@ -28,11 +28,6 @@ function App() {
     console.log(param, "receiving data");
   }
 
-  // GET from Local storage
-  // const newCartItems = useCartItems(state => state.newCartItems);
-  // when user get's in the queue and log in
-  const [query, setQuery] = useState("");
-  // in order to import the data of drinks
   const { products } = data;
   // in order to change items in cart we need the useState to update
   const [cartItems, setCartItems] = useState([]);
@@ -45,12 +40,9 @@ function App() {
 
 
   // passing cancelation
-  const [totalitems, setTotalitems] = useState(0); // State to keep track of total quantity
-  const { clearCart } = useCartStore(); // Get clearCart function from the store
-  const [cancel, setCancel] = useState(false);
-
-
-
+  // const [totalitems, setTotalitems] = useState(0); // State to keep track of total quantity
+  // const { clearCart } = useCartStore(); // Get clearCart function from the store
+  // const [cancel, setCancel] = useState(false);
 
 
   const onAdd = (product) => {
@@ -137,8 +129,33 @@ function App() {
         lg: 1280,
         xl: 1920,
       },
+
+    },
+    spacing: {
+      // Set margin and padding values for different breakpoints
+      // You can set the 'marginBottom' value to 0 to remove the bottom margin
+      xs: 0,
+      sm: 0,
+      md: 0,
+      lg: 0,
+      xl: 0,
     },
   });
+
+  // const useStyles = styled((theme) => ({
+  //   root: {
+  //     // your component's styles
+  //   },
+  //   // Override default styles for CssBaseline
+  //   '@global': {
+  //     'MuiCssBaseline': {
+  //       marginBottom: 0,
+  //       paddingBottom: 0,
+  //     },
+  //   },
+  // }));
+
+  // const classes = useStyles();
 
 
   return isPending ? (<div>Loading...</div>
@@ -164,7 +181,7 @@ function App() {
                   onAdd={onAdd} onRemove={onRemove} countCartItems={totalQuantity} />} />
 
             </Route>
-            <Route path="/profile" element={<Profile query={query} />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/payment" element={<Payment />} />
             {/* I'm not sure how to implement the product that needs to be used by the drink.js */}
             <Route path="/Product" element={<Product cartItems={cartItems} onAdd={onAdd} onRemove={onRemove}
