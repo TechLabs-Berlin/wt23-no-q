@@ -1,7 +1,7 @@
 import "./App.css";
 import Navigation from "./components/navigation/navigation";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useDeferredValue, useEffect, useState, useTransition } from "react";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { useEffect, useState, useTransition } from "react";
 import NoPage from "./pages/404/404";
 import Profile from "./pages/profile/profile";
 import Home from "./pages/home/home";
@@ -23,24 +23,25 @@ import { createTheme, ThemeProvider, useMediaQuery, CssBaseline } from "@mui/mat
 
 
 
+
 function App() {
   const GetData = (param) => {
     console.log(param, "receiving data");
   }
 
-  // GET from Local storage
-  // const newCartItems = useCartItems(state => state.newCartItems);
-  // when user get's in the queue and log in
-  const [query, setQuery] = useState("");
-  // in order to import the data of drinks
   const { products } = data;
   // in order to change items in cart we need the useState to update
   const [cartItems, setCartItems] = useState([]);
+  // const navigate = useNavigate();
+
+  const categories = ["beers", "wines", "cocktails"];
 
   const addItem = useCartStore(state => state.addItem);
   const removeItem = useCartStore(state => state.removeItem);
   // calculate total of items in localStorage
   const totalQuantity = useCartStore((state) => state.getTotalQuantity());
+
+
 
   const onAdd = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
@@ -102,8 +103,33 @@ function App() {
         lg: 1280,
         xl: 1920,
       },
+
+    },
+    spacing: {
+      // Set margin and padding values for different breakpoints
+      // You can set the 'marginBottom' value to 0 to remove the bottom margin
+      xs: 0,
+      sm: 0,
+      md: 0,
+      lg: 0,
+      xl: 0,
     },
   });
+
+  // const useStyles = styled((theme) => ({
+  //   root: {
+  //     // your component's styles
+  //   },
+  //   // Override default styles for CssBaseline
+  //   '@global': {
+  //     'MuiCssBaseline': {
+  //       marginBottom: 0,
+  //       paddingBottom: 0,
+  //     },
+  //   },
+  // }));
+
+  // const classes = useStyles();
 
 
   return isPending ? (<div>Loading...</div>
@@ -122,17 +148,21 @@ function App() {
 
               <Route path="/drinks" cartItems={cartItems} onAdd={onAdd} onRemove={onRemove}
                 element={<Drinks products={products} onAdd={onAdd} onRemove={onRemove}
-                  cartItems={cartItems} countCartItems={totalQuantity} />} />
+                  cartItems={cartItems} countCartItems={totalQuantity} categories={categories} />} />
               {/* <Route path="Bars" element={<Bars />} /> */}
+
+
               <Route path="shop" countCartItems={totalQuantity} onAdd={onAdd} onRemove={onRemove} element={
                 <ShoppingCart cartItems={cartItems}
                   onAdd={onAdd} onRemove={onRemove} countCartItems={totalQuantity} />} />
 
             </Route>
-            <Route path="/profile" element={<Profile query={query} />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/payment" element={<Payment />} />
             {/* I'm not sure how to implement the product that needs to be used by the drink.js */}
-            <Route path="/Product" element={<Product cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />
+            <Route path="/Product" element={<Product cartItems={cartItems} onAdd={onAdd} onRemove={onRemove}
+
+            />} />
             <Route path="*" element={<NoPage />} />
           </Routes>
         </BrowserRouter>

@@ -33,6 +33,42 @@
     transform: scale(1.1);
 }
 
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #ff006e;
+    cursor: pointer;
+    font-size: 200%;
+    transition: opacity 0.3s ease;
+}
+
+.image-container:hover .text-overlay {
+    opacity: 1;
+    animation: fadeIn 0.3s;
+}
+
+/* @keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0;
+    } */
+
 
 
 

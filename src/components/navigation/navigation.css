@@ -40,7 +40,7 @@ ul {
 
 
 
-@media only screen and (max-device-width: 480px) {
+/* @media only screen and (max-device-width: 480px) {
 
     .navBar {
         float: none;
@@ -52,4 +52,4 @@ ul {
         width: fit-content;
         border: red solid 1px;
     }
-}
+} */
