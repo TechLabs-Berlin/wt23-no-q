@@ -18,16 +18,10 @@ import BreakPoint from "./components/responsive_utilities/breakpoint";
 import { styled } from "@mui/material/styles";
 import { createTheme, ThemeProvider, useMediaQuery, CssBaseline } from "@mui/material";
 
-
-
-
-
-
-
 function App() {
   const GetData = (param) => {
     console.log(param, "receiving data");
-  }
+  };
 
   const { products } = data;
   // in order to change items in cart we need the useState to update
@@ -36,26 +30,22 @@ function App() {
 
   const categories = ["beers", "wines", "cocktails"];
 
-  const addItem = useCartStore(state => state.addItem);
-  const removeItem = useCartStore(state => state.removeItem);
+  const addItem = useCartStore((state) => state.addItem);
+  const removeItem = useCartStore((state) => state.removeItem);
   // calculate total of items in localStorage
   const totalQuantity = useCartStore((state) => state.getTotalQuantity());
-
-
 
   const onAdd = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist) {
-      const newCartItems = cartItems.map((x) =>
-        x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
-      );
+      const newCartItems = cartItems.map((x) => (x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x));
       setCartItems(newCartItems);
-      localStorage.setItem('cartItems', JSON.stringify(newCartItems));
+      localStorage.setItem("cartItems", JSON.stringify(newCartItems));
       addItem(product);
     } else {
       const newCartItems = [...cartItems, { ...product, qty: 1 }];
       setCartItems(newCartItems);
-      localStorage.setItem('cartItems', JSON.stringify(newCartItems));
+      localStorage.setItem("cartItems", JSON.stringify(newCartItems));
       addItem(product);
     }
   };
@@ -63,22 +53,17 @@ function App() {
   const onRemove = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist.qty === 1) {
-      const newCartItems = (cartItems.filter((x) => x.id !== product.id));
+      const newCartItems = cartItems.filter((x) => x.id !== product.id);
       setCartItems(newCartItems);
-      localStorage.setItem('cartItems', JSON.stringify(newCartItems));
+      localStorage.setItem("cartItems", JSON.stringify(newCartItems));
       removeItem(product);
     } else {
-      const newCartItems = (cartItems.map((x) =>
-        x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
-      ));
+      const newCartItems = cartItems.map((x) => (x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x));
       setCartItems(newCartItems);
-      localStorage.setItem('cartItems', JSON.stringify(newCartItems));
+      localStorage.setItem("cartItems", JSON.stringify(newCartItems));
       removeItem(product);
     }
   };
-
-
-
 
   const [isPending, startTransition] = useTransition();
 
@@ -86,13 +71,9 @@ function App() {
   // useTransition so it does not block while "reading" from localStorage
   useEffect(() => {
     startTransition(() => {
-      setCartItems
-        (localStorage.getItem('cartItems')
-          ? JSON.parse(localStorage.getItem('cartItems')) : []);
+      setCartItems(localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []);
     });
-
   }, []);
-
 
   const theme = createTheme({
     breakpoints: {
@@ -103,9 +84,8 @@ function App() {
         lg: 1280,
         xl: 1920,
       },
-
     },
-    spacing: {
+    /*   spacing: {
       // Set margin and padding values for different breakpoints
       // You can set the 'marginBottom' value to 0 to remove the bottom margin
       xs: 0,
@@ -113,26 +93,11 @@ function App() {
       md: 0,
       lg: 0,
       xl: 0,
-    },
+    }, */
   });
 
-  // const useStyles = styled((theme) => ({
-  //   root: {
-  //     // your component's styles
-  //   },
-  //   // Override default styles for CssBaseline
-  //   '@global': {
-  //     'MuiCssBaseline': {
-  //       marginBottom: 0,
-  //       paddingBottom: 0,
-  //     },
-  //   },
-  // }));
-
-  // const classes = useStyles();
-
-
-  return isPending ? (<div>Loading...</div>
+  return isPending ? (
+    <div>Loading...</div>
   ) : (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -141,28 +106,25 @@ function App() {
         <LoadingScreen delay={1000} />
         <BrowserRouter>
           <Routes>
-
             <Route index element={<Home />} />
             <Route path="/userform" element={<UserForm GetDataValue={GetData} />} />
-            <Route path="/" element={<><Navigation countCartItems={totalQuantity} /></>}>
-
-              <Route path="/drinks" cartItems={cartItems} onAdd={onAdd} onRemove={onRemove}
-                element={<Drinks products={products} onAdd={onAdd} onRemove={onRemove}
-                  cartItems={cartItems} countCartItems={totalQuantity} categories={categories} />} />
+            <Route
+              path="/"
+              element={
+                <>
+                  <Navigation countCartItems={totalQuantity} />
+                </>
+              }
+            >
+              <Route path="/drinks" cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} element={<Drinks products={products} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} countCartItems={totalQuantity} categories={categories} />} />
               {/* <Route path="Bars" element={<Bars />} /> */}
 
-
-              <Route path="shop" countCartItems={totalQuantity} onAdd={onAdd} onRemove={onRemove} element={
-                <ShoppingCart cartItems={cartItems}
-                  onAdd={onAdd} onRemove={onRemove} countCartItems={totalQuantity} />} />
-
+              <Route path="shop" countCartItems={totalQuantity} onAdd={onAdd} onRemove={onRemove} element={<ShoppingCart cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} countCartItems={totalQuantity} />} />
             </Route>
             <Route path="/profile" element={<Profile />} />
             <Route path="/payment" element={<Payment />} />
             {/* I'm not sure how to implement the product that needs to be used by the drink.js */}
-            <Route path="/Product" element={<Product cartItems={cartItems} onAdd={onAdd} onRemove={onRemove}
-
-            />} />
+            <Route path="/Product" element={<Product cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />
             <Route path="*" element={<NoPage />} />
           </Routes>
         </BrowserRouter>
