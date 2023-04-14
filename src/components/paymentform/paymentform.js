@@ -3,7 +3,7 @@ import "./paymentform.css";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 
-function PaymentForm({ totalAmount }) {
+function PaymentForm() {
   const {
     register,
     handleSubmit,
@@ -64,12 +64,7 @@ function PaymentForm({ totalAmount }) {
           {errors.cvv && errors.cvv.type === "required" && <div className="error-message">CVV is required</div>}
           {errors.cvv && errors.cvv.type === "pattern" && <div className="error-message">CVV must be 3 digits</div>}
         </div>
-        <div className="form-row">
-          {/* Display the total amount */}
-          <div className="form-row total-amount">
-            <span>Total Amount: €{totalAmount.toFixed(2)}</span>
-          </div>
-        </div>
+
         <button type="submit">Submit</button>
       </form>
     </div>
