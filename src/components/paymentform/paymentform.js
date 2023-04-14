@@ -12,7 +12,6 @@ function PaymentForm() {
   const navigate = useNavigate();
 
   function onSubmit(data) {
-    // Submit the form data to the server
     console.log("Form submitted:", data);
   }
 

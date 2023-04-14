@@ -1,6 +1,9 @@
 .block {
+    margin-top: 2%;
+    margin-bottom: 10%;
     display: flex;
-    flex-direction: row;
+    width: 90%;
+    flex-direction: column;
     flex-wrap: wrap;
     height: 100%;
     background-color: black;
@@ -10,6 +13,7 @@
 
 
 .row {
+    width: 70%;
     margin-top: 2rem;
     display: flex;
     justify-content: space-between;
@@ -25,32 +29,37 @@ img.small {
     max-height: 30rem;
     width: 30%;
 
+
 }
 
 .card {
     background-color: black;
     padding: 1rem;
     margin: 0.5rem;
+    border-radius: 10%;
+    width: 200px;
 }
 
 /* need to stylize more but I'll do them later */
 button {
-    font-size: 1rem;
+    font-size: 15px;
     padding: 0.2rem;
     margin: 0.1rem;
     border-radius: 0.5rem;
-    border: 0.1rem #404040 solid;
+    border: 0.1rem black;
     background-color: #3a0ca3;
-    width: 100%;
+    width: 80px;
     cursor: pointer;
 }
 
 button.add {
     background-color: yellowgreen;
+    color: black;
 }
 
 button.remove {
     background-color: rgb(216, 65, 31);
+    color: black;
 }
 
 

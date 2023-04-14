@@ -52,14 +52,16 @@ ul {
   transform: scale(0.7);
 }
 
-@media only screen and (max-device-width: 480px) {
-  .navBar {
-    float: none;
-    width: 100%;
-  }
+/* @media only screen and (max-device-width: 480px) {
 
-  .ul {
-    width: fit-content;
-    border: red solid 1px;
-  }
-}
+    .navBar {
+        float: none;
+        width: 100%;
+
+    }
+
+    .ul {
+        width: fit-content;
+        border: red solid 1px;
+    }
+} */

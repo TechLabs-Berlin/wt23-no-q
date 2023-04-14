@@ -9,6 +9,7 @@ import { styled } from "@mui/system";
 import Badge from "@mui/material/Badge";
 import logo from "../../logo/4logo.png";
 import { useUser } from "../../useData";
+import { useEffect } from "react";
 
 const StyledHomeIcon = styled(HomeIcon, {
   name: "StyledHomeIcon",
