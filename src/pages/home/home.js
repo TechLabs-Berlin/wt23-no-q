@@ -17,7 +17,7 @@ export default function Home() {
           <div className='image-container'>
             <img className='logo-img' src='./images/newer_logo.png' alt='logo' />
             <div className='text-overlay'>
-              'Hello you extrovert! Welcome in No-Q,click to get in the App!'
+              'Hello you extrovert! Welcome in No-Q! Click to get in the App!'
             </div>
           </div>
           {/* 

@@ -1,0 +1,169 @@
+/* .DrinkMenu {
+  font-family: Arial, sans-serif;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.menu-item {
+  margin-bottom: 10px;
+}
+
+.menu-button {
+  background-color: #eee;
+  border: none;
+  color: #444;
+  cursor: pointer;
+  font-size: 30px;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.menu-button:hover {
+  background-color: #ddd;
+}
+
+.submenu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 10px;
+  margin: 0;
+}
+
+.submenu li {
+  margin-bottom: 10px;
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+ */
+/* 
+.DrinkMenu {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.menu-item {
+  margin-bottom: 10px;
+}
+
+.menu-button {
+  width: 100%;
+  text-align: left;
+  background-color: transparent;
+  border: 1px;
+  outline: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.submenu {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.submenu li {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.product-name {
+  flex: 1;
+}
+
+.product-price {
+  margin-left: 10px;
+}
+
+
+ */
+.DrinkMenu {
+    width: 90%;
+    margin: 0 auto;
+    background-color: #691662;
+}
+
+.DrinkMenu__button {
+    width: 100%;
+    text-align: left;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 20px;
+    font-size: 18px;
+    position: relative;
+    text-transform: capitalize;
+    color: #f9f9f9;
+}
+
+.DrinkMenu__item {
+    border: 1px solid #120516;
+}
+
+.DrinkMenu__button:before {
+    content: ">";
+    position: absolute;
+    right: 10px;
+}
+
+.DrinkMenu__button.active:before {
+    content: "\2304";
+}
+
+.DrinkMenu__products-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.DrinkMenu__submenu {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background: #ffe7fd;
+    max-height: 70vh;
+    /* or max-height: 500px; */
+    overflow: auto;
+}
+
+.DrinkMenu__submenu-li {
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+.DrinkMenu__product {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #cd5bc3;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    /* include padding and border in width */
+}
