@@ -1,4 +1,5 @@
 import "./drinks.css";
+import React from "react";
 
 export default function Product(props) {
     // the same process as we did to drinks.js in order to pass the data in children from Parents with props

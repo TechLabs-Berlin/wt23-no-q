@@ -1,10 +1,14 @@
 
 import React from "react";
 import './shop.css';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+// import { useNavigate, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link, useNavigate } from 'react-router-dom';
 import { useCartStore } from "../../useCartStore";
 import { useState, useEffect } from "react";
+import Payment from "../payment/payment";
+import PaymentForm from "../../components/paymentform/paymentform";
+
 
 
 
@@ -102,6 +106,7 @@ export default function ShoppingCart(props) {
                                 Get in Q!
                             </button>
                         </Link>
+
                         <button onClick={handleCancel}>Cancel</button>
                     </>
                 )}
