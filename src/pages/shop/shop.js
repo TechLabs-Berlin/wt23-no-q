@@ -20,7 +20,7 @@ import PaymentForm from "../../components/paymentform/paymentform";
 
 export default function ShoppingCart(props) {
     // fetching data from App.js
-    const { cartItems, onAdd, onRemove } = props;
+    const { cartItems, onAdd, onRemove, item } = props;
 
 
     const { clearCart } = useCartStore(); // Get clearCart function from the store
@@ -43,6 +43,7 @@ export default function ShoppingCart(props) {
 
     // with reduce it gives back a value the value of all the elements, of list
     const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
+    localStorage.setItem('itemsPrice', itemsPrice);
     const totalPrice = itemsPrice;
 
     useEffect(() => {
@@ -101,8 +102,13 @@ export default function ShoppingCart(props) {
                         </div>
                         <div className="row">Wanna add a tip?</div>
 
-                        <Link to={{ pathname: "/payment" }}>
+                        {/* <Link to={{ pathname: "/payment", state: { totalCost: item.qty * item.price } }}>
                             <button className="navButtons">
+                                Get in Q!
+                            </button>
+                        </Link> */}
+                        <Link to={{ pathname: "/payment", state: { itemsPrice: itemsPrice } }}>
+                            <button className="navButtons" >
                                 Get in Q!
                             </button>
                         </Link>
