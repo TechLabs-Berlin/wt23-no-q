@@ -4,11 +4,14 @@ import Product from "../product"; // Importing Product component for rendering i
 /* import BreakPoint from "../../../components/responsive_utilities/breakpoint"; */
 
 function DrinkMenu(props) {
-    const { products, onAdd } = props;
+    const { products, onAdd, onRemove, cartItems } = props;
 
     const [active, setActive] = useState(null); // Setting up state using the useState hook
 
     const categories = ["beers", "cocktails", "wines"]; // Setting up an array of categories to render in the menu
+    // const filteredProducts = products.filter(
+    //     (product) => product.category === categories
+    // );
 
     const handleClick = (index) => {
         // Event handler for button clicks
@@ -27,6 +30,9 @@ function DrinkMenu(props) {
             console.log("Product added to cart:", product);
             onAdd(product);
         };
+        const onRemoveWithLogs = (product) => {
+            onRemove(product);
+        }
 
         return (
             <ul className="DrinkMenu__submenu">
@@ -35,7 +41,11 @@ function DrinkMenu(props) {
                     {filteredProducts.map((product) => (
                         <li key={product.id} className="DrinkMenu__submenu-li">
                             <div className="DrinkMenu__product">
-                                <Product product={product} onAdd={onAddWithLogs} />
+                                <Product product={product}
+                                    key={product.id}
+                                    item={cartItems.find((x) => x.id === product.id)}
+                                    onAdd={onAddWithLogs}
+                                    onRemove={onRemoveWithLogs} />
                             </div>
                         </li>
                     ))}

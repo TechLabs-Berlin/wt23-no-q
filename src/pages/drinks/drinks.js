@@ -11,21 +11,15 @@ export default function Drinks(props) {
       <h1 className="menu">Menu</h1>
       <div className="row">
 
-        {/* to find each element in the products and collect the data */}
-        {products.map((product) => (
-          // to pass the products to the Product component we have to call product={product} so in order to pass the product from the products(with the map) and pass it on
-          <Product
-            key={product.id}
-            product={product}
-            // if it does not exist it will return null
-            item={cartItems.find((x) => x.id === product.id)}
-            onAdd={onAdd}
-            onRemove={onRemove}>
-          </Product>
-        ))}
+        <DrinkMenu
+          products={products}
+          onAdd={onAdd}
+          onRemove={onRemove}
+          cartItems={cartItems}
+        />
+
       </div>
     </div>
   )
 }
-
 

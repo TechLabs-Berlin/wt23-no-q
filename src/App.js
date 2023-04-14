@@ -23,6 +23,7 @@ import { createTheme, ThemeProvider, useMediaQuery, CssBaseline } from "@mui/mat
 
 
 
+
 function App() {
   const GetData = (param) => {
     console.log(param, "receiving data");
@@ -33,16 +34,13 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   // const navigate = useNavigate();
 
+  const categories = ["beers", "wines", "cocktails"];
+
   const addItem = useCartStore(state => state.addItem);
   const removeItem = useCartStore(state => state.removeItem);
   // calculate total of items in localStorage
   const totalQuantity = useCartStore((state) => state.getTotalQuantity());
 
-
-  // passing cancelation
-  // const [totalitems, setTotalitems] = useState(0); // State to keep track of total quantity
-  // const { clearCart } = useCartStore(); // Get clearCart function from the store
-  // const [cancel, setCancel] = useState(false);
 
 
   const onAdd = (product) => {
@@ -150,8 +148,10 @@ function App() {
 
               <Route path="/drinks" cartItems={cartItems} onAdd={onAdd} onRemove={onRemove}
                 element={<Drinks products={products} onAdd={onAdd} onRemove={onRemove}
-                  cartItems={cartItems} countCartItems={totalQuantity} />} />
+                  cartItems={cartItems} countCartItems={totalQuantity} categories={categories} />} />
               {/* <Route path="Bars" element={<Bars />} /> */}
+
+
               <Route path="shop" countCartItems={totalQuantity} onAdd={onAdd} onRemove={onRemove} element={
                 <ShoppingCart cartItems={cartItems}
                   onAdd={onAdd} onRemove={onRemove} countCartItems={totalQuantity} />} />
