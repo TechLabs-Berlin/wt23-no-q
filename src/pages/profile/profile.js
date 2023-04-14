@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./profile.css";
 import { useUser } from "../../useData";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 export default function Profile() {
   const { usersArray, removeUser } = useUser();
@@ -11,18 +10,28 @@ export default function Profile() {
   const userName = currentUser ? currentUser.name : "N/A";
 
   const navigate = useNavigate();
+  const [isCanceled, setIsCanceled] = useState(false);
 
   const handleCancel = () => {
     if (currentUser) {
       removeUser(currentUser.id);
     }
+    setIsCanceled(true);
     navigate("/");
   };
+
   useEffect(() => {
-    setTimeout(() => {
-      navigate("/drinkRating");
+    const timer = setTimeout(() => {
+      if (!isCanceled) {
+        navigate("/drinkRating");
+      }
     }, 8000);
-  }, []);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [isCanceled]);
+
   return (
     <>
       <div className="orderPage">
