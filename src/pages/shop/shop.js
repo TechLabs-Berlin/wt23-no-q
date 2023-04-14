@@ -9,7 +9,10 @@ import { useState, useEffect } from "react";
 import Payment from "../payment/payment";
 import PaymentForm from "../../components/paymentform/paymentform";
 import data from "../drinks/data";
+<<<<<<< HEAD
 
+=======
+>>>>>>> cancel
 
 
 
@@ -23,14 +26,16 @@ export default function ShoppingCart(props) {
     // fetching data from App.js
     const { cartItems, onAdd, onRemove } = props;
 
-
     const { clearCart } = useCartStore(); // Get clearCart function from the store
     const [totalQuantity, setTotalQuantity] = useState(0); // State to keep track of total quantity
     const [getPrice, getSetPrice] = useState(0); // State to keep track of total price
 
     const [items, setItems] = useState(0);
     const [products, setProducts] = useState(data);
+<<<<<<< HEAD
 
+=======
+>>>>>>> cancel
 
 
 
@@ -52,10 +57,15 @@ export default function ShoppingCart(props) {
     // useEffect(() => {
     //     if (totalQuantity === 0) {
     //         getSetPrice(0); // Reset total price
+<<<<<<< HEAD
 
     //     }
     // }, [totalQuantity]);
+=======
+>>>>>>> cancel
 
+    //     }
+    // }, [totalQuantity]);
 
     const navigate = useNavigate();
 
@@ -74,7 +84,10 @@ export default function ShoppingCart(props) {
             getSetPrice(0); // Reset total price
         }
     }, [totalQuantity, cartItems]);
+<<<<<<< HEAD
 
+=======
+>>>>>>> cancel
 
 
 
@@ -126,3 +139,4 @@ export default function ShoppingCart(props) {
         </div>
     );
 }
+
