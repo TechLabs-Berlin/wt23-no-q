@@ -8,6 +8,7 @@ import { useCartStore } from "../../useCartStore";
 import { useState, useEffect } from "react";
 import Payment from "../payment/payment";
 import PaymentForm from "../../components/paymentform/paymentform";
+import data from "../drinks/data";
 
 
 
@@ -27,6 +28,9 @@ export default function ShoppingCart(props) {
     const [totalQuantity, setTotalQuantity] = useState(0); // State to keep track of total quantity
     const [getPrice, getSetPrice] = useState(0); // State to keep track of total price
 
+    const [items, setItems] = useState(0);
+    const [products, setProducts] = useState(data);
+
 
 
 
@@ -45,12 +49,12 @@ export default function ShoppingCart(props) {
     const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
     const totalPrice = itemsPrice;
 
-    useEffect(() => {
-        if (totalQuantity === 0) {
-            getSetPrice(0); // Reset total price
+    // useEffect(() => {
+    //     if (totalQuantity === 0) {
+    //         getSetPrice(0); // Reset total price
 
-        }
-    }, [totalQuantity]);
+    //     }
+    // }, [totalQuantity]);
 
 
     const navigate = useNavigate();
@@ -60,8 +64,16 @@ export default function ShoppingCart(props) {
         clearCart(); // Call the clearCart function from the store
         setTotalQuantity(0); // Reset the total quantity state
         getSetPrice(0); // Reset the total price state
+        setItems(null);
+        setProducts(null);
         navigate('/');
     }
+
+    useEffect(() => {
+        if (totalQuantity === 0) {
+            getSetPrice(0); // Reset total price
+        }
+    }, [totalQuantity, cartItems]);
 
 
 
