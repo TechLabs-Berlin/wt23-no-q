@@ -1,128 +1,108 @@
-
-import React from "react";
-import './shop.css';
-// import { Link } from 'react-router-dom';
-// import { useNavigate, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { BrowserRouter as Router, Route, Switch, Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import "./shop.css";
+import { BrowserRouter as Router, Route, Switch, Link, useNavigate } from "react-router-dom";
 import { useCartStore } from "../../useCartStore";
-import { useState, useEffect } from "react";
-import Payment from "../payment/payment";
-import PaymentForm from "../../components/paymentform/paymentform";
 import data from "../drinks/data";
-
-
-
-
-
-
+import TipButtonGroup from "./tip";
 
 export default function ShoppingCart(props) {
-    // fetching data from App.js
-    const { cartItems, onAdd, onRemove, item } = props;
+  const { cartItems, onAdd, onRemove, item } = props;
+  const { clearCart } = useCartStore();
+  const [totalQuantity, setTotalQuantity] = useState(0);
+  const [getPrice, getSetPrice] = useState(0);
+  const [items, setItems] = useState(0);
+  const [products, setProducts] = useState(data);
 
-    const { clearCart } = useCartStore(); // Get clearCart function from the store
-    const [totalQuantity, setTotalQuantity] = useState(0); // State to keep track of total quantity
-    const [getPrice, getSetPrice] = useState(0); // State to keep track of total price
+  const [tipAmount, setTipAmount] = useState({ type: "percentage", value: 0 });
 
-    const [items, setItems] = useState(0);
-    const [products, setProducts] = useState(data);
+  useEffect(() => {
+    let quantity = 0;
+    let price = 0;
+    cartItems.forEach((item) => {
+      quantity += item.qty;
+      price += item.price * item.qty;
+    });
+    setTotalQuantity(quantity);
+    getSetPrice(price);
+  }, [cartItems]);
 
+  const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
+  const tipPrice = tipAmount.type === "percentage" ? itemsPrice * tipAmount.value : tipAmount.value;
+  const totalPrice = itemsPrice + tipPrice;
+  localStorage.setItem("itemsPrice", itemsPrice);
+  localStorage.setItem("totalPrice", totalPrice);
 
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        let quantity = 0;
-        let price = 0;
-        cartItems.forEach((item) => {
-            quantity += item.qty;
-            price += item.price * item.qty;
-        });
-        setTotalQuantity(quantity);
-        getSetPrice(price);
-    }, [cartItems]);
+  const handleCancel = () => {
+    localStorage.removeItem("cartItems");
+    clearCart();
+    setTotalQuantity(0);
+    getSetPrice(0);
+    setItems(null);
+    setProducts(null);
+    navigate("/");
+  };
 
-    // with reduce it gives back a value the value of all the elements, of list
-    const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
-    localStorage.setItem('itemsPrice', itemsPrice);
-    const totalPrice = itemsPrice;
-
-    // useEffect(() => {
-    //     if (totalQuantity === 0) {
-    //         getSetPrice(0); // Reset total price
-
-    //     }
-    // }, [totalQuantity]);
-
-    const navigate = useNavigate();
-
-    const handleCancel = () => {
-        localStorage.removeItem('cartItems');
-        clearCart(); // Call the clearCart function from the store
-        setTotalQuantity(0); // Reset the total quantity state
-        getSetPrice(0); // Reset the total price state
-        setItems(null);
-        setProducts(null);
-        navigate('/');
+  useEffect(() => {
+    if (totalQuantity === 0) {
+      getSetPrice(0);
     }
+  }, [totalQuantity, cartItems]);
 
-    useEffect(() => {
-        if (totalQuantity === 0) {
-            getSetPrice(0); // Reset total price
-        }
-    }, [totalQuantity, cartItems]);
+  // Add this function
+  const handleTipChange = (tip) => {
+    setTipAmount(tip);
+  };
 
-
-
-
-    return (
-        <div className="block-col-1">
-            <div className="basket">
-                <h2>Cart Items</h2>
-                <div className="components">
-                    {/* display if the basket is empty */}
-                    {cartItems.length === 0 && <div>Empty Basket</div>}
-                </div>
-                {cartItems.map((item) => (
-                    <div key={item.id} className="row">
-                        <div className="col-2">{item.name}</div>
-                        <div className="col-2">
-                            {/* we pass onAdd the item so it can be added in the basket */}
-                            <button onClick={() => onAdd(item)} className="add">+</button>
-                            <button onClick={() => onRemove(item)} className="remove">-</button>
-                        </div>
-                        <div>
-                            {/* the display of items and  to fixed id 2 digits*/}
-                            {item.qty} x ${item.price.toFixed(2)}
-
-                        </div>
-                    </div>
-                ))}
-                {/* in order to check that this is not empty so it will be rendered */}
-                {cartItems !== 0 && (
-                    <>
-                        <hr></hr>
-                        <div className="row">
-                            <div className="col-2">Items price</div>
-                            <div className="col-1">${totalPrice.toFixed(2)}</div>
-
-                        </div>
-                        <div className="row">Wanna add a tip?</div>
-
-                        {/* <Link to={{ pathname: "/payment", state: { totalCost: item.qty * item.price } }}>
-                            <button className="navButtons">
-                                Get in Q!
-                            </button>
-                        </Link> */}
-                        <Link to={{ pathname: "/payment", state: { itemsPrice: itemsPrice } }}>
-                            <button className="navButtons" >
-                                Get in Q!
-                            </button>
-                        </Link>
-
-                        <button onClick={handleCancel}>Cancel</button>
-                    </>
-                )}
+  return (
+    <div className="block-col-1">
+      <div className="basket">
+        <h2>Cart Items</h2>
+        <div className="components">{cartItems.length === 0 && <div>Empty Basket</div>}</div>
+        {cartItems.map((item) => (
+          <div key={item.id} className="row">
+            <div className="col-2">{item.name}</div>
+            <div className="col-2">
+              <button onClick={() => onAdd(item)} className="add">
+                +
+              </button>
+              <button onClick={() => onRemove(item)} className="remove">
+                -
+              </button>
             </div>
-        </div>
-    );
-}
+            <div>
+              {item.qty} x ${item.price.toFixed(2)}
+            </div>
+          </div>
+        ))}
+        {cartItems.length > 0 && (
+          <>
+            <hr />
+            <div className="row">
+              <div className="col-2">Items price</div>
+              <div className="col-1">${itemsPrice.toFixed(2)}</div>
+            </div>
+            <div className="row">
+              <div className="col-2">Tip</div>
+              <div className="col-1">
+                <TipButtonGroup onTipChange={handleTipChange} currency="EUR" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-2">Total price</div>
+              <div className="col-1">€{totalPrice.toFixed(2)}</div>
+            </div>
+            <div className="row buttons-container">
+              <Link to={{ pathname: "/payment", state: { totalPrice: totalPrice } }}>
+                <button className="navButtons">Get in Q!</button>
+              </Link>
 
+              <button onClick={handleCancel}>Cancel!</button>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}

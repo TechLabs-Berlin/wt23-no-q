@@ -1,7 +1,7 @@
 import React from "react";
 import "./paymentform.css";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function PaymentForm() {
   const {
@@ -9,6 +9,7 @@ function PaymentForm() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
 
   function onSubmit(data) {
     console.log("Form submitted:", data);
@@ -62,6 +63,7 @@ function PaymentForm() {
           {errors.cvv && errors.cvv.type === "required" && <div className="error-message">CVV is required</div>}
           {errors.cvv && errors.cvv.type === "pattern" && <div className="error-message">CVV must be 3 digits</div>}
         </div>
+
         <button type="submit">Submit</button>
       </form>
     </div>

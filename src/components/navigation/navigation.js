@@ -36,18 +36,24 @@ function Navigation(props) {
           Hello {userName}!
           <li>
             <button className="navButtons">
-              <Link to="/drinks">
-                <LocalDrinkIcon />
-              </Link>
+              <div className="navButtonContent">
+                <Link to="/drinks">
+                  <LocalDrinkIcon />
+                </Link>
+                <span>Menu</span>
+              </div>
             </button>
           </li>
           <li>
             <button className="navButtons">
               {/* have to connect shop props to navigation */}
               <Badge badgeContent={countCartItems} color="secondary">
-                <Link to="/shop">
-                  <ShoppingCartIcon />
-                </Link>
+                <div className="navButtonContent">
+                  <Link to="/shop">
+                    <ShoppingCartIcon />
+                  </Link>
+                  <span>Cart</span>
+                </div>
               </Badge>
             </button>
             {/* : ${mytotal} / {mytotalqty} */}
@@ -58,5 +64,4 @@ function Navigation(props) {
     </>
   );
 }
-
 export default Navigation;
