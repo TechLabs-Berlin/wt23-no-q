@@ -1,10 +1,14 @@
 
 import React from "react";
 import './shop.css';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+// import { useNavigate, BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link, useNavigate } from 'react-router-dom';
 import { useCartStore } from "../../useCartStore";
 import { useState, useEffect } from "react";
+import Payment from "../payment/payment";
+import PaymentForm from "../../components/paymentform/paymentform";
+import data from "../drinks/data";
 
 
 
@@ -18,11 +22,12 @@ export default function ShoppingCart(props) {
     // fetching data from App.js
     const { cartItems, onAdd, onRemove } = props;
 
-
     const { clearCart } = useCartStore(); // Get clearCart function from the store
     const [totalQuantity, setTotalQuantity] = useState(0); // State to keep track of total quantity
     const [getPrice, getSetPrice] = useState(0); // State to keep track of total price
 
+    const [items, setItems] = useState(0);
+    const [products, setProducts] = useState(data);
 
 
 
@@ -41,26 +46,24 @@ export default function ShoppingCart(props) {
     const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
     const totalPrice = itemsPrice;
 
-
-
-
-    const navigate = useNavigate();
-
-    const handleCancel = () => {
-        localStorage.removeItem('cartItems');
-        clearCart(); // Call the clearCart function from the store
-        console.log(clearCart());
-        setTotalQuantity(0); // Reset the total quantity state
-        getSetPrice(0); // Reset the total price state
-        navigate('/');
-    }
-
     // useEffect(() => {
     //     if (totalQuantity === 0) {
     //         getSetPrice(0); // Reset total price
 
     //     }
     // }, [totalQuantity]);
+
+    const navigate = useNavigate();
+
+    const handleCancel = () => {
+        localStorage.removeItem('cartItems');
+        clearCart(); // Call the clearCart function from the store
+        setTotalQuantity(0); // Reset the total quantity state
+        getSetPrice(0); // Reset the total price state
+        setItems(null);
+        setProducts(null);
+        navigate('/');
+    }
 
     useEffect(() => {
         if (totalQuantity === 0) {
@@ -110,6 +113,7 @@ export default function ShoppingCart(props) {
                                 Get in Q!
                             </button>
                         </Link>
+
                         <button onClick={handleCancel}>Cancel</button>
                     </>
                 )}
@@ -117,3 +121,4 @@ export default function ShoppingCart(props) {
         </div>
     );
 }
+
