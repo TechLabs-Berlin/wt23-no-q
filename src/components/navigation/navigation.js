@@ -2,24 +2,21 @@ import "./navigation.css";
 import HomeIcon from "@mui/icons-material/Home";
 import LocalDrinkIcon from "@mui/icons-material/LocalDrink";
 // import LocalBarIcon from "@mui/icons-material/LocalBar";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Outlet, Link } from "react-router-dom";
 import React from "react";
 import { styled } from "@mui/system";
-import Badge from '@mui/material/Badge';
-import logo from '../../logo/4logo.png';
+import Badge from "@mui/material/Badge";
+import logo from "../../logo/4logo.png";
 import { useUser } from "../../useData";
 import { useEffect } from "react";
 
-
 const StyledHomeIcon = styled(HomeIcon, {
   name: "StyledHomeIcon",
-  slot: "Wrapper"
+  slot: "Wrapper",
 })({
   color: "pink[500]",
 });
-
-
 
 function Navigation(props) {
   const { countCartItems } = props;
@@ -31,16 +28,12 @@ function Navigation(props) {
   // console.log(useUser[1].name);
   // console.log(getState().useUser.name);
 
-
-
-
   return (
     <>
       <nav className="navBar">
         <ul>
-          <img className='header-logo' src={logo} alt='logo' />
+          <img className="header-logo" src={logo} alt="logo" />
           Hello {userName}!
-
           <li>
             <button className="navButtons">
               <Link to="/drinks">
