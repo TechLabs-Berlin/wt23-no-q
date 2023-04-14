@@ -128,10 +128,10 @@ function App() {
             <Route path="/Product" element={<Product cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />
             <Route path="*" element={<NoPage />} />
             <Route path="drinkRating" element={<DrinkRating />}></Route>
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </ThemeProvider>
   );
 }
 
