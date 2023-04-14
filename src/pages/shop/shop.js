@@ -41,12 +41,7 @@ export default function ShoppingCart(props) {
     const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
     const totalPrice = itemsPrice;
 
-    useEffect(() => {
-        if (totalQuantity === 0) {
-            getSetPrice(0); // Reset total price
 
-        }
-    }, [totalQuantity]);
 
 
     const navigate = useNavigate();
@@ -54,11 +49,24 @@ export default function ShoppingCart(props) {
     const handleCancel = () => {
         localStorage.removeItem('cartItems');
         clearCart(); // Call the clearCart function from the store
+        console.log(clearCart());
         setTotalQuantity(0); // Reset the total quantity state
         getSetPrice(0); // Reset the total price state
         navigate('/');
     }
 
+    // useEffect(() => {
+    //     if (totalQuantity === 0) {
+    //         getSetPrice(0); // Reset total price
+
+    //     }
+    // }, [totalQuantity]);
+
+    useEffect(() => {
+        if (totalQuantity === 0) {
+            getSetPrice(0); // Reset total price
+        }
+    }, [totalQuantity, cartItems]);
 
 
 
