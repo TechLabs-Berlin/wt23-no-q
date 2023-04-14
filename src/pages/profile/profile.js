@@ -1,29 +1,40 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "@mui/material";
+import React from "react";
 import "./profile.css";
+import { useUser } from "../../useData";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function Profile() {
-  let user1 = window.localStorage.getItem("usersArray");
-  console.log(user1);
-  let ID = localStorage.getItem;
+  const { usersArray, removeUser } = useUser();
+  const currentUser = usersArray[usersArray.length - 1]; // Get the last user in the array
+  const queueNumber = currentUser ? usersArray.length : "N/A";
+  const userName = currentUser ? currentUser.name : "N/A";
+
   const navigate = useNavigate();
 
+  const handleCancel = () => {
+    if (currentUser) {
+      removeUser(currentUser.id);
+    }
+    navigate("/");
+  };
   useEffect(() => {
     setTimeout(() => {
       navigate("/drinkRating");
     }, 8000);
   }, []);
-
   return (
     <>
       <div className="orderPage">
         <div className="profile">
-          <h2>Hey , Your ID is and you are in the Queue ! You are the number</h2>
+          <h2 className="profile-h2">{userName}, your number is:</h2>
 
-          {/* <Link to="/payment">Pay Now</Link> */}
-          <div className="number-queue">#4</div>
-          <h3>You'll be notified when your order is ready!</h3>
+          <div className="number-queue">#{queueNumber}</div>
+
+          <h3 className="profile-h3">You'll be notified when your order is ready!</h3>
+          <button className="cancel-button" onClick={handleCancel}>
+            Cancel
+          </button>
         </div>
       </div>
     </>

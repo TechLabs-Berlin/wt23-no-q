@@ -1,20 +1,13 @@
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 export const useUser = create(
   persist(
-    (set, get) => ({
+    (set) => ({
       usersArray: [],
-      addUser: user => {
-        set(state => {
+      addUser: (user) => {
+        set((state) => {
           return { usersArray: [...state.usersArray, user] };
-        });
-      },
-      removeLastUser: () => {
-        set(state => {
-          const updatedUsersArray = [...state.usersArray];
-          updatedUsersArray.pop(); // Remove the last element
-          return { usersArray: updatedUsersArray };
         });
       },
       removeUser: (userId) => {
@@ -24,9 +17,8 @@ export const useUser = create(
       },
     }),
     {
-      name: 'usersArray', // unique name
+      name: "usersArray", // unique name
       getStorage: () => localStorage,
     }
   )
 );
-

@@ -13,6 +13,9 @@ function PaymentForm() {
 
   function onSubmit(data) {
     console.log("Form submitted:", data);
+
+    // Navigate to the profile page after form submission
+    navigate("/profile");
   }
 
   return (

@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 import { useState } from "react";
 
 const InQueue = (values) => {
@@ -45,4 +45,4 @@ const InQueue = (values) => {
     )
 }
 
-export default InQueue;
+export default InQueue; */
