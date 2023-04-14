@@ -1,20 +1,21 @@
 .navBar {
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
-  height: 50px;
-  width: 100vw;
+  height: 15%;
+  width: 100%;
   background-color: black;
   opacity: 100%;
   box-shadow: 3px 0 15px #575757;
 }
 
-.navBar_ul {
+ul {
   list-style: none;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   height: 100%;
+  margin-right: 5%;
 }
 
 .navButtons {
@@ -35,3 +36,17 @@
   background-color: #161a1d;
   transform: scale(0.7);
 }
+
+/* @media only screen and (max-device-width: 480px) {
+
+    .navBar {
+        float: none;
+        width: 100%;
+
+    }
+
+    .ul {
+        width: fit-content;
+        border: red solid 1px;
+    }
+} */

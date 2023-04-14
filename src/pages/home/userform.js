@@ -1,16 +1,18 @@
+
 import './userform.css';
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import validation from './validation';
-import InQueue from './inQueue';
+import { useState, useEffect, useRef } from 'react';
+// import validation from './validation';
+import { nanoid } from "nanoid";
+import { useUser } from "../../useData";
+import validation from "./validation";
+import { useNavigate } from "react-router-dom";
+import React from "react";
 
+const UserForm = () => {
+    const addUser = useUser((state) => state.addUser);
 
-
-const UserForm = ({ submitForm }) => {
-    // to catch Errors
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
-
 
     const [values, setValues] = useState({
         name: "",
@@ -19,39 +21,37 @@ const UserForm = ({ submitForm }) => {
         drink: "",
     });
 
-
-    // is false because we need it to happen after user submits the form, not when page is loaded
-    const [isPending, setIsPending] = useState(false);
-    // // After we see the data fetched we need to update the waiting users, or else we use the empty array
-    const [waitingUsers, setWaitingUsers] = useState('');
-
-    const [dataIsCorrect, setDataIsCorrect] = useState(false);
-
     function handleChange(e) {
-
         setValues({ ...values, [e.target.name]: e.target.value });
-
-
     }
 
-    // form Submit Event
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setErrors(validation(values));
 
-        setDataIsCorrect(true);
 
+        const validationResult = validation(values);
+        setErrors(validationResult);
+
+        if (Object.keys(validationResult).length === 0) {
+            let user = {
+                id: nanoid(),
+                name: values.name,
+                gender: values.gender,
+                number: values.number,
+                drink: values.drink,
+            };
+            addUser(user);
+
+            let path = `/drinks`;
+            navigate(path);
+        }
     };
 
-    useEffect(() => {
-        // here we check if there are no errors and the data is correct to redirect the user
-        if (Object.keys(errors).length === 0 && dataIsCorrect) {
-            submitForm(true);
-        }
-
-    }, [errors])
 
     return (
+
+
+
 
 
 
@@ -63,6 +63,7 @@ const UserForm = ({ submitForm }) => {
                     <input type="text" placeholder="What's your name?" value={values.name} id="name"
                         onChange={handleChange} name="name" />
                     {errors.name && <p className="error">{errors.name}</p>}
+
                 </div>
                 <div className="drink">
                     <label htmlFor="gender">What is your gender?</label>
@@ -73,6 +74,7 @@ const UserForm = ({ submitForm }) => {
                         <option value="other">Other</option>
                     </select>
                     {errors.gender && <p className="error">{errors.gender}</p>}
+
                 </div>
                 <div className="number">
                     <label htmlFor="party">Number of people:</label>
@@ -80,6 +82,7 @@ const UserForm = ({ submitForm }) => {
                         value={values.number}
                         onChange={handleChange} name="number" />
                     {errors.number && <p className="error">{errors.number}</p>}
+
                 </div>
                 <div className="drink">
                     <label htmlFor="drink">Favorite drink</label>
@@ -93,18 +96,21 @@ const UserForm = ({ submitForm }) => {
                         <option value="water">Water</option>
                     </select>
                     {errors.drink && <p className="error">{errors.drink}</p>}
+
                 </div>
                 {/* to redirect to the new page of the user */}
 
-                {!isPending && <button onSubmit={handleChange}>Get in Q!</button>}
+                <button onClick={handleSubmit}>Get in Q!</button>
                 {/* we have to put in the button to call the function Queue.js */}
-                {isPending && <button disabled>You are in Q!</button>}
+
 
 
             </form>
         </div>
     );
 };
+
+
 
 
 export default UserForm;

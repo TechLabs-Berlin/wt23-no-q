@@ -1,13 +1,15 @@
 import "./navigation.css";
 import HomeIcon from "@mui/icons-material/Home";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LocalDrinkIcon from "@mui/icons-material/LocalDrink";
 // import LocalBarIcon from "@mui/icons-material/LocalBar";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Outlet, Link } from "react-router-dom";
-import PaymentIcon from "@mui/icons-material/Payment";
 import React from "react";
 import { styled } from "@mui/system";
+import Badge from "@mui/material/Badge";
+import logo from "../../logo/4logo.png";
+import { useUser } from "../../useData";
+import { useEffect } from "react";
 
 const StyledHomeIcon = styled(HomeIcon, {
   name: "StyledHomeIcon",
@@ -16,18 +18,22 @@ const StyledHomeIcon = styled(HomeIcon, {
   color: "pink[500]",
 });
 
-function Navigation() {
+function Navigation(props) {
+  const { countCartItems } = props;
+
+  const { usersArray } = useUser();
+  const currentUser = usersArray[usersArray.length - 1];
+  const userName = currentUser ? currentUser.name : "N/A";
+
+  // console.log(useUser[1].name);
+  // console.log(getState().useUser.name);
+
   return (
     <>
       <nav className="navBar">
-        <ul className="navBar_ul">
-          <li>
-            <button className="navButtons">
-              <Link to="/">
-                <StyledHomeIcon />
-              </Link>
-            </button>
-          </li>
+        <ul>
+          <img className="header-logo" src={logo} alt="logo" />
+          Hello {userName}!
           <li>
             <button className="navButtons">
               <Link to="/drinks">
@@ -37,24 +43,14 @@ function Navigation() {
           </li>
           <li>
             <button className="navButtons">
-              <Link to="/shop">
-                <ShoppingCartIcon />
-              </Link>
+              {/* have to connect shop props to navigation */}
+              <Badge badgeContent={countCartItems} color="secondary">
+                <Link to="/shop">
+                  <ShoppingCartIcon />
+                </Link>
+              </Badge>
             </button>
-          </li>
-          <li>
-            <button className="navButtons">
-              <Link to="/profile">
-                <AccountCircleIcon />
-              </Link>
-            </button>
-          </li>
-          <li>
-            <button className="navButtons">
-              <Link to="/payment">
-                <PaymentIcon />
-              </Link>
-            </button>
+            {/* : ${mytotal} / {mytotalqty} */}
           </li>
         </ul>
       </nav>
