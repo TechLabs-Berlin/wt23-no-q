@@ -2,6 +2,7 @@ import React from "react";
 import "./profile.css";
 import { useUser } from "../../useData";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function Profile() {
   const { usersArray, removeUser } = useUser();
@@ -17,7 +18,11 @@ export default function Profile() {
     }
     navigate("/");
   };
-
+  useEffect(() => {
+    setTimeout(() => {
+      navigate("/drinkRating");
+    }, 8000);
+  }, []);
   return (
     <>
       <div className="orderPage">
