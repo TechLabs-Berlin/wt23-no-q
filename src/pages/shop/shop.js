@@ -57,7 +57,7 @@ export default function ShoppingCart(props) {
             </div>
             <div className="row">
               <div className="col-2">Total price</div>
-              <div className="col-1">${totalPrice.toFixed(2)}</div>
+              <div className="col-1">€{totalPrice.toFixed(2)}</div>
             </div>
             <div className="row buttons-container">
               <Link to={{ pathname: "/payment", state: { totalAmount: totalPrice } }}>
