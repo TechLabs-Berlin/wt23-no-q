@@ -1,155 +1,136 @@
 .block {
-    margin-top: 2%;
-    margin-bottom: 10%;
-    display: flex;
-    width: 90%;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 100%;
-    background-color: black;
-
-
+  margin-top: 2%;
+  margin-bottom: 10%;
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 100%;
+  background-color: black;
 }
 
-
 .row {
-    width: 70%;
-    margin-top: 2rem;
-    display: flex;
-    justify-content: space-between;
-
+  width: 70%;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 .menu {
-    padding-top: 10%;
+  padding-top: 10%;
 }
 
-
 img.small {
-    max-height: 30rem;
-    width: 30%;
-
-
+  max-height: 30rem;
+  width: 30%;
 }
 
 .card {
-    background-color: black;
-    padding: 1rem;
-    margin: 0.5rem;
-    border-radius: 10%;
-    width: 200px;
+  background-color: black;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 10%;
+  width: 200px;
 }
 
 /* need to stylize more but I'll do them later */
 button {
-    font-size: 15px;
-    padding: 0.2rem;
-    margin: 0.1rem;
-    border-radius: 0.5rem;
-    border: 0.1rem black;
-    background-color: #3a0ca3;
-    width: 80px;
-    cursor: pointer;
+  font-size: 15px;
+  padding: 0.2rem;
+  margin: 0.1rem;
+  border-radius: 0.5rem;
+  border: 0.1rem black;
+  background-color: #3a0ca3;
+  width: 80px;
+  cursor: pointer;
 }
 
 button.add {
-    background-color: yellowgreen;
-    color: black;
+  background-color: yellowgreen;
+  color: black;
 }
 
 button.remove {
-    background-color: rgb(216, 65, 31);
-    color: black;
+  background-color: rgb(216, 65, 31);
+  color: black;
 }
 
-
-
 .header {
-    /* /* margin-top: 20px;
+  /* /* margin-top: 20px;
     padding: 20px 10px; */
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 15%;
-    transition: top 0.3s;
-    display: flex;
-    flex-direction: column;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 15%;
+  transition: top 0.3s;
+  display: flex;
+  flex-direction: column;
 
-    color: #0d1b2a;
-    display: flex;
-    justify-content: flex-start;
-    align-content: center;
-    flex-wrap: wrap;
-    box-shadow: 3px 0 15px #575757;
-
+  color: #0d1b2a;
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  flex-wrap: wrap;
+  box-shadow: 3px 0 15px #575757;
 }
 
 .header-top {
-    margin: 0;
-    display: block;
-    position: relative;
-    align-self: flex-start;
-    width: 100%;
-    height: 100%;
-
+  margin: 0;
+  display: block;
+  position: relative;
+  align-self: flex-start;
+  width: 100%;
+  height: 100%;
 }
 
 .header-top__logo {
-    display: block;
-    justify-content: center;
-    align-items: center;
-    /* align-items: center; */
-    height: 100%;
-    display: inline;
-
-
+  display: block;
+  justify-content: center;
+  align-items: center;
+  /* align-items: center; */
+  height: 100%;
+  display: inline;
 }
 
 .header-logo {
-    position: relative;
-    height: 100%;
-    display: inline;
-    top: 0;
-    left: 0;
-
+  position: relative;
+  height: 100%;
+  display: inline;
+  top: 0;
+  left: 0;
 }
 
 .order {
-    display: inline;
-    position: absolute;
-    margin-top: 5ch;
-    margin-left: 80%;
-    height: 50%;
-
+  display: inline;
+  position: absolute;
+  margin-top: 5ch;
+  margin-left: 80%;
+  height: 50%;
 }
 
 .order-btn {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 section {
-    font-size: 110%;
+  font-size: 110%;
 }
 
-
 @media only screen and (max-device-width: 480px) {
-    .block {
-        width: 100%;
-        flex-wrap: wrap;
-        display: grid;
-        background-color: black;
+  .block {
+    width: 100%;
+    flex-wrap: wrap;
+    display: grid;
+    background-color: black;
+  }
 
+  .menu {
+    margin-top: 30%;
+  }
 
-    }
-
-    .menu {
-        margin-top: 30%;
-
-    }
-
-    .row {
-        margin-top: 0%;
-        flex-direction: column;
-        background-color: black;
-    }
+  .row {
+    margin-top: 0%;
+    flex-direction: column;
+    background-color: black;
+  }
 }

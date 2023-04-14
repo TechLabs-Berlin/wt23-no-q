@@ -17,6 +17,7 @@ import { useCartStore } from "./useCartStore";
 import BreakPoint from "./components/responsive_utilities/breakpoint";
 import { styled } from "@mui/material/styles";
 import { createTheme, ThemeProvider, useMediaQuery, CssBaseline } from "@mui/material";
+import DrinkRating from "./components/drinkRating/drinkRating";
 
 function App() {
   const GetData = (param) => {
@@ -126,6 +127,7 @@ function App() {
             {/* I'm not sure how to implement the product that needs to be used by the drink.js */}
             <Route path="/Product" element={<Product cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />} />
             <Route path="*" element={<NoPage />} />
+            <Route path="drinkRating" element={<DrinkRating />}></Route>
           </Routes>
         </BrowserRouter>
       </div>

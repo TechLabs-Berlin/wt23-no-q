@@ -16,6 +16,7 @@ ul {
   align-items: center;
   height: 100%;
   margin-right: 5%;
+
 }
 .navButtonContent {
   display: flex;
@@ -28,6 +29,7 @@ ul {
   margin-top: 3px;
   color: #ff006e;
   font-size: 14px;
+
 }
 
 .navButtons:hover span {
