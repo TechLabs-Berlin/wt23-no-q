@@ -54,28 +54,39 @@ export default function TipButtonGroup(props) {
   );
 }
  */
-
 import React, { useState } from "react";
 import "./tip.css";
 
 export default function TipButtonGroup(props) {
   const [customTip, setCustomTip] = useState("");
+  const [activeTip, setActiveTip] = useState(null);
 
   const handleTipClick = (percent) => {
-    props.onTipChange({ type: "percentage", value: percent });
+    if (activeTip === percent) {
+      setActiveTip(null);
+      props.onTipChange({ type: "percentage", value: 0 });
+    } else {
+      setActiveTip(percent);
+      props.onTipChange({ type: "percentage", value: percent });
+    }
     setCustomTip("");
   };
 
   const handleCustomTipChange = (event) => {
     const tip = event.target.value;
+    setActiveTip(null);
     setCustomTip(tip);
     props.onTipChange({ type: "fixed", value: parseFloat(tip) });
   };
 
   return (
     <div className="tip-button-group">
-      <button onClick={() => handleTipClick(0.1)}>10%</button>
-      <button onClick={() => handleTipClick(0.15)}>15%</button>
+      <button className={activeTip === 0.1 ? "active" : ""} onClick={() => handleTipClick(0.1)}>
+        10%
+      </button>
+      <button className={activeTip === 0.15 ? "active" : ""} onClick={() => handleTipClick(0.15)}>
+        15%
+      </button>
       <div className="custom-tip-container">
         <input type="text" placeholder="Custom" value={customTip} onChange={handleCustomTipChange} />
         <span>{props.currency}</span>
