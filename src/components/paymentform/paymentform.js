@@ -3,9 +3,7 @@ import "./paymentform.css";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 
-function PaymentForm() {
-  const { state } = useLocation();
-  const totalAmount = state?.totalAmount ?? 0;
+function PaymentForm({ totalAmount }) {
   const {
     register,
     handleSubmit,
