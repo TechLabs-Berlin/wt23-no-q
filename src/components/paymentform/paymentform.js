@@ -1,23 +1,23 @@
 import React from "react";
 import "./paymentform.css";
 import { useForm } from "react-hook-form";
-import { useNavigate, Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function PaymentForm() {
-  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
 
   function onSubmit(data) {
-    // Submit the form data to the server
     console.log("Form submitted:", data);
 
     // Navigate to the profile page after form submission
     navigate("/profile");
   }
+
   return (
     <div className="payment-form">
       <h1 className="pay-title">Payment Form</h1>

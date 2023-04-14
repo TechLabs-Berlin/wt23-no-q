@@ -1,5 +1,6 @@
 import { useMediaQuery } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
+import React from "react";
 
 const theme = createTheme();
 
