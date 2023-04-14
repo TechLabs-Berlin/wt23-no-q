@@ -79,12 +79,17 @@ export default function TipButtonGroup(props) {
     props.onTipChange({ type: "fixed", value: parseFloat(tip) });
   };
 
+  const activeStyle = {
+    backgroundColor: "#ff006e",
+    color: "white",
+  };
+
   return (
     <div className="tip-button-group">
-      <button className={activeTip === 0.1 ? "active" : ""} onClick={() => handleTipClick(0.1)}>
+      <button style={activeTip === 0.1 ? activeStyle : {}} onClick={() => handleTipClick(0.1)}>
         10%
       </button>
-      <button className={activeTip === 0.15 ? "active" : ""} onClick={() => handleTipClick(0.15)}>
+      <button style={activeTip === 0.15 ? activeStyle : {}} onClick={() => handleTipClick(0.15)}>
         15%
       </button>
       <div className="custom-tip-container">
